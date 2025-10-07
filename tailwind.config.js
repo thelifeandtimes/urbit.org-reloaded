@@ -10,13 +10,13 @@ module.exports = {
 
     // ]
   },
-  darkMode: "selector",
+  darkMode: "media",
 
   theme: {
     fontFamily: {
       sans: ["Unna"],
-      mono: ["Urbit Sans", { fontVariationSettings: '"xtab" 500' }],
-      serif: ["Unna"],
+      mono: ["Space Mono"],
+      serif: ["Unna-Regular"],
       "custom-font": ["custom font", "Courier New", "monospace", "mono"],
       variable: [
         "variable",
@@ -63,8 +63,8 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        black: "var(--background)",
-        white: "var(--foreground)",
+        primary: "var(--background)",
+        secondary: "var(--foreground)",
         gray: {
           "5a": "#5a5a55",
           "87": "#878787",

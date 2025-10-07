@@ -4,7 +4,7 @@ title: Urbit
 subtitle: Leave the internet behind
 # headline: Urbit is a new computing paradigm that provides complete ownership of your digital world 
 site_metadata:
-  description: Site Description Placeholder
+  description: Building Urbit, the computer designed to last forever
   canonicalUrl: "https://urbit.org"
   meta_image: "/meta/og-image.png"
   meta_image_alt: "Urbit meta image"
@@ -27,46 +27,43 @@ nav:
 - title: Ecosystem
   url: "/ecosystem"
   external: false
-- title: Grants
-  url: "/grants"
-  external: false
+# - title: Grants
+#   url: "/grants"
+#   external: false
 # - title: Events
 #   url: "/events"
 #   external: false
 - title: Blog
   url: "/blog"
   external: false
-- title: Docs
+- title: Documentation
   url: "https://docs.urbit.org/"
   external: true
 footer:
-  - column_label: ""
+  - column_label: "resources"
     subItems:
-      - title: Overview
-        url: "/overview"
-        external: false
-      - title: Ecosystem
-        url: "/ecosystem"
-        external: false
-      - title: Technical Journal
+      - title: Documentation
+        url: "https://docs.urbit.org/"
+        external: true
+      - title: TechnicalJournal
         url: "https://urbitsystems.tech/"
         external: true
-      - title: Network Explorer
+      - title: NetworkExplorer
         url: "https://network.urbit.org/"
         external: true
       - title: Whitepaper
         url: "https://media.urbit.org/whitepaper.pdf"
         external: true
-      - title: Grants
-        url: "/grants"
-        external: false
+      # - title: Grants
+      #   url: "/grants"
+      #   external: false
       # - title: Events
       #   url: "/events"
       #   external: false
-      - title: Blog
-        url: "/blog"
-        external: false
-  - column_label: ""
+      # - title: Blog
+      #   url: "/blog"
+      #   external: false
+  - column_label: "socials"
     subItems:
       - title: "@urbit"
         url: "https://x.com/urbit?lang=en"
@@ -95,6 +92,7 @@ footer:
         label: "Gather"
       - title: "support@urbit.org"
         url: "mailto:support@urbit.org"
+        logo: "/icons/urbit-foundation-b.svg"
         label: "Email"
         external: true
 ---
