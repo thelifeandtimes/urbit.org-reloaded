@@ -154,11 +154,6 @@ body {
     color: black !important;
   }
 
-  .nav-button-selected {
-    @apply text-foreground;
-  }
-
-
   .apply-button {
     @apply bg-background text-foreground leading-[1cap] text-xlarge font-[600] rounded-[5px] px-[.5rem] py-[.2rem] hover:bg-gray-5a md:hover:text-foreground;
   }

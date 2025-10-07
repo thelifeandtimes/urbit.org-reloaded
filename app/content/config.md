@@ -18,9 +18,6 @@ homepage:
       href: "https://docs.urbit.org/"
       external: true
 nav:
-- title: Get on the Network
-  url: "/get-on-the-network"
-  external: false
 - title: Overview
   url: "/overview"
   external: false
@@ -36,9 +33,10 @@ nav:
 - title: Blog
   url: "/blog"
   external: false
-- title: Documentation
-  url: "https://docs.urbit.org/"
-  external: true
+- title: Configure
+  url: "/get-on-the-network"
+  variant: 'primary'
+  external: false
 footer:
   - column_label: "resources"
     subItems:

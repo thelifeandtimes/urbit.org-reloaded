@@ -8,7 +8,7 @@ export const FooterSection = ({ footerData }) => {
   const socials = footerData?.find(col => col.column_label === "socials");
 
   return (
-    <section className="z-10 h-max font-mono text-large container text-gray-87 leading-120">
+    <section className="z-10 h-max font-mono text-large md:container text-gray-87 leading-120">
 
       {/* Mobile View */}
       <div className="block md:hidden">
@@ -26,7 +26,7 @@ export const FooterSection = ({ footerData }) => {
 // Mobile Component: Resources stacked vertically, socials as icons
 const MobileFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-col gap-y-8 top-border-white">
+    <div className="flex flex-col text-[16px] gap-y-8 border-t border-t-1 border-foreground p-4">
       <NewsletterSignup className="z-10 mb-8" />
       {/* Resources - Stacked vertically */}
       {resources && (
@@ -47,7 +47,7 @@ const MobileFooter = ({ resources, socials }) => {
 
       {/* Socials - Icons only */}
       {socials && (
-        <div className="justify-center flex flex-row gap-x-4 mb-4">
+        <div className="justify-center flex flex-row gap-x-4">
           {socials.subItems.map((link, idx) => (
             <Link
               key={link.title || idx}
@@ -75,7 +75,12 @@ const MobileFooter = ({ resources, socials }) => {
 // Desktop Component: Resources inline, socials as icons
 const DesktopFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-row gap-x-16 justify-end">
+    <div className="flex flex-row text-sm gap-x-8 justify-end items-center p-2">
+      <img
+        src="/icons/urbit-neu.svg"
+        alt="Urbit wordmark"
+        className="pb-1.5"
+      />
       <NewsletterSignup className="z-10  mb-8" />
       {/* Resources - Inline row */}
       {resources && (
