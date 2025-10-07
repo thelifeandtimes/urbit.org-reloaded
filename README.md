@@ -61,8 +61,10 @@ When contributing to content or code, please ensure:
 # ~sarlev's TODOs
 - [ ] hide grants page; reward icons were dependent on Urbit Sans font, so be sure to address that.
 - [ ] update ecosystem companies page
-- [ ] Update Articles & Press entires (compact mag hitpiece, LambdaConf talks?)
+- [x] Update Articles & Press entires (compact mag hitpiece, LambdaConf talks?)
 - [ ] Update the 'get on the network' page. Maybe delete entirely as it is replaced by homepage configurator?
 - [ ] Update the Overview page with new narrative
 - [ ] Update overview page with new system diagram (including userspace distributions & groundwire IDs)
-
+- [ ] Add fallback fonts and update `.ttf`s to `.woff`.
+- [ ] Add icon for Email
+- [ ] Test email signup functionality
