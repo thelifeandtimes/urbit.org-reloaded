@@ -37,6 +37,7 @@ nav:
   url: "/get-on-the-network"
   variant: 'primary'
   external: false
+  icon: 'urbit-foundation-b.svg'
 footer:
   - column_label: "resources"
     subItems:

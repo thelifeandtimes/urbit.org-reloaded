@@ -19,17 +19,7 @@ export const HeaderNav = ({ nav, homepage }) => {
         className="font-mono hidden md:block container fixed h-auto z-10 items-center bg-background justify-center leading-120  md:pt-0 md:pb-0 pt-3 pb-3"
       >
         <div className="my-4 md:my-8 h-auto md:flex md:flex-row md:items-center md:justify-between">
-          <div className="w-full leading-[1cap] flex justify-start md:grid gap-4 items-center md:justify-center md:grid-cols-6  h-full ">
-            <div className="col-span-1">
-              <div className="flex font-[600] relative">
-                <Link
-                  href="/"
-                  className="font-serif md:hover:text-gray-87 ml-0 relative before:content-['~']  before:absolute before:left-[-.82em] before:bottom-[.08em] w-auto"
-                >
-                  Urbit
-                </Link>
-              </div>
-            </div>{" "}
+          <div className="w-full leading-[1cap] flex justify-start h-full ">
             <div className="col-span-5 hidden md:flex w-full items-center justify-end">
               <GlobalNav nav={nav} />
             </div>
@@ -61,7 +51,7 @@ const MobileNav = ({ nav, currentRoute }) => {
   };
 
   return (
-    <section className="font-mono fixed w-full top-0 left-0  h-auto z-10 items-center bg-primary justify-center leading-120 md:pt-0 md:pb-0 border-b border-b-1 border-foreground">
+    <section className="font-mono fixed w-full top-0 left-0  h-auto z-10 items-center bg-primary justify-center leading-120 md:pt-0 md:pb-0">
       <div className="h-[4.5rem] flex md:hidden items-center font-[600] relative w-full ">
         <div
           href="/"
@@ -108,8 +98,14 @@ const MobileNav = ({ nav, currentRoute }) => {
               onClick={toggleMenu}
               target={navItem.external ? "_blank" : ""}
             >
-              <span className="nav-button leading-inherit">
+              <span className="nav-button leading-inherit flex items-center gap-2">
                 {navItem.title}
+                {navItem.icon && (
+                  <img src={`/icons/${navItem.icon}`}
+                    alt="Urbit configurator icon"
+                    className='w-4 h-4'
+                  />
+                )}
                 {navItem.url.startsWith("http") && (
                   <span className="ml-2">↗</span>
                 )}
@@ -134,7 +130,7 @@ const GlobalNav = ({ nav }) => {
           return (
             <Link
               className={classNames(
-                "border border-2 py-2 px-4 text-lg rounded-lg",
+                "flex items-center gap-2 border border-2 py-1 px-3 text-lg rounded-md",
                 navItem.variant == 'primary'
                   ? "bg-secondary text-primary rounded-lg"
                   : isActive
@@ -146,6 +142,12 @@ const GlobalNav = ({ nav }) => {
               target={navItem.external ? "_blank" : ""}
             >
               <span className="">{navItem.title}</span>
+              {navItem.icon && (
+                <img src={`/icons/${navItem.icon}`}
+                  alt="Urbit configurator icon"
+                  className='w-4 h-4'
+                />
+              )}
               {navItem.external && (<span className="ml-[.2em]">↗</span>)}
             </Link>
           );

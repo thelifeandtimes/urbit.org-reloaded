@@ -8,7 +8,7 @@ export const FooterSection = ({ footerData }) => {
   const socials = footerData?.find(col => col.column_label === "socials");
 
   return (
-    <section className="z-10 h-max font-mono text-large md:container text-gray-87 leading-120">
+    <section className="md:m-auto w-full z-10 h-max font-mono text-large md:container text-gray-87 leading-120">
 
       {/* Mobile View */}
       <div className="block md:hidden">
@@ -26,8 +26,8 @@ export const FooterSection = ({ footerData }) => {
 // Mobile Component: Resources stacked vertically, socials as icons
 const MobileFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-col text-[16px] gap-y-8 border-t border-t-1 border-foreground p-4">
-      <NewsletterSignup className="z-10 mb-8" />
+    <div className="flex flex-col text-[16px] gap-y-6 border-t border-t-1 border-foreground p-4">
+      <NewsletterSignup className="z-10 mb-2" />
       {/* Resources - Stacked vertically */}
       {resources && (
         <div className="flex flex-col gap-y-3">
@@ -37,7 +37,7 @@ const MobileFooter = ({ resources, socials }) => {
               href={link.url}
               target={link.external ? "_blank" : "_self"}
               rel={link.external ? "noopener noreferrer" : undefined}
-              className="text-white w-max"
+              className="text-secondary w-max"
             >
               {link.title}
             </Link>
@@ -76,11 +76,16 @@ const MobileFooter = ({ resources, socials }) => {
 const DesktopFooter = ({ resources, socials }) => {
   return (
     <div className="flex flex-row text-sm gap-x-8 justify-end items-center p-2">
-      <img
-        src="/icons/urbit-neu.svg"
-        alt="Urbit wordmark"
-        className="pb-1.5"
-      />
+      <Link
+        href="/"
+        target="_self"
+      >
+        <img
+          src="/icons/urbit-neu.svg"
+          alt="Urbit wordmark"
+          className="pb-1.5"
+        />
+      </Link>
       <NewsletterSignup className="z-10  mb-8" />
       {/* Resources - Inline row */}
       {resources && (

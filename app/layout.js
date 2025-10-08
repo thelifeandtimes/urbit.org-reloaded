@@ -29,11 +29,11 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="min-h-[100svh] flex flex-col w-full relative" id="observer-root">
-        <div className="w-[100%] flex justify-center container bg-accent">
+        <div className="m-auto w-[100%] flex justify-center container bg-accent">
           <HeaderNav homepage={config.frontMatter?.homepage} nav={config.frontMatter?.nav} />
         </div>
-        <div className="h-full flex flex-grow mt-[var(--header-height)] z-[1]">{children}</div>
-        <div className="md:fixed md:bottom-0 md:left-0 md:right-0 z-20 md:bg-accent">
+        <div className="m-auto h-full flex flex-grow mt-[var(--header-height)] z-[1]">{children}</div>
+        <div className="m-auto md:fixed md:bottom-0 md:left-0 md:right-0 z-20 md:bg-accent">
           <FooterSection footerData={config.frontMatter?.footer} />
         </div>
       </body>
