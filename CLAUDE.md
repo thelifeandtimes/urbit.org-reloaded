@@ -32,6 +32,84 @@ This is a Next.js-based website for urbit.org using the Markdoc content manageme
 - Key components: `OverviewSection`, `IconCard`, `FaqSection`, `SigilCard`
 - `MarkdocComponents.js` contains shared Markdoc utilities
 
+### Frame Layout Architecture
+The site uses a decorative frame layout (`FrameLayout.js`) that creates a stepped border design with rounded corners. The frame is only visible on desktop (`md:` breakpoint and above).
+
+#### Frame Structure
+The frame consists of fixed top and bottom bars with integrated corners and a smooth transition between different height segments:
+
+**Dimensions:**
+- **Left side**: 32px × 32px corners + 16px height content bar
+- **Transition**: 48px × 51px smooth S-curve SVG (`corner-a.svg`)
+- **Right side**: 48px height content bar + 55px × 23px corners
+- **Side borders**: 16px wide background fills (left and right)
+
+**Key measurements:**
+- Left corner: 32×32px (16px straight edge + 16px curve)
+- Right corner: 23×55px (48px straight edge + 7px curve)
+- Transition SVG: Creates smooth step from 16px to 48px height
+
+#### Component Breakdown
+
+**Top Navigation Bar** (`app/components/FrameLayout.js:22-57`):
+- Fixed to viewport top (`fixed top-0`)
+- Left segment: Corner + 16px bar (stretches with `flex-1`)
+- Transition: `corner-a.svg` (48×51px)
+- Right segment: 48px nav content + 55px corner
+- Z-index: 40 (below frame borders at z-50)
+
+**Bottom Footer Bar** (`app/components/FrameLayout.js:59-101`):
+- Fixed to viewport bottom (`fixed bottom-0`)
+- Same structure as top, but with vertically flipped transition SVG (`scale-y-[-1]`)
+- Uses `items-end` to align all elements to bottom edge
+
+**Border Elements**:
+- Left border: 16px wide, z-50, spans full viewport height
+- Right border: 16px wide, z-50, spans full viewport height
+- These provide background fill behind/beside the frame elements
+
+#### SVG Assets
+Frame SVG files located in `public/components/frame/`:
+- `corner-top-left.svg` - Top left corner (32×32px)
+- `corner-bottom-left.svg` - Bottom left corner (32×32px, rotated -90deg)
+- `corner-right.svg` - Right corners (23×55px, bottom uses vertical flip)
+- `corner-a.svg` - Transition curve between segments (48×51px)
+
+**Important:** All corner SVGs use `preserveAspectRatio="none"` and must fill their viewBox completely to avoid gaps. The path coordinates should extend to the full viewBox dimensions.
+
+#### Modifying Frame Dimensions
+
+To change frame dimensions, update these coordinated values:
+
+1. **Change left segment height:**
+   - Update left corner SVG dimensions
+   - Adjust left content bar height (`h-[16px]`)
+   - May need to modify transition SVG start point
+
+2. **Change right segment height:**
+   - Update right corner SVG dimensions
+   - Adjust right content bar height (`h-[48px]`)
+   - Update content spacers (`h-[55px]` in main content area)
+   - May need to modify transition SVG end point
+
+3. **Change corner widths:**
+   - Update corner SVG dimensions
+   - Adjust corner container widths (`w-[32px]`, `w-[23px]`)
+
+4. **Modify transition curve:**
+   - Edit `corner-a.svg` path to adjust curve shape
+   - Ensure path fills entire viewBox to prevent gaps
+   - Update container dimensions to match SVG viewBox
+
+**Common pitfalls:**
+- SVG paths must extend to full viewBox dimensions (no clipPath restrictions)
+- Use `gap-0` on flex containers to prevent spacing between elements
+- Maintain z-index hierarchy (borders: z-50, nav/footer: z-40)
+- Don't forget to flip transition SVG vertically for bottom bar (`scale-y-[-1]`)
+
+#### Integration with HeaderNav and FooterSection
+The `HeaderNav` component accepts an `inFrame` prop that conditionally removes positioning classes when rendered within the frame. This allows it to work both as a standalone fixed header and as part of the frame layout.
+
 ### Configuration
 - Next.js config uses `@markdoc/next.js` plugin with custom schema path
 - Static export configuration (`output: 'export'`)
