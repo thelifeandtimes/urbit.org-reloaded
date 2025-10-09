@@ -6,7 +6,7 @@ import { OverviewNav } from "./OverviewNav";
 import React from "react";
 import { usePathname } from "next/navigation";
 
-export const HeaderNav = ({ nav, homepage }) => {
+export const HeaderNav = ({ nav, homepage, inFrame = false }) => {
   const headerRef = useRef(null);
 
   const currentRoute = usePathname();
@@ -16,17 +16,22 @@ export const HeaderNav = ({ nav, homepage }) => {
       <MobileNav nav={nav} currentRoute={currentRoute} />
       <section
         ref={headerRef}
-        className="font-mono hidden md:block container fixed h-auto z-10 items-center bg-background justify-center leading-120  md:pt-0 md:pb-0 pt-3 pb-3"
+        className={classNames(
+          "font-mono hidden md:block h-auto items-center justify-center leading-120 md:pt-0 md:pb-0 pt-3 pb-3",
+          inFrame ? "" : "container fixed z-10 bg-background"
+        )}
       >
-        <div className="my-4 md:my-8 h-auto md:flex md:flex-row md:items-center md:justify-between">
-          <div className="w-full leading-[1cap] flex justify-start h-full ">
-            <div className="col-span-5 hidden md:flex w-full items-center justify-end">
-              <GlobalNav nav={nav} />
+        {inFrame ? (
+          <GlobalNav nav={nav} />
+        ) : (
+          <div className="h-auto md:flex md:flex-row md:items-center md:justify-between my-4 md:my-8">
+            <div className="w-full leading-[1cap] flex justify-start h-full ">
+              <div className="col-span-5 hidden md:flex w-full items-center justify-end">
+                <GlobalNav nav={nav} />
+              </div>
             </div>
           </div>
-        </div>
-
-
+        )}
       </section>
     </React.Fragment>
   );
