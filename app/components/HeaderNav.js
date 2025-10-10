@@ -135,7 +135,7 @@ const GlobalNav = ({ nav }) => {
           return (
             <Link
               className={classNames(
-                "flex items-center gap-2 border border-2 py-1 px-3 text-lg rounded-md",
+                "flex items-center gap-2 border py-[5px] px-[15px] text-base rounded-md",
                 navItem.variant == 'primary'
                   ? "bg-secondary text-primary rounded-lg"
                   : isActive
@@ -149,7 +149,7 @@ const GlobalNav = ({ nav }) => {
               <span className="">{navItem.title}</span>
               {navItem.icon && (
                 <img src={`/icons/${navItem.icon}`}
-                  alt="Urbit configurator icon"
+                  alt={`${navItem.icon} icon`}
                   className='w-4 h-4'
                 />
               )}
