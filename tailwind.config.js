@@ -14,16 +14,9 @@ module.exports = {
 
   theme: {
     fontFamily: {
-      sans: ["Unna"],
-      mono: ["Space Mono"],
-      serif: ["Unna-Regular"],
-      "custom-font": ["custom font", "Courier New", "monospace", "mono"],
-      variable: [
-        "variable",
-        {
-          fontFeatureSettings: '"ss01"',
-        },
-      ],
+      sans: ["Skyling", "sans-serif"],
+      serif: ["Awesome Serif", "serif"],
+      mono: ["Space Mono", "monospace"],
     },
     screens: {
       xs: "380px",

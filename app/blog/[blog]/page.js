@@ -17,13 +17,13 @@ export async function generateMetadata({ params }, parent) {
     description: `${postData.frontMatter.description}`,
     openGraph: {
       images: [
-          {
-              url: `${postData.frontMatter?.extra.image}`,
-              width: 1200,
-              height: 630,
-          },
+        {
+          url: `${postData.frontMatter?.extra.image}`,
+          width: 1200,
+          height: 630,
+        },
       ]
-  },
+    },
   };
 }
 export async function generateStaticParams() {
@@ -44,26 +44,30 @@ export default async function PostPage({ params }) {
   const postData = await getMarkdownContent(postSlug, "toml");
   const { title, date, extra, taxonomies } = postData.frontMatter;
 
-  
+
   return (
-    <section className="grid md:grid-cols-6 mb-32 mt-9 md:mt-[6rem] container">
-      <div className="col-start-2 col-span-4 leading-[120%] overflow-x-hidden">
-        <h1 className="text-3xlarge leading-[120%] mb-4">
-          {postData.frontMatter.title}
-        </h1>
-        <h3 className="text-xlarge leading-[120%] mb-4">
-          {postData.frontMatter.description}
-        </h3>
-        <div className="hr"></div>
-        <div className="flex flex-row justify-between mb-8">
-          <h3 className="text-large mb-4">{postData.frontMatter.date}</h3>
-          <div className="col-span-1 flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-gray-f5">
-            <div className="mb-[.1em]">{extra.author}</div>
-            <div>{extra.ship}</div>
+    <section className="flex mt-9 md:mt-[6rem] ">
+      <div className="grid md:grid-cols-5 mb-32 container">
+        <div className="col-start-1 col-span-5 leading-[120%] overflow-x-hidden max-w-[1080px] justify-end">
+          <h1 className="text-6xl font-serif leading-[120%] mb-4">
+            {postData.frontMatter.title}
+          </h1>
+          <h3 className="text-3xl font-serif leading-[120%] mb-4">
+            {postData.frontMatter.description}
+          </h3>
+          <div className="flex flex-row justify-between mb-8">
+            <h3 className="text-large mb-4">{postData.frontMatter.date}</h3>
+            <div className="col-span-1 flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-gray-f5">
+              <div className="mb-[.1em]">{extra.author}</div>
+              <div>{extra.ship}</div>
+            </div>
           </div>
+          {Markdoc.renderers.react(postData.content, React)}
         </div>
-        {Markdoc.renderers.react(postData.content, React)}
       </div>
-    </section>
+      <div className="max-w-[500px]">
+        <div className="text-2xl font-serif">Recommended Reading</div>
+      </div>
+    </section >
   );
 }
