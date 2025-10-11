@@ -1,5 +1,8 @@
 import { getMarkdownContent, getYaml } from "../../lib/queries";
 import { formatDate, formatAuthors } from "../../lib/utils";
+import { getAllBlogPosts, getRecommendedPosts } from "../../lib/blogUtils";
+import { SidebarElement } from "../../components/SidebarElement";
+import { RecommendedReading } from "../../components/RecommendedReading";
 import Markdoc from "@markdoc/markdoc";
 import React from "react";
 import { glob } from "glob";
@@ -44,30 +47,45 @@ export default async function PostPage({ params }) {
   const postData = await getMarkdownContent(postSlug, "toml");
   const { title, date, extra, taxonomies } = postData.frontMatter;
 
+  // Get recommended posts
+  const allPosts = await getAllBlogPosts();
+  const recommendedPosts = getRecommendedPosts(allPosts, params.blog);
+
+  // Get config for aside title
+  const config = await getMarkdownContent("config.md");
+  const blogNavItem = config.frontMatter.nav.find(
+    (item) => item.url === "/blog"
+  );
+  const asideTitle = blogNavItem?.aside_title || "Recommended Reading";
 
   return (
-    <section className="flex mt-9 md:mt-[6rem] ">
-      <div className="grid md:grid-cols-5 mb-32 container">
-        <div className="col-start-1 col-span-5 leading-[120%] overflow-x-hidden max-w-[1080px] justify-end">
-          <h1 className="text-6xl font-serif leading-[120%] mb-4">
+    <div>
+      {/* Main content - centered with sidebar safe zone */}
+      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto md:pr-[455px] md:max-w-[1600px]">
+        <div className="max-w-[1080px]">
+          <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
             {postData.frontMatter.title}
           </h1>
           <h3 className="text-3xl font-serif leading-[120%] mb-4">
             {postData.frontMatter.description}
           </h3>
           <div className="flex flex-row justify-between mb-8">
-            <h3 className="text-large mb-4">{postData.frontMatter.date}</h3>
-            <div className="col-span-1 flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-gray-f5">
-              <div className="mb-[.1em]">{extra.author}</div>
+            <h3 className="text-large font-mono mb-4">{postData.frontMatter.date}</h3>
+            <div className="flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-[#B2B2B2]">
+              <div className="mb-[.1em] font-mono">{extra.author}</div>
               <div>{extra.ship}</div>
             </div>
           </div>
           {Markdoc.renderers.react(postData.content, React)}
         </div>
+      </section>
+
+      {/* Fixed sidebar - only on desktop */}
+      <div className="hidden md:block">
+        <SidebarElement title={asideTitle}>
+          <RecommendedReading posts={recommendedPosts} />
+        </SidebarElement>
       </div>
-      <div className="max-w-[500px]">
-        <div className="text-2xl font-serif">Recommended Reading</div>
-      </div>
-    </section >
+    </div>
   );
 }

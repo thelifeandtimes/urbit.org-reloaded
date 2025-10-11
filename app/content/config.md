@@ -33,6 +33,7 @@ nav:
 - title: Blog
   url: "/blog"
   external: false
+  aside_title: "Recommended Reading"
 - title: Configure
   url: "/get-on-the-network"
   variant: 'primary'
