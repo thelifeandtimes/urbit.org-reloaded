@@ -78,6 +78,15 @@ body {
   @apply md:text-[16px] text-[14px] overflow-y-auto overflow-x-hidden md:[--gutter-size:2rem];
 }
 
+/* Hide scrollbar globally */
+html {
+  scrollbar-width: none; /* Firefox */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
