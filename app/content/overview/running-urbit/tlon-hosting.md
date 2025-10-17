@@ -1,0 +1,20 @@
++++
+title = "Tlon hosting"
+description = "Tlon Corporation is the preeminent hosting provider which provides free and seamless onboarding to the Urbit network"
+tags = ["hosting", "hosting-provider", "urbit-os", "tlon", "layer 2"]
+lastest-update ="<some-arvo-hash>"
+references = [
+    # { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" },
+    { title = "Tlon Corporation", link = "https://tlon.io" }
+]
+
+[extra]
+image = "s3.media.urbit.org/path/to/image.jpg"
+wip = true
++++
+
+Tlon Corporation offers free and seamless hosting for your urbit with a specific care taken to have a smooth onboarding experience to Tlon Messenger, Urbit's most widely used application. If you are already on Tlon Messenger, you can invite your friends by creating an invite and sharing it to them via either QR code or a copied URL and they will be prompted to their mobile app store to download the mobile client and create an account.
+
+If you are looking to get on the network and have Tlon host your urbit ship, rather than [self-hosting it yourself](TK), but don't know anyone already on the network, follow this link to join the Urbit Foundation's public groun on Tlon Messenger. Introduce yourself and someone will gladly show you around.
+
+Presently, onboarding to Tlon and using their hosting will assign you a [Layer 2](https://docs.urbit.org/urbit-id/l2) planet owned by a [master ticket](TK) which they co-custody with you. You can access this master ticket in your account dashboard [TK, what does Tlon call this?], but they can access it as well. Tlon will give you full custody of your identity upon request, although as a host they do need to have your [management proxy](https://docs.urbit.org/user-manual/id/proxies) in order to properly run your ship. Changing your keys without coordination with Tlon may result in service disruption, so we recommend emailing them at support@tlon.io if you want to take full ownership of your Urbit ID.(https://docs.urbit.org/user-manual/id/proxies) in order to properly run your ship. Changing your keys without coordination with Tlon may result in service disruption, so we recommend emailing them at support@tlon.io if you want to take full ownership of your Urbit ID.
