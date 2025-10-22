@@ -1,25 +1,21 @@
 ---
 title = "Introduction"
-description = "We think the internet can’t be saved."
+description = "We think the internet can't be saved."
 ---
 
-{% overview-section  %}
+We think the internet can't be saved. The way things are going, MEGACORP will always control our apps and services because we can no longer run them ourselves.
 
-We think the internet can’t be saved. The way things are going, MEGACORP will always control our apps and services because we can no longer run them ourselves.
+The only way out of this mess is with a completely new platform that's owned and controlled by its users.
 
-The only way out of this mess is with a completely new platform that’s owned and controlled by its users.
+Urbit is a new OS and peer-to-peer network that's simple by design, built to last forever, and 100% owned by its users. Under the hood, Urbit is a clean-slate software stack compact enough that an individual developer can understand and control it completely.
 
-Urbit is a new OS and peer-to-peer network that’s simple by design, built to last forever, and 100% owned by its users. Under the hood, Urbit is a clean-slate software stack compact enough that an individual developer can understand and control it completely.
-
-We built this new stack to give people a single integrated tool for communicating and building communities – a tool they can trust, control, and extend to their liking. We want to do away with the terrible user experience of the current ‘frankenstack’ of apps and services that we all use today.
+We built this new stack to give people a single integrated tool for communicating and building communities – a tool they can trust, control, and extend to their liking. We want to do away with the terrible user experience of the current 'frankenstack' of apps and services that we all use today.
 
 Urbit is designed to become an effective, customizable productivity tool for collaborators, and a calm noninvasive communication tool for friends and families.
 
-This probably sounds crazy, so let’s get concrete and talk about (1) Urbit as a piece of technology and (2) Urbit as a user experience.
+This probably sounds crazy, so let's get concrete and talk about (1) Urbit as a piece of technology and (2) Urbit as a user experience.
 
-{% /overview-section %}
-
-{% overview-section title="Technology" %}
+## Technology
 
 Technically, Urbit is two components: Urbit OS and Urbit ID. Both are completely open source and MIT licensed.
 
@@ -39,9 +35,7 @@ Your Urbit ID is a short, memorable name (like ~ravmel-ropdyl) that’s a userna
 
 Urbit IDs aren’t money, but they are scarce, so each one costs something. This means that when you meet a stranger on the Urbit network, they have some skin in the game and are less likely to be a bot or a spammer.
 
-{% /overview-section %}
-
-{% overview-section title="Experience" %}
+## Experience
 We want Urbit to be a single, simple interface for your whole digital life.
 
 Over the years, Urbit has been built in public as an open source project. Anyone can join the network and check out what we’re up to. It’s a bit like signing on to IRC in the early 90s.
@@ -56,5 +50,4 @@ To see how we’re going to get there, let’s walk through these two pieces of 
 
 For technical people, it’s important to note that Urbit as a stack is in no way required to be used together. Don’t like our client? Feel free to build your own. Just like the Urbit ID system? No problem — use it!
 
-Ultimately, we think that new technology is most likely to get adopted if it can provide a much, much better user experience. So that’s what we’re focusing on creating.
-{% /overview-section %}
+Ultimately, we think that new technology is most likely to get adopted if it can provide a much, much better user experience. So that's what we're focusing on creating.

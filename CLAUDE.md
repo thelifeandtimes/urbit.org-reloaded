@@ -13,6 +13,8 @@ This is a Next.js-based website for urbit.org using the Markdoc content manageme
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
+**IMPORTANT:** The user typically has a dev server already running. Do NOT run `npm run dev` or start new dev servers without explicit permission. Assume the dev server is running at http://localhost:3000 unless told otherwise.
+
 ## Architecture
 
 ### Content Management
