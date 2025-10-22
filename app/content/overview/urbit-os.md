@@ -3,23 +3,19 @@ title = "Urbit OS"
 description = "What Urbit should feel like to an everyday user"
 ---
 
-{% overview-section  %}
+For the most part, we use our laptops simply as access points to MEGACORP services. Our phones are the same. These services are amazing and convenient. But for that convenience we've traded away control, ownership and privacy. The way we live our digital lives is completely out of our hands.
 
-For the most part, we use our laptops simply as access points to MEGACORP services. Our phones are the same. These services are amazing and convenient. But for that convenience we’ve traded away control, ownership and privacy. The way we live our digital lives is completely out of our hands.
-
-Today’s MEGACORP monopolies retain their control because of one central technical advantage: they make the server side usable.
+Today's MEGACORP monopolies retain their control because of one central technical advantage: they make the server side usable.
 
 Urbit OS is built to break these monopolies at this central point of control. Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software.
 
-We’ve already been through this before. In 1974 a computer was a mainframe the size of a room and was shared by hundreds of people. By 1984 a computer was the size of a desk and everyone had their own PC. The PC was more flexible and more fun, so it won by a wide margin. Then, with the rise of the internet, the PC’s flexibility slowly became irrelevant.
+We've already been through this before. In 1974 a computer was a mainframe the size of a room and was shared by hundreds of people. By 1984 a computer was the size of a desk and everyone had their own PC. The PC was more flexible and more fun, so it won by a wide margin. Then, with the rise of the internet, the PC's flexibility slowly became irrelevant.
 
-Today, we’re more or less back to the timesharing model of the 1970s. Urbit OS is the PC to MEGACORP’s mainframe. It’s more flexible, more fun, and most of all, poised to capture the everyday creativity of the individual.
+Today, we're more or less back to the timesharing model of the 1970s. Urbit OS is the PC to MEGACORP's mainframe. It's more flexible, more fun, and most of all, poised to capture the everyday creativity of the individual.
 
-Let’s talk about how we think we’re going to pull this off from a technical standpoint, and our vision for using Urbit.
+Let's talk about how we think we're going to pull this off from a technical standpoint, and our vision for using Urbit.
 
-{% /overview-section  %}
-
-{% overview-section title="Architecture"  %}
+## Architecture
 
 Urbit OS is a completely new, carefully architected software stack: a VM, programming language, and kernel designed to run software for an individual. Urbit OS is a program that runs on almost any cloud server, most laptops and many phones: anything with Unix and an internet connection.
 
@@ -42,7 +38,6 @@ But why did we build all this technology?
 
 First and foremost, to deliver a better user experience. Urbit OS alone is just a new layer for personal computing in the cloud. But with this new layer we open up the possibility of building a completely unified interface for people to compute in the cloud. 
 
-From a broader perspective, it’s clear that connected computing is important and that it’s here to stay. We just want it to be as calm, simple and reliable as possible, and we don’t think that can happen using existing technology.
+From a broader perspective, it's clear that connected computing is important and that it's here to stay. We just want it to be as calm, simple and reliable as possible, and we don't think that can happen using existing technology.
 
-All of Urbit is built to function as a single stack, and we think that building a useful product is the best way to mature the system as a whole. That said, each component of this system can be used on its own. Don’t like our client? That’s okay, you can build your own. Don’t want to use Urbit OS? No problem — you can use Urbit ID as an authentication system for some other OS, or for anything, really.
-{% /overview-section  %}
+All of Urbit is built to function as a single stack, and we think that building a useful product is the best way to mature the system as a whole. That said, each component of this system can be used on its own. Don't like our client? That's okay, you can build your own. Don't want to use Urbit OS? No problem — you can use Urbit ID as an authentication system for some other OS, or for anything, really.

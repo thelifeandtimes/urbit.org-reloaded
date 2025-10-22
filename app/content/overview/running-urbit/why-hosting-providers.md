@@ -1,6 +1,7 @@
 +++
 title = "Why use a hosting provider?"
 description = "Urbit is a personal server, yet there are still service providers who will host it for you"
+parent-section = "hosting-providers"
 tags = ["hosting", "hosting-provider", "urbit-os"]
 lastest-update ="<some-arvo-hash>"
 references = [

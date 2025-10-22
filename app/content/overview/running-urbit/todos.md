@@ -12,21 +12,25 @@ Buying Urbit ID on opensea
 # Notes from obsidian
 
 - Running urbit: Urbit is intended as a self-soveriegn networked computer, or 'personal server', that holds your data and runs on your behalf. If that sounds daunting to you, don't worry, you can have someone else run it for you. A friend, or a hosting provider such as Tlon Corporation. We would of course encourage you to learn more about how to run and operating your urbit, but if the idea of taking on that responsibility is too much right now, click this link to get seamlessly onboarded to Tlon and have them run your urbit on your behalf (you can always chose to take it and run it yourself later).
-  - Self-host your urbit: 
-    - get an urbit id
-      - [x] get a groundwire comet
-      - [x] get an azimuth point
-      - [x] master tickets explained
-    - Run urbit OS
-      - Urbit as an overlay OS (run it on MacOS, Linux, or Windows [soon^tm])
-      - locally (what limitations are there)
-      - In a VPS
-      - Using Groundseg (and anchor/startram)
-      - On a Native Planet Box
-    - common pitfalls of running urbit OS
-      - double booting
-      - networking
-      - DNS setup
+  - Get an urbit id
+  - Run urbit OS
+  - Hosting providers
+  - Common Commands
+  - Resources
+  - Support
+  - Glossary(?)
+
+Running Urbit
+  - get an urbit id
+    - [x] get a groundwire comet
+    - [x] get an azimuth point
+    - [x] master tickets explained
+  - Run urbit OS
+    - Urbit as an overlay OS (run it on MacOS, Linux, or Windows [soon^tm])
+    - locally (what limitations are there)
+    - In a VPS
+    - Using Groundseg (and anchor/startram)
+    - On a Native Planet Box
   - Hosting providers
     - [x] Why use a hosting provider?
     - What are your options? (Tlon)
@@ -53,7 +57,7 @@ Buying Urbit ID on opensea
       - roll / chop
       - meld / grab / pack
       - next
-  - Educational materials
+  - Resources
     - docs.urbit.org user manual / running urbit
     - docs.urbit.org Hoon school
     - USTJ
@@ -65,6 +69,11 @@ Buying Urbit ID on opensea
       - update your runtime
       - get `+vats` output
       - boot a comet and ask for help
+      - https://martiancomputing.substack.com/p/urbit-troubleshooting-basics <-- Pull content from here
+      - common pitfalls of running urbit OS
+        - double booting
+        - networking
+        - DNS setup
     - links to common groups within urbit for fixing things
       - Battery payload
       - Urbit foundation public

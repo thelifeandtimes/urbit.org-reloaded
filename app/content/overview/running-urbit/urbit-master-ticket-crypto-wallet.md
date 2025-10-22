@@ -1,11 +1,12 @@
 +++
 title = "Urbit master ticket wallets"
 description = "Master ticket wallets are an easy and secure way for managing ownership of your Urbit ID"
+parent-section = "get-urbit-id"
 tags = ["ethereum", "wallet", "azimuth"]
 lastest-update ="<some-arvo-hash>"
 references = [
     { title = "Bridge", link = "https://bridge.urbit.org" },
-    { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" } 
+    { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" }
 ]
 
 [extra]

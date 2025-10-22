@@ -71,6 +71,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   font-family: "", serif;
@@ -126,7 +130,10 @@ body {
     @apply text-xlarge xl:text-3xlarge 2xl:text-4xlarge;
   }
 
-  /* .overview-page { */
+  /* Legacy overview styles - kept for backward compatibility
+   * Note: Overview pages now use blog-style layout with article tags
+   * and semantic headers (h2, h3) instead of OverviewSection components
+   */
   .overview-page {
     @apply container mb-[8rem] md:mb-[13.4rem] mt-9;
   }
@@ -303,5 +310,21 @@ body {
     h1 {
       @apply !text-3xlarge font-[600] mt-8 mb-12;
     }
+  }
+
+  /* Collapsible content animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.2s ease-out;
   }
 }
