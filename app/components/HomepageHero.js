@@ -19,11 +19,22 @@ import Image from "next/image";
 export function HomepageHero({ hero }) {
   if (!hero) return null;
 
-  const { backgroundImage, logo, title, subtitle, primaryCta, secondaryCta, tertiaryLink } = hero;
+  const {
+    backgroundImage,
+    logo,
+    title,
+    subtitle,
+    primaryCta,
+    secondaryCta,
+    tertiaryLink,
+    primaryMobileCta,
+    secondaryMobileCta,
+    tertiaryMobileLink
+  } = hero;
 
   return (
     <section
-      className="relative flex items-center justify-center min-h-screen max-h-[1080px]"
+      className="relative flex items-center min-h-screen max-h-[1080px]"
       {...(backgroundImage && {
         style: {
           backgroundImage: `url(${backgroundImage})`,
@@ -35,11 +46,11 @@ export function HomepageHero({ hero }) {
     >
       {/* Optional overlay for better text readability */}
       {backgroundImage && (
-        <div className="absolute inset-0 bg-black/40" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[#FFFFFF] opacity-60" aria-hidden="true" />
       )}
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col items-center text-center max-w-4xl">
+      <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col max-w-4xl">
         {/* Logo */}
         {logo && (
           <div className="mb-12">
@@ -63,13 +74,55 @@ export function HomepageHero({ hero }) {
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-xl md:text-2xl lg:text-3xl text-gray-87 mb-12 max-w-3xl leading-[130%]">
+          <p className="text-xl md:text-2xl lg:text-3xl text-[#3f3f3f] mb-12 max-w-3xl leading-[130%]">
             {subtitle}
           </p>
         )}
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 mb-8">
+        {/* Mobile CTA Buttons */}
+        <div className="md:hidden flex flex-col sm:flex-row gap-4 mb-8">
+          {/* Primary Mobile CTA */}
+          {primaryMobileCta && (
+            <Link
+              href={primaryMobileCta.link}
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
+                bg-secondary text-primary border-2 border-secondary rounded-lg
+                hover:bg-primary hover:text-secondary transition-all transform hover:scale-105"
+            >
+              {primaryMobileCta.label}
+            </Link>
+          )}
+
+          {/* Secondary Mobile CTA */}
+          {secondaryMobileCta && (
+            <Link
+              href={secondaryMobileCta.link}
+              className="font-mono inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
+                bg-primary text-secondary border-2 border-secondary rounded-lg
+                hover:bg-secondary hover:text-primary transition-all"
+            >
+              {secondaryMobileCta.label}
+            </Link>
+          )}
+        </div>
+
+        {/* Mobile Tertiary Link */}
+        {tertiaryMobileLink && (
+          <Link
+            href={tertiaryMobileLink.link}
+            className="md:hidden text-base text-gray-87 hover:text-white transition-colors underline underline-offset-4"
+            {...(tertiaryMobileLink.link.startsWith('http') && {
+              target: "_blank",
+              rel: "noopener noreferrer",
+            })}
+          >
+            {tertiaryMobileLink.label}
+          </Link>
+        )}
+
+
+        {/* Desktop CTA Buttons */}
+        <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
           {/* Primary CTA */}
           {primaryCta && (
             <Link
@@ -86,7 +139,7 @@ export function HomepageHero({ hero }) {
           {secondaryCta && (
             <Link
               href={secondaryCta.link}
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
+              className="font-mono inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
                 bg-primary text-secondary border-2 border-secondary rounded-lg
                 hover:bg-secondary hover:text-primary transition-all"
             >
@@ -95,11 +148,11 @@ export function HomepageHero({ hero }) {
           )}
         </div>
 
-        {/* Tertiary Link */}
+        {/* Desktop Tertiary Link */}
         {tertiaryLink && (
           <Link
             href={tertiaryLink.link}
-            className="text-base text-gray-87 hover:text-white transition-colors underline underline-offset-4"
+            className="hidden md:block text-base text-gray-87 hover:text-white transition-colors underline underline-offset-4"
             {...(tertiaryLink.link.startsWith('http') && {
               target: "_blank",
               rel: "noopener noreferrer",

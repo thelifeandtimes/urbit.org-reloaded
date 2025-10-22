@@ -76,7 +76,7 @@ footer:
         logo: "/icons/github.svg"
         label: "Github"
       - title: "~halbex-palheb/uf-public"
-        url: "https://join.tlon.io/0v2.vot5r.afqjn.nvra7.h0vll.v1bec"
+        url: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
         external: true
         logo: "/icons/tlon.svg"
         label: "Tlon"

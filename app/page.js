@@ -11,8 +11,14 @@ export default async function HomePage() {
   const hero = configData.frontMatter.hero || {};
   const sections = configData.frontMatter.sections || [];
 
-  // Serialize sections for client components (nav only needs id, title, label)
-  const navSections = sections.map(({ id, title, label }) => ({ id, title, label }));
+  // Serialize sections for client components (nav needs id, title, label, description, and subsection labels)
+  const navSections = sections.map(({ id, title, label, description, subsections }) => ({
+    id,
+    title,
+    label,
+    description,
+    subsections: subsections.map(({ id, label }) => ({ id, label }))
+  }));
 
   return (
     <div className="min-h-screen">
@@ -21,31 +27,34 @@ export default async function HomePage() {
 
       {/* Desktop Two-Column Layout */}
       <div className="hidden md:block">
-        <div className="container mx-auto max-w-[1600px]">
-          <div className="grid grid-cols-12 gap-8">
+        <div className="container mx-auto max-w-[1600px] px-4">
+          <div className="flex gap-8 relative">
             {/* Left Column - Fixed Section Navigation */}
-            <div className="col-span-4">
-              <div className="sticky top-24 pt-8">
-                <HomepageSectionNav sections={navSections} />
-              </div>
-            </div>
+            <aside className="w-[50%] sticky top-0 self-start pt-8 h-[calc(100vh-110px)] overflow-y-auto">
+              <HomepageSectionNav sections={navSections} />
+            </aside>
 
-            {/* Right Column - Scrolling Content */}
-            <div className="col-span-8 pb-32">
+            {/* Right Column - Scrolling Content with Snap */}
+            <div
+              id="right-column-scroll"
+              className="w-[50%] pb-32 pt-8 h-[calc(100vh-110px)] overflow-y-auto snap-y snap-mandatory"
+            >
               {sections.map((section) => (
-                <section key={section.id} id={section.id} className="mb-24 scroll-mt-24">
-                  <div className="mb-8">
-                    <h2 className="text-3xl font-serif font-[600] mb-2">{section.title}</h2>
-                    <p className="text-large text-gray-87">{section.description}</p>
+                <section key={section.id} id={section.id} className="mb-16 scroll-mt-0">
+                  <div className="border-t border-[#3f3f3f] pt-6 mb-8">
+                    <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
+                      {section.title}
+                    </h2>
                   </div>
 
-                  <div className="space-y-12">
+                  <div className="space-y-16">
                     {section.subsections.map((subsection) => (
                       <HomepageSubsection
                         key={subsection.id}
                         id={subsection.id}
                         title={subsection.title}
                         description={subsection.description}
+                        image={subsection.image}
                         links={subsection.links}
                       />
                     ))}

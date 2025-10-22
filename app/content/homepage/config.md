@@ -4,19 +4,28 @@ description: "Get on the network in seconds through a hosting provider, or run U
 
 # Hero Section Configuration
 hero:
-  backgroundImage: ""
+  backgroundImage: "/images/galactic-dither.png"
   logo: "/icons/urbit-wordmark-hero.svg"
-  title: "A clean-slate OS and network for the 21st century"
+  title: "A computer you can trust to be yours, forever."
   subtitle: ""
   primaryCta:
     label: "Get started"
     link: "#self-hosting"
   secondaryCta:
-    label: "Learn"
+    label: "Docs"
     link: "/overview"
   tertiaryLink:
-    label: "Explore the ecosystem"
-    link: "/ecosystem"
+    label: "Quickstart"
+    link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
+  primaryMobileCta:
+    label: "Get started"
+    link: "#self-hosting"
+  secondaryMobileCta:
+    label: "Docs"
+    link: "/overview"
+  tertiaryMobileLink:
+    label: "Quickstart"
+    link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
 
 # Below-the-fold sections
 sections:
@@ -28,6 +37,7 @@ sections:
       - id: "command-line"
         title: "Command Line"
         label: "cli"
+        image: "/images/urbit-dither-placeholder.png"
         description: "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
         links:
           - ref: "https://docs.urbit.org/get-on-urbit"
@@ -35,6 +45,7 @@ sections:
       - id: "native-planet"
         title: "Native Planet"
         label: "native planet"
+        image: "/images/urbit-dither-placeholder.png"
         description: "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
         links:
           - ref: "https://nativeplanet.io"
@@ -42,6 +53,7 @@ sections:
       - id: "virtual-private-server"
         title: "Cloud Server"
         label: "cloud hosting"
+        image: "/images/urbit-dither-placeholder.png"
         description: "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
         links:
           - ref: "https://docs.urbit.org/user-manual/running/cloud-hosting"
@@ -54,6 +66,7 @@ sections:
       - id: "tlon-hosting"
         title: "Tlon Hosting"
         label: "tlon hosting"
+        image: "/images/urbit-dither-placeholder.png"
         description: "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
         links:
           - ref: "https://tlon.io"
@@ -66,6 +79,7 @@ sections:
       - id: "build-out-your-urbit"
         title: "Build Out Your Urbit"
         label: "configure urbit"
+        image: "/images/urbit-dither-placeholder.png"
         description: "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
         links:
           - ref: "/overview"
