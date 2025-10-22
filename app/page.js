@@ -1,40 +1,77 @@
-// import MarkdocComponent from 'components/MarkdocComponent';
 import React from "react";
-import { SigilCard } from "./components/SigilCard";
+import { getMarkdownContent } from "./lib/queries";
+import { HomepageHero } from "./components/HomepageHero";
+import { HomepageSectionNav } from "./components/HomepageSectionNav";
+import { HomepageSubsection } from "./components/HomepageSubsection";
+import { HomepageAccordion } from "./components/HomepageAccordion";
 
 export default async function HomePage() {
+  // Load homepage configuration
+  const configData = await getMarkdownContent("homepage/config.md");
+  const hero = configData.frontMatter.hero || {};
+  const sections = configData.frontMatter.sections || [];
+
+  // Serialize sections for client components (nav needs id, title, label, description, and subsection labels)
+  const navSections = sections.map(({ id, title, label, description, subsections }) => ({
+    id,
+    title,
+    label,
+    description,
+    subsections: subsections.map(({ id, label }) => ({ id, label }))
+  }));
+
   return (
-    <div className="z-[-100] container h-auto flex items-center justify-center  2xl:max-w-none top-0 w-full  mb-[2.5rem] md:mb-[3.5rem] 2xl:mb-[4.875rem] !mt-[0px]">
-      <SigilCard />
+    <div className="min-h-screen">
+      {/* Hero Section - Full viewport height */}
+      <HomepageHero hero={hero} />
+
+      {/* Desktop Two-Column Layout */}
+      <div className="hidden md:block">
+        <div className="container mx-auto max-w-[1600px] px-4">
+          <div className="flex gap-8 relative">
+            {/* Left Column - Fixed Section Navigation */}
+            <aside className="w-[50%] sticky top-0 self-start pt-8 h-[calc(100vh-110px)] overflow-y-auto">
+              <HomepageSectionNav sections={navSections} />
+            </aside>
+
+            {/* Right Column - Scrolling Content with Snap */}
+            <div
+              id="right-column-scroll"
+              className="w-[50%] pb-32 pt-8 h-[calc(100vh-110px)] overflow-y-auto snap-y snap-mandatory"
+            >
+              {sections.map((section) => (
+                <section key={section.id} id={section.id} className="mb-16 scroll-mt-0">
+                  <div className="border-t border-[#3f3f3f] pt-6 mb-8">
+                    <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
+                      {section.title}
+                    </h2>
+                  </div>
+
+                  <div className="space-y-16">
+                    {section.subsections.map((subsection) => (
+                      <HomepageSubsection
+                        key={subsection.id}
+                        id={subsection.id}
+                        title={subsection.title}
+                        description={subsection.description}
+                        image={subsection.image}
+                        links={subsection.links}
+                      />
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Accordion Layout */}
+      <div className="block md:hidden">
+        <div className="container mx-auto pb-16">
+          <HomepageAccordion sections={sections} />
+        </div>
+      </div>
     </div>
   );
 }
-
-export const homepageText = () => {
-  <div className="text-size-homepage  inline-block leading-[110%] tracking-[.03em] font-[300]">
-    <div className="hidden md:block">
-      <span className="">
-        A change in strategy, the Urbit project is rebooting.
-      </span>
-      <br />
-      <span className="">
-        Our vision hasn’t changed, but how we get there has.
-      </span>
-      <br />
-      <span className="text-gray-87">What’s coming is worth the wait. </span>
-      <br />
-      <span className="text-gray-87">
-        Sign up below to be the first to know.
-      </span>
-    </div>
-    <div className="block md:hidden">
-      <span className="">
-        A change in strategy, the Urbit project is rebooting. Our vision hasn’t
-        changed, but how we get there has.{" "}
-      </span>
-      <span className="text-gray-87">
-        What’s coming is worth the wait. Sign up below to be the first to know.
-      </span>
-    </div>
-  </div>;
-};
