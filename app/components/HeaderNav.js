@@ -67,123 +67,135 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
   return (
     <>
       <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
-      <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
-        <div
-          href="/"
-          onClick={toggleMenu}
-          className="flex items-center cursor-pointer h-full w-full justify-between select-none relative"
-        >
-          <Link
-            href="/"
-            className="flex w-36 h-16 relative items-center pl-[.7em]"
+        <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
+          <div
+            className="flex items-center cursor-pointer h-full w-full justify-between select-none relative"
           >
-            <img
-              src="/icons/urbit-neu.svg"
-              alt="Urbit wordmark"
-              className="pb-1.5"
-            />
-          </Link>
+            <Link
+              onClick={(e) => {
+                const isHomepage = currentRoute === '/';
+
+                if (isHomepage) {
+                  e.preventDefault(); // Don't navigate
+                  if (menuIsOpen) {
+                    toggleMenu(); // Close menu if open
+                  }
+                  // Do nothing if menu is closed, 
+                } else if (menuIsOpen) {
+                  toggleMenu(); // Close menu and allow navigation
+                }
+              }}
+              href="/"
+              className="flex w-36 h-16 relative items-center pl-[.7em]"
+            >
+              <img
+                src="/icons/urbit-neu.svg"
+                alt="Urbit wordmark"
+                className="pb-1.5"
+              />
+            </Link>
+          </div>
+          <div
+            onClick={toggleMenu}
+            className="col-span-8 w-full flex pr-[.7em] items-center justify-end"
+          >
+            <span className="pr-4">{routeMap[splitRoute[1]]}</span>
+            <span className="">{menuIsOpen
+              ?
+              <img
+                src="/icons/hamburger.svg"
+                alt="hamburger menu open"
+                className="w-7 h-6"
+              />
+              :
+              <img
+                src="/icons/hamburger.svg"
+                alt="hamburger menu closed"
+                className="w-7 h-6"
+              />
+            }</span>
+          </div>
         </div>
-        <div
-          onClick={toggleMenu}
-          className="col-span-8 w-full flex pr-[.7em] items-center justify-end"
+        {/* Persistent Submenus - Mobile Only */}
+        {currentRoute.startsWith('/overview') && <OverviewSubmenu runningUrbitSections={runningUrbitSections} />}
+        {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
+        <ul
+          className={classNames(
+            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-accent min-h-[60vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
+            { hidden: !menuIsOpen }
+          )}
         >
-          <span className="pr-4">{routeMap[splitRoute[1]]}</span>
-          <span className="">{menuIsOpen
-            ?
-            <img
-              src="/icons/hamburger.svg"
-              alt="hamburger menu open"
-              className="w-7 h-6"
-            />
-            :
-            <img
-              src="/icons/hamburger.svg"
-              alt="hamburger menu closed"
-              className="w-7 h-6"
-            />
-          }</span>
-        </div>
-      </div>
-      <ul
-        className={classNames(
-          "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-accent min-h-[60vh] w-[100vw] border-b-[1.5px] border-gray-3c",
-          { hidden: !menuIsOpen }
-        )}
-      >
-        {/* Internal Navigation */}
-        <div className="px-4 py-4 flex flex-col gap-6">
-          {nav?.filter(navItem => !navItem.external).map((navItem, i) => {
-            const isActive = currentRoute.startsWith(navItem.url) && navItem.url !== '/';
-            const isHome = currentRoute === '/' && navItem.url === '/';
+          {/* Internal Navigation */}
+          <div className="px-4 py-4 flex flex-col gap-6">
+            {nav?.filter(navItem => !navItem.external).map((navItem, i) => {
+              const isActive = currentRoute.startsWith(navItem.url) && navItem.url !== '/';
+              const isHome = currentRoute === '/' && navItem.url === '/';
 
-            return (
-              <Link
-                className={classNames(
-                  "text-3xl leading-[1cap] first-of-type:mt-4 last-of-type:mb-4 transition-colors",
-                  (isActive || isHome) ? "text-secondary" : "text-gray-87"
-                )}
-                key={`${navItem} + ${i}`}
-                href={navItem.url}
-                onClick={toggleMenu}
-              >
-                <span className="nav-button leading-inherit flex items-center gap-2">
-                  {navItem.title}
-                  {navItem.icon && (
-                    <img src={`/icons/${navItem.icon}`}
-                      alt="Urbit configurator icon"
-                      className='w-4 h-4'
-                    />
+              return (
+                <Link
+                  className={classNames(
+                    "text-3xl leading-[1cap] first-of-type:mt-4 last-of-type:mb-4 transition-colors",
+                    (isActive || isHome) ? "text-secondary" : "text-gray-87"
                   )}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-
-        {/* Newsletter + Resources Block */}
-        <div className="px-4 py-4 flex flex-col gap-6">
-          {/* Newsletter Signup */}
-          <div>
-            <NewsletterSignup />
+                  key={`${navItem} + ${i}`}
+                  href={navItem.url}
+                  onClick={toggleMenu}
+                >
+                  <span className="nav-button leading-inherit flex items-center gap-2">
+                    {navItem.title}
+                    {navItem.icon && (
+                      <img src={`/icons/${navItem.icon}`}
+                        alt="Urbit configurator icon"
+                        className='w-4 h-4'
+                      />
+                    )}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
-          {/* External Resources Section */}
-          {nav?.filter(navItem => navItem.external).length > 0 && (
-            <div className="flex flex-col gap-4 pt-4 border-t border-gray-3c">
-              <h3 className="text-sm uppercase tracking-wider text-gray-87 opacity-60">Resources</h3>
-              <div className="flex flex-col gap-4">
-                {nav?.filter(navItem => navItem.external).map((navItem, i) => {
-                  return (
-                    <Link
-                      className="text-xl leading-[1cap] text-gray-87 transition-colors hover:text-secondary"
-                      key={`${navItem} + ${i}`}
-                      href={navItem.url}
-                      onClick={toggleMenu}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <span className="nav-button leading-inherit flex items-center gap-2">
-                        {navItem.title}
-                        <span className="ml-1">↗</span>
-                      </span>
-                    </Link>
-                  );
-                })}
-              </div>
+          {/* Newsletter + Resources Block */}
+          <div className="px-4 py-4 flex flex-col gap-6">
+            {/* Newsletter Signup */}
+            <div>
+              <NewsletterSignup />
             </div>
-          )}
-        </div>
-      </ul>
-    </section>
 
-      {/* Persistent Submenus - Mobile Only */}
+            {/* External Resources Section */}
+            {nav?.filter(navItem => navItem.external).length > 0 && (
+              <div className="flex flex-col gap-4 pt-4 border-t border-gray-3c">
+                <h3 className="text-sm uppercase tracking-wider text-gray-87 opacity-60">Resources</h3>
+                <div className="flex flex-col gap-4">
+                  {nav?.filter(navItem => navItem.external).map((navItem, i) => {
+                    return (
+                      <Link
+                        className="text-xl leading-[1cap] text-gray-87 transition-colors hover:text-secondary"
+                        key={`${navItem} + ${i}`}
+                        href={navItem.url}
+                        onClick={toggleMenu}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <span className="nav-button leading-inherit flex items-center gap-2">
+                          {navItem.title}
+                          <span className="ml-1">↗</span>
+                        </span>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+          </div>
+        </ul>
+      </section>
+
       {currentRoute === '/' && <AnnouncementsSubmenu announcement={announcements} />}
-      {currentRoute.startsWith('/overview') && <OverviewSubmenu runningUrbitSections={runningUrbitSections} />}
-      {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
     </>
   );
 };
+
 const GlobalNav = ({ nav }) => {
   const currentRoute = usePathname();
 

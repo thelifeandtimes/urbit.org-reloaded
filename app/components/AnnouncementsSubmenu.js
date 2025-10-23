@@ -22,7 +22,7 @@ export const AnnouncementsSubmenu = ({ announcement }) => {
   return (
     <div
       ref={containerRef}
-      className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-accent border-b-[1.5px] border-gray-3c z-40 overflow-hidden"
+      className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-[#F7D86B] border-b-[1.5px] border-gray-3c z-40 overflow-hidden"
     >
       <div className={shouldScroll ? "animate-marquee" : ""}>
         <p
