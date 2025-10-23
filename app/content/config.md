@@ -60,14 +60,17 @@ mobileNav:
 - title: Documentation
   url: "https://docs.urbit.org/"
   external: true
-- title: TechnicalJournal
+- title: Technical Journal
   url: "https://urbitsystems.tech/"
   external: true
-- title: NetworkExplorer
+- title: Network Explorer
   url: "https://network.urbit.org/"
   external: true
 - title: Whitepaper
   url: "https://media.urbit.org/whitepaper.pdf"
+  external: true
+- title: Bridge
+  url: "https://bridge.urbit.org"
   external: true
 footer:
   - column_label: "resources"
@@ -83,6 +86,9 @@ footer:
         external: true
       - title: Whitepaper
         url: "https://media.urbit.org/whitepaper.pdf"
+        external: true
+      - title: Bridge
+        url: "https://bridge.urbit.org"
         external: true
       # - title: Grants
       #   url: "/grants"

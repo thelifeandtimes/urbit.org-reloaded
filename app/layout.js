@@ -31,7 +31,7 @@ export default async function RootLayout({ children }) {
   const runningUrbitSections = runningUrbitConfig.frontMatter.sections?.map(({ id, title }) => ({ id, title })) || [];
 
   return (
-    <html lang="en">
+    <html lang="en" className="light">
       <head>
         <link
           rel="preload"

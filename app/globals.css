@@ -73,6 +73,17 @@
   }
 }
 
+/* Force light mode - override dark mode preferences */
+html.light {
+  --background: #FFFFFF !important;
+  --foreground: #3C3E41 !important;
+  --tertiary: #EDEDED !important;
+
+  --secondary: #FFFFFF !important;
+  --primary: #3C3E41 !important;
+  --accent: #EDEDED !important;
+}
+
 html {
   scroll-behavior: smooth;
 }
