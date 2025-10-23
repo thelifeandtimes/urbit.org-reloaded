@@ -1,10 +1,11 @@
 - Styling
   - [ ] homepage hero transparency
+  - [x] homepage urbit logo should collapse but not open menu
   - [ ] Blog index
   - [ ] Ecosystem page
-  - [ ] Mobile Hamburger Menu
-    - [ ] unified mobile menu
-    - [ ] mobile submenus
+  - [x] Mobile Hamburger Menu
+    - [x] unified mobile menu
+    - [x] mobile submenus
   - [ ] Functioning Anchor Links
   - [ ] Frame Layout
     - [ ] border line weight
