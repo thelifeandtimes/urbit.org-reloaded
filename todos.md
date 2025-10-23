@@ -1,33 +1,48 @@
 - Styling
-  - Blog index
-  - Ecosystem page
-  - Mobile Hamburger Menu
-    - mobile submenus
-  - Functioning Anchor Links
-  - Frame Layout
-    - border line weight
-    - fix cracks in between elements
-    - change button styles to match designs
-    - footer element on mid-size screens
-  - hide scrollbars on dual scrolling elements
-  - Fonts -- well structured globals.css and tailwind config
-  - Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
+  - [ ] homepage hero transparency
+  - [ ] Blog index
+  - [ ] Ecosystem page
+  - [ ] Mobile Hamburger Menu
+    - [ ] unified mobile menu
+    - [ ] mobile submenus
+  - [ ] Functioning Anchor Links
+  - [ ] Frame Layout
+    - [ ] border line weight
+    - [ ] fix cracks in between elements
+    - [ ] change button styles to match designs
+    - [ ] footer element on mid-size screens
+  - [ ] hide scrollbars on dual scrolling elements
+  - [ ] Fonts -- well structured globals.css and tailwind config
+  - [ ] Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
+    - NEED:
+      - secondary/background (background refers to main color, i.e. lightmode background is #FFFFFF, darkmode background is #000000)
+      - primary/foreground (foreground refers to primary element color, i.e. lightmode foreground would be aapplied to body fonts as #000000)
+      - tertiary/accent (accent color or tertiary color would be used on things like dithered images, frame colors, etc. there may need to be multiple accent colors?)
+      - fonts (maybe variable between headers/subheaders/body fonts)
+      - buttons, each with hover states and active states
+        - primary
+        - secondary
+        - tertiary
+      - 
+  - [ ] email signup text entry field overflow
 - Content
-  - Overview Prose Narrative
-  - Blurbs (see below)
-  - Ecosystem page updates
-  - ~dozreg developer spotlight article
+  - [ ] Overview Prose Narrative
+  - [ ] Blurbs (see below)
+  - [ ] Ecosystem page updates
+  - [ ] ~dozreg developer spotlight article
+  - [ ] grants page placeholder
 - Analytics
-  - Button clicks
-  - email signups (per page data?)
+  - [ ] Button clicks
+  - [ ] email signups (per page data?)
 - Imagery
-  - Replace placeholders
+  - [ ] Replace placeholders
 
 Stretch goals
-- add back in stuff like podcasts and presentation recordings to the ecosystem page
-- interactive 'configuring your urbit' article
-- Saving stuff to localstorage (bookmarks, filters, etc)
-- My Urbit sign in
+- [ ] add back in stuff like podcasts and presentation recordings to the ecosystem page
+- [ ] interactive 'configuring your urbit' article
+- [ ] Saving stuff to localstorage (bookmarks, filters, etc)
+- [ ] My Urbit sign in
+- [ ] Grants archive / clean up grants
 
 Notes about Blurbs
 - Running urbit: Urbit is intended as a self-soveriegn networked computer, or 'personal server', that holds your data and runs on your behalf. If that sounds daunting to you, don't worry, you can have someone else run it for you. A friend, or a hosting provider such as Tlon Corporation. We would of course encourage you to learn more about how to run and operating your urbit, but if the idea of taking on that responsibility is too much right now, click this link to get seamlessly onboarded to Tlon and have them run your urbit on your behalf (you can always chose to take it and run it yourself later).
