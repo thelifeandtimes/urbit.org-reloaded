@@ -2,6 +2,9 @@
 
 title: Urbit
 subtitle: Leave the internet behind
+announcements:
+  active: true
+  text: "Join us for Assembly 2025 - Register now!"
 # headline: Urbit is a new computing paradigm that provides complete ownership of your digital world 
 site_metadata:
   description: Building Urbit, the computer designed to last forever

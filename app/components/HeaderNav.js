@@ -5,15 +5,24 @@ import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { usePathname } from "next/navigation";
 import { NewsletterSignup } from "./NewsletterSignup";
+import { AnnouncementsSubmenu } from "./AnnouncementsSubmenu";
+import { OverviewSubmenu } from "./OverviewSubmenu";
+import { EcosystemSubmenu } from "./EcosystemSubmenu";
 
-export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav }) => {
+export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav, announcements, runningUrbitSections }) => {
   const headerRef = useRef(null);
 
   const currentRoute = usePathname();
 
   return (
     <React.Fragment>
-      <MobileNav nav={mobileNav || nav} currentRoute={currentRoute} />
+      <MobileNav
+        nav={mobileNav || nav}
+        currentRoute={currentRoute}
+        announcements={announcements}
+        runningUrbitSections={runningUrbitSections}
+      />
+
       <section
         ref={headerRef}
         className={classNames(
@@ -37,7 +46,7 @@ export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav }) => {
   );
 };
 
-const MobileNav = ({ nav, currentRoute }) => {
+const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) => {
   const [menuIsOpen, setMenuOpen] = useState(false);
 
   const routeMap = {
@@ -56,7 +65,8 @@ const MobileNav = ({ nav, currentRoute }) => {
   };
 
   return (
-    <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
+    <>
+      <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
       <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
         <div
           href="/"
@@ -166,6 +176,12 @@ const MobileNav = ({ nav, currentRoute }) => {
         </div>
       </ul>
     </section>
+
+      {/* Persistent Submenus - Mobile Only */}
+      {currentRoute === '/' && <AnnouncementsSubmenu announcement={announcements} />}
+      {currentRoute.startsWith('/overview') && <OverviewSubmenu runningUrbitSections={runningUrbitSections} />}
+      {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
+    </>
   );
 };
 const GlobalNav = ({ nav }) => {

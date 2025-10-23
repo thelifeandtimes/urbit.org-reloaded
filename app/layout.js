@@ -25,6 +25,11 @@ export async function generateMetadata({ params }, parent) {
 
 export default async function RootLayout({ children }) {
   const config = await getMarkdownContent("config.md");
+
+  // Fetch running urbit sections for OverviewSubmenu
+  const runningUrbitConfig = await getMarkdownContent("overview/running-urbit/config.md");
+  const runningUrbitSections = runningUrbitConfig.frontMatter.sections?.map(({ id, title }) => ({ id, title })) || [];
+
   return (
     <html lang="en">
       <head>
@@ -56,6 +61,8 @@ export default async function RootLayout({ children }) {
           homepage={config.frontMatter?.homepage}
           footerData={config.frontMatter?.footer}
           mobileNav={config.frontMatter?.mobileNav}
+          announcements={config.frontMatter?.announcements}
+          runningUrbitSections={runningUrbitSections}
         >
           {children}
         </FrameLayout>
