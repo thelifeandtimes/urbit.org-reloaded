@@ -42,10 +42,11 @@
   /* colors */
   --background: #FFFFFF;
   --foreground: #3C3E41;
+  --tertiary: #EDEDED
 
   --secondary: #FFFFFF;
   --primary: #3C3E41;
-  --accent: #EDECED;
+  --accent: #EDEDED;
 
   --header-height: 4.5rem;
   --footer-height: 170px;
@@ -62,10 +63,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-  --foreground: #EDECED;
+  --foreground: #EDEDED;
   --background: #3C3E41;
+  --tertiary: #CBCBCA;
 
-  --primary: #EDECED;
+  --primary: #EDEDED;
   --secondary: #3C3E41;
   --accent: #CBCBCA;
   }

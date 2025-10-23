@@ -57,9 +57,13 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: "var(--accent)",
         primary: "var(--background)",
         secondary: "var(--foreground)",
+        tertiary: "var(--accent)",
         gray: {
+          "ED": "#EDEDED",
+          "3c": "#3C3E41",
           "5a": "#5a5a55",
           "87": "#878787",
           "d9": "#d9d9d9",
