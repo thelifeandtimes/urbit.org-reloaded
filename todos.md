@@ -1,16 +1,35 @@
-Blurb nodes required:
-- planet
-- star
-- galaxy
-- moons
-- layer 1 vs layer 2
+- Styling
+  - Blog index
+  - Ecosystem page
+  - Mobile Hamburger Menu
+    - mobile submenus
+  - Functioning Anchor Links
+  - Frame Layout
+    - border line weight
+    - fix cracks in between elements
+    - change button styles to match designs
+    - footer element on mid-size screens
+  - hide scrollbars on dual scrolling elements
+  - Fonts -- well structured globals.css and tailwind config
+  - Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
+- Content
+  - Overview Prose Narrative
+  - Blurbs (see below)
+  - Ecosystem page updates
+  - ~dozreg developer spotlight article
+- Analytics
+  - Button clicks
+  - email signups (per page data?)
+- Imagery
+  - Replace placeholders
 
-Potential non-blurb articles (or longer form blurbs):
-Bridge walkthrough
-Buying Urbit ID on opensea
+Stretch goals
+- add back in stuff like podcasts and presentation recordings to the ecosystem page
+- interactive 'configuring your urbit' article
+- Saving stuff to localstorage (bookmarks, filters, etc)
+- My Urbit sign in
 
-# Notes from obsidian
-
+Notes about Blurbs
 - Running urbit: Urbit is intended as a self-soveriegn networked computer, or 'personal server', that holds your data and runs on your behalf. If that sounds daunting to you, don't worry, you can have someone else run it for you. A friend, or a hosting provider such as Tlon Corporation. We would of course encourage you to learn more about how to run and operating your urbit, but if the idea of taking on that responsibility is too much right now, click this link to get seamlessly onboarded to Tlon and have them run your urbit on your behalf (you can always chose to take it and run it yourself later).
   - Get an urbit id
   - Run urbit OS
@@ -103,3 +122,8 @@ Want to get on urbit? There are a few basic options for how to get up and runnin
 - Urbit OS runs 'on top' of a traditional operating system. The entire logic and all your data lives inside your urbit, while being easily moved between hardware devices as simply as transferring a file. This agnosticism to the underlying hardware is part of the design to make it possible for your computer to last for centuries. But it does need to run _somewhere_; we recommend one of the two following options for self-hosting your urbit: A Cloud VPS, or Groundseg
   - Running in a cloud VPS (Virtual Private Server) is a great option if you are either familiar with running remote servers, or if you would like to learn! If you are able to follow some basic CLI instructions, this is a great way to learn your way around the process of running an urbit and understanding the nuances of the urbit network.
   - Alternatively, if you would like a graphical interface and a bit more of a 'hands-off' experience, we would recommend trying 'Groundseg', from Native Planet. Groundseg can run on any old computer you might have lying around and will take care of just about all the nuance of running an urbit, automagically. As a bonus, Native Planet sells dedicated devices purpose built to run urbit ships using Groundseg, which comes with seamless DNS support via their Startram services. We recommend Native Planet devices for those looking to run their urbit locally to maintain physical control of their data while not needing to deal with the hassles of home networking.  
+
+
+# Potential non-blurb articles (or longer form blurbs):
+Bridge walkthrough
+Buying Urbit ID on opensea

@@ -70,7 +70,7 @@ export default async function RunningUrbitPage() {
           <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
             {configData.frontMatter.title}
           </h1>
-          <h3 className="text-3xl font-serif leading-[120%] mb-12">
+          <h3 className="text-3xl font-sans leading-[120%] mb-12">
             {configData.frontMatter.description}
           </h3>
 
@@ -79,7 +79,7 @@ export default async function RunningUrbitPage() {
             {sections.map((section) => (
               <div key={section.id} id={section.id} className="mb-16 scroll-mt-24">
                 <h2 className="text-3xl font-serif font-[600] mb-4">{section.title}</h2>
-                <p className="text-large text-gray-87 mb-6">{section.description}</p>
+                <p className="font-sans text-large text-gray-87 mb-6">{section.description}</p>
                 <p className="text-xlarge mb-8">{section.content}</p>
 
                 {/* Render collapsible content blurbs for this section */}
