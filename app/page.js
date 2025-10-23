@@ -26,41 +26,43 @@ export default async function HomePage() {
       <HomepageHero hero={hero} />
 
       {/* Desktop Two-Column Layout */}
-      <div className="hidden md:block">
-        <div className="container mx-auto max-w-[1600px] px-4">
-          <div className="flex gap-8 relative">
-            {/* Left Column - Fixed Section Navigation */}
-            <aside className="w-[50%] sticky top-0 self-start pt-8 h-[calc(100vh-110px)] overflow-y-auto">
-              <HomepageSectionNav sections={navSections} />
-            </aside>
+      <div className="min-h-screen">
+        <div className="hidden md:block">
+          <div className="container mx-auto max-w-[1600px] px-4">
+            <div className="flex gap-8 relative">
+              {/* Left Column - Fixed Section Navigation */}
+              <aside className="w-[50%] sticky top-0 self-start pt-8 overflow-y-auto">
+                <HomepageSectionNav sections={navSections} />
+              </aside>
 
-            {/* Right Column - Scrolling Content with Snap */}
-            <div
-              id="right-column-scroll"
-              className="w-[50%] pb-32 pt-8 h-[calc(100vh-110px)] overflow-y-auto snap-y snap-mandatory"
-            >
-              {sections.map((section) => (
-                <section key={section.id} id={section.id} className="mb-16 scroll-mt-0">
-                  <div className="border-t border-[#3f3f3f] pt-6 mb-8">
-                    <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
-                      {section.title}
-                    </h2>
-                  </div>
+              {/* Right Column - Scrolling Content with Snap */}
+              <div
+                id="right-column-scroll"
+                className="w-[50%] pb-32 pt-8 overflow-y-auto snap-y snap-mandatory"
+              >
+                {sections.map((section) => (
+                  <section key={section.id} id={section.id} className="mb-16 scroll-mt-0">
+                    <div className="border-t border-[#3f3f3f] pt-6 mb-8">
+                      <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
+                        {section.title}
+                      </h2>
+                    </div>
 
-                  <div className="space-y-16">
-                    {section.subsections.map((subsection) => (
-                      <HomepageSubsection
-                        key={subsection.id}
-                        id={subsection.id}
-                        title={subsection.title}
-                        description={subsection.description}
-                        image={subsection.image}
-                        links={subsection.links}
-                      />
-                    ))}
-                  </div>
-                </section>
-              ))}
+                    <div className="space-y-16">
+                      {section.subsections.map((subsection) => (
+                        <HomepageSubsection
+                          key={subsection.id}
+                          id={subsection.id}
+                          title={subsection.title}
+                          description={subsection.description}
+                          image={subsection.image}
+                          links={subsection.links}
+                        />
+                      ))}
+                    </div>
+                  </section>
+                ))}
+              </div>
             </div>
           </div>
         </div>

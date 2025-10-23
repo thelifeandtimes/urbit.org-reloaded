@@ -2,7 +2,6 @@
 import Link from "next/link";
 import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
-import { OverviewNav } from "./OverviewNav";
 import React from "react";
 import { usePathname } from "next/navigation";
 import { NewsletterSignup } from "./NewsletterSignup";
@@ -19,7 +18,7 @@ export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav }) => {
         ref={headerRef}
         className={classNames(
           "font-sans hidden md:block h-auto items-center justify-center leading-120 md:pt-0 md:pb-0 pt-3 pb-3",
-          inFrame ? "" : "container fixed z-10 bg-background"
+          inFrame ? "" : "container fixed z-10 background"
         )}
       >
         {inFrame ? (
@@ -57,8 +56,8 @@ const MobileNav = ({ nav, currentRoute }) => {
   };
 
   return (
-    <section className="font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
-      <div className="h-[4.5rem] flex md:hidden items-center font-[600] relative w-full">
+    <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
+      <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
         <div
           href="/"
           onClick={toggleMenu}

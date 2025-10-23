@@ -34,7 +34,7 @@ export function HomepageHero({ hero }) {
 
   return (
     <section
-      className="relative flex items-center min-h-screen max-h-[1080px] z-0"
+      className="relative flex items-center min-h-[calc(100vh+55px)] max-h-[1080px] z-0 md:-mt-[55px] md:pt-[55px]"
       {...(backgroundImage && {
         style: {
           backgroundImage: `url(${backgroundImage})`,
