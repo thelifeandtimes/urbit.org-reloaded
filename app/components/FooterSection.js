@@ -26,25 +26,8 @@ export const FooterSection = ({ footerData }) => {
 // Mobile Component: Resources stacked vertically, socials as icons
 const MobileFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-col text-[16px] gap-y-6 border-t border-t-1 border-foreground p-4">
+    <div className="flex flex-col text-[16px] bg-accent gap-y-6 border-t border-t-1 border-foreground p-4">
       <NewsletterSignup className="z-10 mb-2" />
-      {/* Resources - Stacked vertically */}
-      {resources && (
-        <div className="flex flex-col gap-y-3">
-          {resources.subItems.map((link, idx) => (
-            <Link
-              key={link.title || idx}
-              href={link.url}
-              target={link.external ? "_blank" : "_self"}
-              rel={link.external ? "noopener noreferrer" : undefined}
-              className="text-secondary w-max"
-            >
-              {link.title}
-            </Link>
-          ))}
-        </div>
-      )}
-
       {/* Socials - Icons only */}
       {socials && (
         <div className="justify-center flex flex-row gap-x-4">
@@ -61,7 +44,7 @@ const MobileFooter = ({ resources, socials }) => {
                 <img
                   src={link.logo}
                   alt={link.label || link.title}
-                  className="w-[1em] h-[1em] opacity-100 invert hover:opacity-80 transition-opacity"
+                  className="w-[1em] h-[1em] invert"
                 />
               )}
             </Link>
@@ -123,7 +106,7 @@ const DesktopFooter = ({ resources, socials }) => {
                   <img
                     src={link.logo}
                     alt={link.label || link.title}
-                    className="w-[1em] h-[1em] opacity-100 invert group-hover:opacity-70 transition-opacity"
+                    className="w-[1em] h-[1em] invert"
                   />
                 )}
               </Link>

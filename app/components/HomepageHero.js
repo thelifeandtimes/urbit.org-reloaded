@@ -34,7 +34,7 @@ export function HomepageHero({ hero }) {
 
   return (
     <section
-      className="relative flex items-center min-h-screen max-h-[1080px]"
+      className="relative flex items-center min-h-screen max-h-[1080px] z-0"
       {...(backgroundImage && {
         style: {
           backgroundImage: `url(${backgroundImage})`,
@@ -46,7 +46,7 @@ export function HomepageHero({ hero }) {
     >
       {/* Optional overlay for better text readability */}
       {backgroundImage && (
-        <div className="absolute inset-0 bg-[#FFFFFF] opacity-60" aria-hidden="true" />
+        <div className="absolute inset-0 bg-primary/60" aria-hidden="true" />
       )}
 
       {/* Content Container */}

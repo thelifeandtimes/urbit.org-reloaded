@@ -39,6 +39,33 @@ nav:
   variant: 'primary'
   external: false
   icon: 'urbit-foundation-b.svg'
+mobileNav:
+- title: Configure
+  url: "/get-on-the-network"
+  variant: 'primary'
+  external: false
+  icon: 'urbit-foundation-b.svg'
+- title: Overview
+  url: "/overview"
+  external: false
+- title: Ecosystem
+  url: "/ecosystem"
+  external: false
+- title: Blog
+  url: "/blog"
+  external: false
+- title: Documentation
+  url: "https://docs.urbit.org/"
+  external: true
+- title: TechnicalJournal
+  url: "https://urbitsystems.tech/"
+  external: true
+- title: NetworkExplorer
+  url: "https://network.urbit.org/"
+  external: true
+- title: Whitepaper
+  url: "https://media.urbit.org/whitepaper.pdf"
+  external: true
 footer:
   - column_label: "resources"
     subItems:

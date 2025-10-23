@@ -55,41 +55,12 @@ export default async function RootLayout({ children }) {
           nav={config.frontMatter?.nav}
           homepage={config.frontMatter?.homepage}
           footerData={config.frontMatter?.footer}
+          mobileNav={config.frontMatter?.mobileNav}
         >
           {children}
         </FrameLayout>
       </body>
     </html>
   );
-  // return (
-  //   <html lang="en">
-  //     <body className="min-h-[100svh] bg-accent">
-  //       {/* ↑ Outer background color (the "frame" color) */}
-  //
-  //       {/* Frame wrapper with margin */}
-  //       <div className="min-h-[100svh] flex flex-col relative bg-background m-0 md:m-4 lg:m-8">
-  //         {/* ↑ Inner background, with margin on desktop */}
-  //
-  //         {/* Header - Pinned to top */}
-  //         <div className="w-full flex justify-center container sticky top-0 z-20 bg-background">
-  //           <HeaderNav
-  //             homepage={config.frontMatter?.homepage}
-  //             nav={config.frontMatter?.nav}
-  //           />
-  //         </div>
-  //
-  //         {/* Main content */}
-  //         <div className="flex-grow mt-[var(--header-height)] z-[1]">
-  //           {children}
-  //         </div>
-  //
-  //         {/* Footer - Pinned to bottom */}
-  //         <div className="sticky bottom-0 z-20 bg-background">
-  //           <FooterSection footerData={config.frontMatter?.footer} />
-  //         </div>
-  //       </div>
-  //     </body>
-  //   </html>
-  // );
 }
 

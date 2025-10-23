@@ -2,13 +2,13 @@
 import { HeaderNav } from "./HeaderNav";
 import { FooterSection } from "./FooterSection";
 
-export const FrameLayout = ({ children, nav, homepage, footerData }) => {
+export const FrameLayout = ({ children, nav, homepage, footerData, mobileNav }) => {
   return (
     <>
       {/* Mobile View - No Frame */}
       <div className="md:hidden min-h-screen flex flex-col">
-        <HeaderNav nav={nav} homepage={homepage} />
-        <div className="flex-grow mt-[var(--header-height)]">{children}</div>
+        <HeaderNav nav={nav} homepage={homepage} mobileNav={mobileNav} />
+        <div className="flex-grow mt-[var(--header-height)] z-0">{children}</div>
         <FooterSection footerData={footerData} />
       </div>
 
