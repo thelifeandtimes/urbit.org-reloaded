@@ -107,7 +107,7 @@ export const FrameLayout = ({ children, nav, homepage, footerData, mobileNav, an
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 flex flex-col min-h-screen pl-[16px] pr-[16px]">
+        <div className="flex-1 flex flex-col min-h-screen pl-[16px] pr-[16px] max-w-[1600px] margin-auto">
           {/* Spacer for fixed nav - matches tallest part of nav bar (55px corner) */}
 
           {/* Content */}

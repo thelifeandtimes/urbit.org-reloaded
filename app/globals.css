@@ -104,6 +104,16 @@ html::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
 
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);

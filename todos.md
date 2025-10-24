@@ -1,7 +1,9 @@
 - Styling
-  - [ ] homepage hero transparency
+  - [x] homepage hero transparency
   - [x] homepage urbit logo should collapse but not open menu
   - [ ] Blog index
+    - [ ] Mobile
+    - [ ] Desktop
   - [ ] Ecosystem page
   - [x] Mobile Hamburger Menu
     - [x] unified mobile menu
@@ -15,17 +17,8 @@
   - [ ] hide scrollbars on dual scrolling elements
   - [ ] Fonts -- well structured globals.css and tailwind config
   - [ ] Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
-    - NEED:
-      - secondary/background (background refers to main color, i.e. lightmode background is #FFFFFF, darkmode background is #000000)
-      - primary/foreground (foreground refers to primary element color, i.e. lightmode foreground would be aapplied to body fonts as #000000)
-      - tertiary/accent (accent color or tertiary color would be used on things like dithered images, frame colors, etc. there may need to be multiple accent colors?)
-      - fonts (maybe variable between headers/subheaders/body fonts)
-      - buttons, each with hover states and active states
-        - primary
-        - secondary
-        - tertiary
-      - 
   - [ ] email signup text entry field overflow
+  - [ ] add announcements to desktop view
 - Content
   - [ ] Overview Prose Narrative
   - [ ] Blurbs (see below)
@@ -35,6 +28,7 @@
 - Analytics
   - [ ] Button clicks
   - [ ] email signups (per page data?)
+  - [ ] redirects (i.e. /getting-started, /get-on-the-network)
 - Imagery
   - [ ] Replace placeholders
 
@@ -143,3 +137,52 @@ Want to get on urbit? There are a few basic options for how to get up and runnin
 # Potential non-blurb articles (or longer form blurbs):
 Bridge walkthrough
 Buying Urbit ID on opensea
+
+# Design Items Needed for the Site:
+- Color Story:
+  - secondary/background (background refers to main color, i.e. lightmode background is #FFFFFF, darkmode background is #000000)
+  - primary/foreground (foreground refers to primary element color, i.e. lightmode foreground would be aapplied to body fonts as #000000)
+  - tertiary/accent (accent color or tertiary color would be used on things like dithered images, frame colors, etc. there may need to be multiple accent colors?)
+  - fonts (maybe variable between headers/subheaders/body fonts)
+  - buttons, each with hover states and active states
+    - primary
+    - secondary
+    - tertiary
+- Typography
+  - wordmark
+  - lock in on fonts (indexing off Awesome feels like the right anchor?)
+- Mobile menu refinements (spacing, fonts, etc) and for footer (socials and email only)
+- Icons (for middle-size footer)
+  - Docs
+  - USTJ (logo exists, just need an icon file of it)
+  - Network Explorer
+  - Bridge
+  - Whitepaper
+  - Email (right now footer has `~` placeholder)
+- Homepage
+  - Hero image with Native Planet device & full visual treatment
+  - Section on "Chosing an Urbit ID" (<-- worth material discussion), to live within the 'getting on the network' experience
+  - *!*Scrolling animations/behaviors/highlighting for 'getting on the network' section*!*
+  - Full images
+  - discuss 'linking strategy' for options to run urbit (i.e. native planet => hardware / software / docs)
+  - mobile designs
+- Overview
+  - sidebar styling
+  - collapsable blurb element design
+    - on desktop
+    - on mobile
+- Ecosystem
+  - Icons for companies
+    - ~tocwex
+    - Urban Tiger
+    - All the others in the appropriate colorway (removing Alphabet & Red Horizon)
+  - press entry styling
+- Blog
+  - desktop index view
+  - tagging strategy/rendering (# of tags? side scrolling?)
+  - visual polish of existing 'recommended reading' sidebar (spacing, fonts, image ratios, corner rounding, etc)
+- New site `favicon.ico`
+
+- Low priority
+  - `/grants` placeholder page 
+  - Ecosystem: Maybe some sort of sidebar? or options for displaying talks/presentations/podcasts/etc.

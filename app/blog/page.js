@@ -23,45 +23,59 @@ export default async function BlogHome() {
   allPostFrontMatter.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
   return (
-    <div className="container mb-32 mt-9  text-xlarge leading-[100%]">
-      <section className="md:grid grid-cols-6 gap-x-4 w-full">
-        <div className="col-span-1"></div>
-        <div className="col-span-4 leading-[120%] font-[400]">
-          Stories from the broader Urbit community, the Urbit Foundation, and
-          the many people contributing to Urbit.
-        </div>
-      </section>
-      {allPostFrontMatter.map((post) => {
-        const { title, date, description, aliases, extra } = post.data;
+    <div className="mb-32  text-xlarge leading-[100%] max-w-[1200px] margin-auto">
+      {/* <section className="md:grid grid-cols-6 gap-x-4 w-full"> */}
+      {/*   <div className="col-span-1"></div> */}
+      {/*   <div className="col-span-4 leading-[120%] font-[400]"> */}
+      {/*     Stories from the broader Urbit community, the Urbit Foundation, and */}
+      {/*     the many people contributing to Urbit. */}
+      {/*   </div> */}
+      {/* </section> */}
+      <section className="">
+        {allPostFrontMatter.map((post) => {
+          const { title, date, description, aliases, extra } = post.data;
 
-        return (
-          <Link
-            href={"/blog/" + post.slug}
-            key={post.slug}
-            className="block md:grid group  grid-cols-6 gap-x-4 w-full my-16 "
-          >
-            <div className="col-span-1 hidden md:flex flex-col mb-4 transition-all font-mono !text-large tracking-[.01em] text-gray-f5">
-              <div className="mb-[.1em] ">{extra.author}</div>
-              <div>{extra.ship}</div>
-            </div>
-            <div className="col-span-4 group-hover:!text-gray-87 transition-all  flex flex-col leading-[120%]">
-              <div className="font-bold">{title}</div>
-              <div className="mb-4 md:mb-0">{description}</div>
-              
-              <div className="flex md:hidden flex-col justify-between">
-                <div className="">{extra.author}</div>
-                <div>{extra.ship}</div>
-              </div>
-              <div className="text-gray-87 mb-8">{formatDate(date)}</div>
-              {extra.image && (
-                <div className="min-h-[300px] xl:h-[300px] xl:w-auto w-full relative mb-2 md:mb-0 ">
-                  <img className="w-full h-auto xl:w-auto xl:h-full" loading="lazy" src={extra.image} alt={title} />
+          return (
+            <Link
+              href={"/blog/" + post.slug}
+              key={post.slug}
+              className="block md:grid group  grid-cols-6 gap-x-4 w-full my-8 "
+            >
+              <div className="col-span-4 group-hover:!text-gray-87 transition-all  flex flex-col leading-[120%]">
+                <div className="px-4">
+                  <div className="font-bold font-serif text-3xl">{title}</div>
+                  <div className="font-sans mb-4 md:mb-0 text-2xl">{description}</div>
+                  <div className="col-span-1 hidden md:flex flex-col mb-4 transition-all font-mono !text-large tracking-[.01em] text-gray-f5">
+                    <div className="mb-[.1em] ">{extra.author}</div>
+                    <div>{extra.ship}</div>
+                  </div>
                 </div>
-              )}
-            </div>
-          </Link>
-        );
-      })}
+
+                {/* <div className="font-mono flex md:hidden flex-col justify-between"> */}
+                {/*   <div className="">{extra.author}</div> */}
+                {/*   <div>{extra.ship}</div> */}
+                {/* </div> */}
+                {/* <div className="text-gray-87 mb-2">{formatDate(date)}</div> */}
+                {extra.image && (
+                  <div className="xl:w-auto w-full relative mb-2 md:mb-0 ">
+                    <img className="aspect-[21/9] object-cover w-full h-auto xl:w-auto xl:h-full" loading="lazy" src={extra.image} alt={title} />
+                  </div>
+                )}
+                {extra.tags && extra.tags.length > 0 && (
+                  <div className="font-mono flex gap-8 overflow-x-auto whitespace-nowrap scrollbar-hide snap-x snap-mandatory">
+                    {extra.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="px-4 py-1 text-xs md:text-sm flex-shrink-0"
+                      >{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Link>
+          );
+        })}
+      </section>
     </div>
   );
 }
