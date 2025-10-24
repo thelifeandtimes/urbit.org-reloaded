@@ -23,7 +23,7 @@ export default async function BlogHome() {
   allPostFrontMatter.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
   return (
-    <div className="mb-32  text-xlarge leading-[100%] max-w-[1200px] margin-auto">
+    <div className="mb-32  text-xlarge leading-[100%] max-w-[1200px] mx-auto">
       {/* <section className="md:grid grid-cols-6 gap-x-4 w-full"> */}
       {/*   <div className="col-span-1"></div> */}
       {/*   <div className="col-span-4 leading-[120%] font-[400]"> */}

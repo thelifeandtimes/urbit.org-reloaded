@@ -1,6 +1,7 @@
 import React from "react";
 import { getMarkdownContent } from "./lib/queries";
-import { HomepageHero } from "./components/HomepageHero";
+import { HeroSlot } from "./lib/layoutSlots";
+import { HeroSection } from "./components/HeroSection";
 import { HomepageSectionNav } from "./components/HomepageSectionNav";
 import { HomepageSubsection } from "./components/HomepageSubsection";
 import { HomepageAccordion } from "./components/HomepageAccordion";
@@ -22,13 +23,15 @@ export default async function HomePage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section - Full viewport height */}
-      <HomepageHero hero={hero} />
+      {/* Hero Section - Full viewport width via layout slot */}
+      <HeroSlot>
+        <HeroSection hero={hero} />
+      </HeroSlot>
 
       {/* Desktop Two-Column Layout */}
       <div className="min-h-screen">
         <div className="hidden md:block">
-          <div className="container mx-auto max-w-[1600px] px-4">
+          <div className="container mx-auto px-4">
             <div className="flex gap-8 relative">
               {/* Left Column - Fixed Section Navigation */}
               <aside className="w-[50%] sticky top-0 self-start pt-8 overflow-y-auto">

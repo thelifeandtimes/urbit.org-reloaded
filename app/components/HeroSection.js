@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 /**
- * HomepageHero - Full viewport height hero section
+ * HeroSection - Full viewport width hero section
  *
  * Displays a hero section with:
  * - Background image
@@ -16,7 +16,7 @@ import Image from "next/image";
  *
  * @param {Object} hero - Hero configuration object with all content
  */
-export function HomepageHero({ hero }) {
+export function HeroSection({ hero }) {
   if (!hero) return null;
 
   const {
@@ -34,11 +34,11 @@ export function HomepageHero({ hero }) {
 
   return (
     <section
-      className="relative flex items-center min-h-[calc(100vh+55px)] max-h-[1080px] z-0 md:-mt-[55px] md:pt-[55px]"
+      className="relative flex items-center min-h-screen max-h-[1080px] z-0"
       {...(backgroundImage && {
         style: {
           backgroundImage: `
-            linear-gradient(rgba(256, 256, 256, 0.8), rgba(256, 256, 256, 0.8)), 
+            linear-gradient(rgba(256, 256, 256, 0.8), rgba(256, 256, 256, 0.8)),
             url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -48,7 +48,7 @@ export function HomepageHero({ hero }) {
     >
 
       {/* Content Container */}
-      <div className="relative z-20 container mx-auto px-4 py-16 flex flex-col max-w-4xl">
+      <div className="relative z-20 container mx-auto px-16 py-16 flex flex-col max-w-4xl">
         {/* Logo */}
         {logo && (
           <div className="mb-12">

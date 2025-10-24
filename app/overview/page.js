@@ -1,6 +1,7 @@
 import React from "react";
 import { getMarkdownContent } from "../lib/queries";
 import Link from "next/link";
+import { SidebarSlot } from "../lib/layoutSlots";
 import { OverviewNav } from "../components/OverviewNav";
 import { SidebarElement } from "../components/SidebarElement";
 import Markdoc from "@markdoc/markdoc";
@@ -15,8 +16,15 @@ export default async function overview() {
 
   return (
     <div>
-      {/* Main content - centered with sidebar safe zone */}
-      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto md:pr-[455px] md:max-w-[1600px]">
+      {/* Sidebar slot - renders in layout */}
+      <SidebarSlot>
+        <SidebarElement title="Overview">
+          <OverviewNav runningUrbitSections={navSections} />
+        </SidebarElement>
+      </SidebarSlot>
+
+      {/* Main content - no longer needs sidebar safe zone */}
+      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <article>
             {Markdoc.renderers.react(pageData.content, React)}
@@ -28,13 +36,6 @@ export default async function overview() {
           </div>
         </div>
       </section>
-
-      {/* Fixed sidebar - only on desktop */}
-      <div className="hidden md:block">
-        <SidebarElement title="Overview">
-          <OverviewNav runningUrbitSections={navSections} />
-        </SidebarElement>
-      </div>
     </div>
   );
 }

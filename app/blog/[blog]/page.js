@@ -1,6 +1,7 @@
 import { getMarkdownContent, getYaml } from "../../lib/queries";
 import { formatDate, formatAuthors } from "../../lib/utils";
 import { getAllBlogPosts, getRecommendedPosts } from "../../lib/blogUtils";
+import { SidebarSlot } from "../../lib/layoutSlots";
 import { SidebarElement } from "../../components/SidebarElement";
 import { RecommendedReading } from "../../components/RecommendedReading";
 import Markdoc from "@markdoc/markdoc";
@@ -60,8 +61,15 @@ export default async function PostPage({ params }) {
 
   return (
     <div>
-      {/* Main content - centered with sidebar safe zone */}
-      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto md:pr-[455px] md:max-w-[1600px]">
+      {/* Sidebar slot - renders in layout */}
+      <SidebarSlot>
+        <SidebarElement title={asideTitle}>
+          <RecommendedReading posts={recommendedPosts} />
+        </SidebarElement>
+      </SidebarSlot>
+
+      {/* Main content - no longer needs sidebar safe zone (handled by layout) */}
+      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
             {postData.frontMatter.title}
@@ -79,13 +87,6 @@ export default async function PostPage({ params }) {
           {Markdoc.renderers.react(postData.content, React)}
         </div>
       </section>
-
-      {/* Fixed sidebar - only on desktop */}
-      <div className="hidden md:block">
-        <SidebarElement title={asideTitle}>
-          <RecommendedReading posts={recommendedPosts} />
-        </SidebarElement>
-      </div>
     </div>
   );
 }

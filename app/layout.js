@@ -1,7 +1,7 @@
 import "./globals.css";
 import { getMarkdownContent } from "./lib/queries";
-
-import { FrameLayout } from "./components/FrameLayout";
+import { LayoutSlotsProvider } from "./lib/layoutSlots";
+import { LayoutFrame } from "./components/LayoutFrame";
 
 export async function generateMetadata({ params }, parent) {
   const config = await getMarkdownContent("config.md");
@@ -56,16 +56,18 @@ export default async function RootLayout({ children }) {
         />
       </head>
       <body className="min-h-[100svh] w-full relative" id="observer-root">
-        <FrameLayout
-          nav={config.frontMatter?.nav}
-          homepage={config.frontMatter?.homepage}
-          footerData={config.frontMatter?.footer}
-          mobileNav={config.frontMatter?.mobileNav}
-          announcements={config.frontMatter?.announcements}
-          runningUrbitSections={runningUrbitSections}
-        >
-          {children}
-        </FrameLayout>
+        <LayoutSlotsProvider>
+          <LayoutFrame
+            nav={config.frontMatter?.nav}
+            homepage={config.frontMatter?.homepage}
+            footerData={config.frontMatter?.footer}
+            mobileNav={config.frontMatter?.mobileNav}
+            announcements={config.frontMatter?.announcements}
+            runningUrbitSections={runningUrbitSections}
+          >
+            {children}
+          </LayoutFrame>
+        </LayoutSlotsProvider>
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import { getMarkdownContent, getPostsTree } from "../../lib/queries";
+import { SidebarSlot } from "../../lib/layoutSlots";
 import { SidebarElement } from "../../components/SidebarElement";
 import { OverviewNav } from "../../components/OverviewNav";
 import { CollapsibleContentBlurb } from "../../components/CollapsibleContentBlurb";
@@ -64,8 +65,15 @@ export default async function RunningUrbitPage() {
 
   return (
     <div>
-      {/* Main content - centered with sidebar safe zone */}
-      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto md:pr-[455px] md:max-w-[1600px]">
+      {/* Sidebar slot - renders in layout */}
+      <SidebarSlot>
+        <SidebarElement title="Overview">
+          <OverviewNav runningUrbitSections={navSections} />
+        </SidebarElement>
+      </SidebarSlot>
+
+      {/* Main content - no longer needs sidebar safe zone */}
+      <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
             {configData.frontMatter.title}
@@ -101,13 +109,6 @@ export default async function RunningUrbitPage() {
           </div>
         </div>
       </section>
-
-      {/* Fixed sidebar - only on desktop */}
-      <div className="hidden md:block">
-        <SidebarElement title="Overview">
-          <OverviewNav runningUrbitSections={navSections} />
-        </SidebarElement>
-      </div>
     </div>
   );
 }
