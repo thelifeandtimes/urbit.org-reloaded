@@ -37,20 +37,18 @@ export function HomepageHero({ hero }) {
       className="relative flex items-center min-h-[calc(100vh+55px)] max-h-[1080px] z-0 md:-mt-[55px] md:pt-[55px]"
       {...(backgroundImage && {
         style: {
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: `
+            linear-gradient(rgba(256, 256, 256, 0.8), rgba(256, 256, 256, 0.8)), 
+            url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
         }
       })}
     >
-      {/* Optional overlay for better text readability */}
-      {backgroundImage && (
-        <div className="absolute inset-0 bg-primary/60" aria-hidden="true" />
-      )}
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-4 py-16 flex flex-col max-w-4xl">
+      <div className="relative z-20 container mx-auto px-4 py-16 flex flex-col max-w-4xl">
         {/* Logo */}
         {logo && (
           <div className="mb-12">
@@ -67,14 +65,14 @@ export function HomepageHero({ hero }) {
 
         {/* Title */}
         {title && (
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif italic mb-12 leading-tight text-gray-87">
+          <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif italic mb-12 leading-tight text-gray-87 z-20">
             {title}
           </h1>
         )}
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="text-xl md:text-2xl lg:text-3xl text-[#3f3f3f] mb-12 max-w-3xl leading-[130%]">
+          <p className="relative text-xl md:text-2xl lg:text-3xl text-[#3f3f3f] mb-12 max-w-3xl leading-[130%] z-20">
             {subtitle}
           </p>
         )}
@@ -87,7 +85,7 @@ export function HomepageHero({ hero }) {
               href={primaryMobileCta.link}
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
                 bg-secondary text-primary border-2 border-secondary rounded-lg
-                hover:bg-primary hover:text-secondary transition-all transform hover:scale-105"
+                hover:bg-primary hover:text-secondary transition-all transform"
             >
               {primaryMobileCta.label}
             </Link>
@@ -129,7 +127,7 @@ export function HomepageHero({ hero }) {
               href={primaryCta.link}
               className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
                 bg-secondary text-primary border-2 border-secondary rounded-lg
-                hover:bg-primary hover:text-secondary transition-all transform hover:scale-105"
+                hover:bg-primary hover:text-secondary transition-all transform"
             >
               {primaryCta.label}
             </Link>
