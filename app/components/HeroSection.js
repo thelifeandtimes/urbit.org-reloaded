@@ -65,14 +65,14 @@ export function HeroSection({ hero }) {
 
         {/* Title */}
         {title && (
-          <h1 className="relative text-4xl md:text-5xl lg:text-6xl font-serif italic mb-12 leading-tight text-gray-87 z-20">
+          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-serif italic mb-12 leading-tight text-gray-87 z-20">
             {title}
           </h1>
         )}
 
         {/* Subtitle */}
         {subtitle && (
-          <p className="relative text-xl md:text-2xl lg:text-3xl text-[#3f3f3f] mb-12 max-w-3xl leading-[130%] z-20">
+          <p className="relative text-3xl md:text-3xl lg:text-4xl text-[#3f3f3f] mb-12 max-w-3xl leading-[130%] z-20">
             {subtitle}
           </p>
         )}
