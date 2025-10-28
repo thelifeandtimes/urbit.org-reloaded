@@ -96,13 +96,12 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
           {/* Main Content Area */}
           <div className="flex-1 pl-[16px] pr-[16px]">
             {/* Main content - centered, with conditional padding for sidebar safe zone */}
-            <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] ${
-              sidebar
-                ? sidebarPosition === 'left'
-                  ? 'pl-[455px]'
-                  : 'pr-[455px]'
-                : ''
-            }`}>
+            <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] ${sidebar
+              ? sidebarPosition === 'left'
+                ? 'pl-[455px]'
+                : 'pr-[455px]'
+              : ''
+              }`}>
               {children}
             </main>
           </div>
@@ -110,7 +109,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
 
         {/* Sidebar - fixed positioning, outside content flow */}
         {sidebar && (
-          <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto max-h-[calc(100vh-110px)] transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto scrollbar-hide max-h-[calc(100vh-110px)] transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
             {sidebar}
           </aside>
         )}

@@ -22,7 +22,7 @@ export function RecommendedReading({ posts }) {
           className="block group"
         >
           {post.extra?.image && (
-            <div className="mb-3 rounded-lg overflow-hidden w-full aspect-[16/9] bg-gray-f5">
+            <div className="mb-3 rounded-lg overflow-y-auto w-full aspect-[16/9] bg-gray-f5">
               <img
                 src={post.extra.image}
                 alt={post.title}
