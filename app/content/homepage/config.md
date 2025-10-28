@@ -1,6 +1,7 @@
 ---
 title: "Get On The Network"
 description: "Get on the network in seconds through a hosting provider, or run Urbit yourself"
+sidebar_position: left
 
 # Hero Section Configuration
 hero:

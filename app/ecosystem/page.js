@@ -1,12 +1,15 @@
 import React from "react";
 import { getPostsTree, getYaml, getToml, getMarkdownContent } from "../lib/queries";
-import { SidebarPositionSlot } from "../lib/layoutSlots";
+import { SidebarPositionSlot, SidebarSlot } from "../lib/layoutSlots";
+import { SidebarElement } from "../components/SidebarElement";
+import { EcosystemNav } from "../components/EcosystemNav";
 import Link from "next/link";
 import classNames from "classnames";
 export default async function EcosystemHome() {
-  // Load ecosystem config for sidebar position
+  // Load ecosystem config for sidebar position and navigation
   const ecosystemConfig = await getMarkdownContent("ecosystem/config.md");
   const sidebarPosition = ecosystemConfig.frontMatter?.sidebar_position || 'right';
+  const sections = ecosystemConfig.frontMatter?.sections || [];
 
   const paths = {
     apps: { path: "ecosystem/apps", frontMatter: [] },
@@ -44,6 +47,13 @@ export default async function EcosystemHome() {
     <div className="mb-32 mt-9">
       {/* Set sidebar position */}
       <SidebarPositionSlot position={sidebarPosition} />
+
+      {/* Sidebar navigation - renders in layout */}
+      <SidebarSlot>
+        <SidebarElement title="Ecosystem">
+          <EcosystemNav sections={sections} />
+        </SidebarElement>
+      </SidebarSlot>
       {/* <div className="container md:grid grid-cols-6 gap-x-4 w-full mb-16 text-xlarge leading-[130%]">
         <p className="col-span-4 col-start-2">
           Urbit’s decentralized ecosystem is growing more than ever, check out
@@ -161,7 +171,7 @@ export default async function EcosystemHome() {
         })}
       </ScrollSection> */}
 
-      <Section className="container" title="Companies">
+      <Section id="companies" className="container" title="Companies">
         {allOrgsFrontMatter.map((org, i) => {
           return (
             <Link
@@ -182,7 +192,7 @@ export default async function EcosystemHome() {
         })}
       </Section>
 
-      <Section title="Articles & Press">
+      <Section id="articles-press" className="container" title="Articles & Press">
         {allArticlesFrontMatter.map((article, i) => {
           return (
             <Link href={article.data.URL} key={i} target="_blank" className="hover:text-gray-87 text-xlarge leading-[110%] cursor-pointer mb-[1em] flex flex-col">
@@ -198,9 +208,9 @@ export default async function EcosystemHome() {
   );
 }
 
-export const Section = ({ title, children }) => {
+export const Section = ({ id, title, children, className = "" }) => {
   return (
-    <section className="container md:grid grid-cols-6 w-full h-max [&:not(:first-of-type)]:pt-4 mb-12 gap-x-4">
+    <section id={id} className={`${className} md:grid grid-cols-6 w-full h-max [&:not(:first-of-type)]:pt-4 mb-12 gap-x-4`}>
       <div className="col-span-1 mb-4 ">
         <h1 className="">{title}</h1>
       </div>

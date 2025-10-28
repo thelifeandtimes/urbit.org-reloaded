@@ -1,6 +1,6 @@
 import React from "react";
 import { getMarkdownContent } from "./lib/queries";
-import { HeroSlot } from "./lib/layoutSlots";
+import { HeroSlot, SidebarSlot, SidebarPositionSlot } from "./lib/layoutSlots";
 import { HeroSection } from "./components/HeroSection";
 import { HomepageSectionNav } from "./components/HomepageSectionNav";
 import { HomepageSubsection } from "./components/HomepageSubsection";
@@ -11,6 +11,7 @@ export default async function HomePage() {
   const configData = await getMarkdownContent("homepage/config.md");
   const hero = configData.frontMatter.hero || {};
   const sections = configData.frontMatter.sections || [];
+  const sidebarPosition = configData.frontMatter?.sidebar_position || 'left';
 
   // Serialize sections for client components (nav needs id, title, label, description, and subsection labels)
   const navSections = sections.map(({ id, title, label, description, subsections }) => ({
@@ -22,53 +23,44 @@ export default async function HomePage() {
   }));
 
   return (
-    <div className="min-h-screen">
+    <div>
       {/* Hero Section - Full viewport width via layout slot */}
       <HeroSlot>
         <HeroSection hero={hero} />
       </HeroSlot>
 
-      {/* Desktop Two-Column Layout */}
-      <div className="min-h-screen">
-        <div className="hidden md:block">
-          <div className="container mx-auto px-4">
-            <div className="flex gap-8 relative">
-              {/* Left Column - Fixed Section Navigation */}
-              <aside className="w-[50%] sticky top-0 self-start pt-8 overflow-y-auto">
-                <HomepageSectionNav sections={navSections} />
-              </aside>
+      {/* Set sidebar position */}
+      <SidebarPositionSlot position={sidebarPosition} />
 
-              {/* Right Column - Scrolling Content with Snap */}
-              <div
-                id="right-column-scroll"
-                className="w-[50%] pb-32 pt-8 overflow-y-auto snap-y snap-mandatory"
-              >
-                {sections.map((section) => (
-                  <section key={section.id} id={section.id} className="mb-16 scroll-mt-0">
-                    <div className="border-t border-[#3f3f3f] pt-6 mb-8">
-                      <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
-                        {section.title}
-                      </h2>
-                    </div>
+      {/* Desktop Sidebar Navigation - renders in FrameLayout */}
+      <SidebarSlot>
+        <HomepageSectionNav sections={navSections} />
+      </SidebarSlot>
 
-                    <div className="space-y-16">
-                      {section.subsections.map((subsection) => (
-                        <HomepageSubsection
-                          key={subsection.id}
-                          id={subsection.id}
-                          title={subsection.title}
-                          description={subsection.description}
-                          image={subsection.image}
-                          links={subsection.links}
-                        />
-                      ))}
-                    </div>
-                  </section>
-                ))}
-              </div>
+      {/* Desktop Main Content */}
+      <div className="hidden md:block">
+        {sections.map((section) => (
+          <section key={section.id} id={section.id} className="mb-16">
+            <div className="border-t border-[#3f3f3f] pt-6 mb-8">
+              <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
+                {section.title}
+              </h2>
             </div>
-          </div>
-        </div>
+
+            <div className="space-y-16">
+              {section.subsections.map((subsection) => (
+                <HomepageSubsection
+                  key={subsection.id}
+                  id={subsection.id}
+                  title={subsection.title}
+                  description={subsection.description}
+                  image={subsection.image}
+                  links={subsection.links}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
       </div>
 
       {/* Mobile Accordion Layout */}

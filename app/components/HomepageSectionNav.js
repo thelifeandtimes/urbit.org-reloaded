@@ -3,16 +3,18 @@
 import { useState, useEffect, useRef } from "react";
 
 /**
- * HomepageSectionNav - Fixed left-column navigation for homepage sections
+ * HomepageSectionNav - Sidebar navigation for homepage sections
  *
- * Displays clickable section items that scroll to the corresponding section in the right column.
+ * Displays clickable section items that scroll to the corresponding section.
  * Uses scroll-spy to highlight the active section based on scroll position.
+ * Becomes sticky after hero section scrolls off viewport.
  *
  * @param {Array} sections - Array of section objects with {id, title, label, description, subsections}
  */
 export function HomepageSectionNav({ sections = [] }) {
   const [activeSection, setActiveSection] = useState("");
   const [activeSubsection, setActiveSubsection] = useState("");
+  const [isSticky, setIsSticky] = useState(false);
   const navRef = useRef(null);
 
   const handleSectionClick = (sectionId) => {
@@ -29,51 +31,30 @@ export function HomepageSectionNav({ sections = [] }) {
     }
   };
 
-  // Handle scroll passthrough when left column reaches scroll boundary
+  // Handle sticky-after-hero behavior and scroll-spy
   useEffect(() => {
-    const navElement = navRef.current;
-    if (!navElement) return;
-
-    const handleWheel = (e) => {
-      const { scrollTop, scrollHeight, clientHeight } = navElement;
-      const isAtTop = scrollTop === 0;
-      const isAtBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 1;
-
-      // If scrolling down and at bottom, or scrolling up and at top, allow event to propagate
-      if ((e.deltaY > 0 && isAtBottom) || (e.deltaY < 0 && isAtTop)) {
-        // Don't prevent default - let scroll propagate to right column
-        return;
-      }
-
-      // Otherwise, handle scroll within this element (prevent propagation)
-      e.stopPropagation();
-    };
-
-    navElement.addEventListener('wheel', handleWheel, { passive: false });
-    return () => navElement.removeEventListener('wheel', handleWheel);
-  }, []);
-
-  useEffect(() => {
-    const scrollContainer = document.getElementById('right-column-scroll');
-    if (!scrollContainer) return;
-
     const handleScroll = () => {
-      const offset = 50; // Smaller offset for container scrolling
+      // Check if we should be sticky (hero has scrolled off screen)
+      // Assuming hero is approximately 100vh, check if we've scrolled past that
+      const heroHeight = window.innerHeight;
+      const shouldBeSticky = window.scrollY > heroHeight;
+      setIsSticky(shouldBeSticky);
+
+      // Scroll-spy: find active subsection based on scroll position
+      const offset = 200; // Offset from top of viewport
       let currentSection = "";
       let currentSubsection = "";
 
-      // Find active subsection based on scroll position within container
+      // Find active subsection based on scroll position
       for (const section of sections) {
         if (section.subsections) {
           for (const subsection of section.subsections) {
             const element = document.getElementById(subsection.id);
             if (element) {
               const rect = element.getBoundingClientRect();
-              const containerRect = scrollContainer.getBoundingClientRect();
-              const relativeTop = rect.top - containerRect.top;
 
-              // Check if subsection is near the top of the visible container
-              if (relativeTop >= -offset && relativeTop <= offset) {
+              // Check if subsection is near the top of the viewport
+              if (rect.top <= offset && rect.bottom >= offset) {
                 currentSection = section.id;
                 currentSubsection = subsection.id;
                 break;
@@ -84,7 +65,7 @@ export function HomepageSectionNav({ sections = [] }) {
         }
       }
 
-      // Fallback: find the first visible subsection if none are at top
+      // Fallback: find the first visible subsection if none are at offset
       if (!currentSubsection) {
         for (const section of sections) {
           if (section.subsections) {
@@ -92,8 +73,9 @@ export function HomepageSectionNav({ sections = [] }) {
               const element = document.getElementById(subsection.id);
               if (element) {
                 const rect = element.getBoundingClientRect();
-                const containerRect = scrollContainer.getBoundingClientRect();
-                if (rect.top >= containerRect.top && rect.top <= containerRect.bottom) {
+                const viewportHeight = window.innerHeight;
+                // Check if any part of the subsection is visible in viewport
+                if (rect.top < viewportHeight && rect.bottom > 0) {
                   currentSection = section.id;
                   currentSubsection = subsection.id;
                   break;
@@ -124,14 +106,14 @@ export function HomepageSectionNav({ sections = [] }) {
       }
     };
 
-    scrollContainer.addEventListener("scroll", scrollListener);
+    window.addEventListener("scroll", scrollListener);
     handleScroll(); // Initial check
 
-    return () => scrollContainer.removeEventListener("scroll", scrollListener);
+    return () => window.removeEventListener("scroll", scrollListener);
   }, [sections, activeSection, activeSubsection]);
 
   return (
-    <nav ref={navRef} className="flex flex-col gap-8">
+    <nav ref={navRef} className="flex flex-col gap-8 h-full overflow-y-auto">
       {sections.map((section) => {
         const isSectionActive = activeSection === section.id;
 
@@ -149,7 +131,7 @@ export function HomepageSectionNav({ sections = [] }) {
 
             {/* Subsection Buttons - always visible */}
             {section.subsections && section.subsections.length > 0 && (
-              <div className="flex flex-col gap-2 items-start">
+              <div className="flex flex-col gap-2 items-start w-full">
                 {section.subsections.map((subsection) => {
                   const isSubsectionActive = activeSubsection === subsection.id;
 
@@ -157,7 +139,7 @@ export function HomepageSectionNav({ sections = [] }) {
                     <button
                       key={subsection.id}
                       onClick={() => handleSubsectionClick(subsection.id)}
-                      className={`px-4 py-2 text-base font-semibold text-left rounded-[5px] transition-colors ${isSubsectionActive
+                      className={`px-4 py-2 text-base font-semibold text-left rounded-[5px] transition-colors w-full ${isSubsectionActive
                         ? "bg-[#44420c] text-primary border border-[#44420c]"
                         : "bg-primary text-[#3f3f3f] border border-[#3f3f3f] hover:bg-[#44420c] hover:text-primary"
                         }`}
