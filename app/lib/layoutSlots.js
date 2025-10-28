@@ -26,16 +26,19 @@ import { createContext, useContext, useEffect, useState } from "react";
 const LayoutSlotsContext = createContext({
   hero: null,
   sidebar: null,
+  sidebarPosition: 'right',
   setHero: () => {},
   setSidebar: () => {},
+  setSidebarPosition: () => {},
 });
 
 export function LayoutSlotsProvider({ children }) {
   const [hero, setHero] = useState(null);
   const [sidebar, setSidebar] = useState(null);
+  const [sidebarPosition, setSidebarPosition] = useState('right');
 
   return (
-    <LayoutSlotsContext.Provider value={{ hero, sidebar, setHero, setSidebar }}>
+    <LayoutSlotsContext.Provider value={{ hero, sidebar, sidebarPosition, setHero, setSidebar, setSidebarPosition }}>
       {children}
     </LayoutSlotsContext.Provider>
   );
@@ -83,5 +86,22 @@ export function SidebarSlot({ children }) {
   }, [children, setSidebar]);
 
   // Sidebar renders in layout, not here
+  return null;
+}
+
+/**
+ * SidebarPositionSlot Component
+ *
+ * Sets the sidebar position ('left' or 'right') for the current page.
+ * Use this component to configure sidebar positioning on a per-page basis.
+ */
+export function SidebarPositionSlot({ position = 'right' }) {
+  const { setSidebarPosition } = useLayoutSlots();
+
+  useEffect(() => {
+    setSidebarPosition(position);
+    return () => setSidebarPosition('right');
+  }, [position, setSidebarPosition]);
+
   return null;
 }

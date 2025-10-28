@@ -10,7 +10,7 @@ import { FooterSection } from "./FooterSection";
  * Split from layout.js to allow server-side generateMetadata export
  */
 export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, announcements, runningUrbitSections }) {
-  const { hero, sidebar } = useLayoutSlots();
+  const { hero, sidebar, sidebarPosition } = useLayoutSlots();
 
   return (
     <>
@@ -95,15 +95,21 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
 
           {/* Main Content Area */}
           <div className="flex-1 pl-[16px] pr-[16px]">
-            {/* Main content - centered, with conditional right padding for sidebar safe zone */}
-            <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] ${sidebar ? 'pr-[455px]' : ''}`}>
+            {/* Main content - centered, with conditional padding for sidebar safe zone */}
+            <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] ${
+              sidebar
+                ? sidebarPosition === 'left'
+                  ? 'pl-[455px]'
+                  : 'pr-[455px]'
+                : ''
+            }`}>
               {children}
             </main>
           </div>
 
-          {/* Sidebar - fixed, always pinned to right side of frame */}
+          {/* Sidebar - fixed, pinned to left or right side of frame */}
           {sidebar && (
-            <aside className="fixed right-[32px] top-[55px] bottom-[55px] w-[400px] z-30">
+            <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] bottom-[55px] w-[400px] z-30`}>
               {sidebar}
             </aside>
           )}

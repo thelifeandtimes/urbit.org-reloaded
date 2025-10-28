@@ -1,8 +1,13 @@
 import React from "react";
-import { getPostsTree, getYaml, getToml } from "../lib/queries";
+import { getPostsTree, getYaml, getToml, getMarkdownContent } from "../lib/queries";
+import { SidebarPositionSlot } from "../lib/layoutSlots";
 import Link from "next/link";
 import classNames from "classnames";
 export default async function EcosystemHome() {
+  // Load ecosystem config for sidebar position
+  const ecosystemConfig = await getMarkdownContent("ecosystem/config.md");
+  const sidebarPosition = ecosystemConfig.frontMatter?.sidebar_position || 'right';
+
   const paths = {
     apps: { path: "ecosystem/apps", frontMatter: [] },
     articles: { path: "ecosystem/articles", frontMatter: [] },
@@ -37,6 +42,8 @@ export default async function EcosystemHome() {
 
   return (
     <div className="mb-32 mt-9">
+      {/* Set sidebar position */}
+      <SidebarPositionSlot position={sidebarPosition} />
       {/* <div className="container md:grid grid-cols-6 gap-x-4 w-full mb-16 text-xlarge leading-[130%]">
         <p className="col-span-4 col-start-2">
           Urbit’s decentralized ecosystem is growing more than ever, check out

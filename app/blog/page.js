@@ -1,11 +1,16 @@
 import React from "react";
-import { getPostsTree, getToml } from "../lib/queries";
+import { getPostsTree, getToml, getMarkdownContent } from "../lib/queries";
+import { SidebarPositionSlot } from "../lib/layoutSlots";
 import Image from "next/image";
 import Link from "next/link";
 
 import { formatDate } from "../lib/utils";
 
 export default async function BlogHome() {
+  // Load blog config for sidebar position
+  const blogConfig = await getMarkdownContent("blog/config.md");
+  const sidebarPosition = blogConfig.frontMatter?.sidebar_position || 'right';
+
   const posts = await getPostsTree("blog/");
 
   const allPostFrontMatter = [];
@@ -24,6 +29,8 @@ export default async function BlogHome() {
 
   return (
     <div className="mb-32  text-xlarge leading-[100%] max-w-[1200px] mx-auto">
+      {/* Set sidebar position */}
+      <SidebarPositionSlot position={sidebarPosition} />
       {/* <section className="md:grid grid-cols-6 gap-x-4 w-full"> */}
       {/*   <div className="col-span-1"></div> */}
       {/*   <div className="col-span-4 leading-[120%] font-[400]"> */}

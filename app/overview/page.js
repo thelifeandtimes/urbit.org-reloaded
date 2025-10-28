@@ -1,7 +1,7 @@
 import React from "react";
 import { getMarkdownContent } from "../lib/queries";
 import Link from "next/link";
-import { SidebarSlot } from "../lib/layoutSlots";
+import { SidebarSlot, SidebarPositionSlot } from "../lib/layoutSlots";
 import { OverviewNav } from "../components/OverviewNav";
 import { SidebarElement } from "../components/SidebarElement";
 import Markdoc from "@markdoc/markdoc";
@@ -14,8 +14,15 @@ export default async function overview() {
   const sections = configData.frontMatter.sections || [];
   const navSections = sections.map(({ id, title }) => ({ id, title }));
 
+  // Load overview config for sidebar position
+  const overviewConfig = await getMarkdownContent("overview/config.md");
+  const sidebarPosition = overviewConfig.frontMatter?.sidebar_position || 'right';
+
   return (
     <div>
+      {/* Set sidebar position */}
+      <SidebarPositionSlot position={sidebarPosition} />
+
       {/* Sidebar slot - renders in layout */}
       <SidebarSlot>
         <SidebarElement title="Overview">
