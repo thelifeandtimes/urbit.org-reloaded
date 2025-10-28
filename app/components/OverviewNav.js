@@ -1,9 +1,17 @@
 "use client"
 import { usePathname } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
+import { useLayoutSlots } from "../lib/layoutSlots";
 
 export const OverviewNav = ({ runningUrbitSections = [] }) => {
   const currentRoute = usePathname();
+  const { setSidebarVisible } = useLayoutSlots();
+
+  // Ensure sidebar is visible on pages without hero
+  useEffect(() => {
+    setSidebarVisible(true);
+  }, [setSidebarVisible]);
 
   return (
     <nav className="flex flex-col gap-8">

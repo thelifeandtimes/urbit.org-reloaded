@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useLayoutSlots } from "../lib/layoutSlots";
 
 /**
  * EcosystemNav - Sidebar navigation for ecosystem page sections
@@ -12,6 +13,12 @@ import { useState, useEffect } from "react";
  */
 export function EcosystemNav({ sections = [] }) {
   const [activeSection, setActiveSection] = useState("");
+  const { setSidebarVisible } = useLayoutSlots();
+
+  // Ensure sidebar is visible on pages without hero
+  useEffect(() => {
+    setSidebarVisible(true);
+  }, [setSidebarVisible]);
 
   const handleSectionClick = (sectionId) => {
     const element = document.getElementById(sectionId);

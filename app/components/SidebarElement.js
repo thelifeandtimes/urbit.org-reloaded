@@ -26,7 +26,7 @@ export function SidebarElement({ title, children, className = "" }) {
       )}
 
       {/* Scrollable content */}
-      <div className="flex-1 overflow-y-auto px-6 py-6 no-scrollbar">
+      <div className="flex-1 overflow-y-auto px-6 py-6 scrollbar-hide">
         {children}
       </div>
     </div>
