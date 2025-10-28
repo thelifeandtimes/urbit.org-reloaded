@@ -1,21 +1,22 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useLayoutSlots } from "../lib/layoutSlots";
 
 /**
  * HomepageSectionNav - Sidebar navigation for homepage sections
  *
  * Displays clickable section items that scroll to the corresponding section.
  * Uses scroll-spy to highlight the active section based on scroll position.
- * Becomes sticky after hero section scrolls off viewport.
+ * Controls sidebar visibility to hide it when hero is visible on screen.
  *
  * @param {Array} sections - Array of section objects with {id, title, label, description, subsections}
  */
 export function HomepageSectionNav({ sections = [] }) {
   const [activeSection, setActiveSection] = useState("");
   const [activeSubsection, setActiveSubsection] = useState("");
-  const [isSticky, setIsSticky] = useState(false);
   const navRef = useRef(null);
+  const { setSidebarVisible } = useLayoutSlots();
 
   const handleSectionClick = (sectionId) => {
     const element = document.getElementById(sectionId);
@@ -31,16 +32,15 @@ export function HomepageSectionNav({ sections = [] }) {
     }
   };
 
-  // Handle sticky-after-hero behavior and scroll-spy
+  // Scroll-spy to track active section and control sidebar visibility
   useEffect(() => {
     const handleScroll = () => {
-      // Check if we should be sticky (hero has scrolled off screen)
-      // Assuming hero is approximately 100vh, check if we've scrolled past that
+      // Control sidebar visibility based on hero scroll position
       const heroHeight = window.innerHeight;
-      const shouldBeSticky = window.scrollY > heroHeight;
-      setIsSticky(shouldBeSticky);
+      const shouldShowSidebar = window.scrollY > heroHeight * 0.8; // Show when 80% past hero
+      setSidebarVisible(shouldShowSidebar);
 
-      // Scroll-spy: find active subsection based on scroll position
+      // Find active subsection based on scroll position
       const offset = 200; // Offset from top of viewport
       let currentSection = "";
       let currentSubsection = "";

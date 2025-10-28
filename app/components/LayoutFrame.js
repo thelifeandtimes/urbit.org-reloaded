@@ -10,7 +10,7 @@ import { FooterSection } from "./FooterSection";
  * Split from layout.js to allow server-side generateMetadata export
  */
 export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, announcements, runningUrbitSections }) {
-  const { hero, sidebar, sidebarPosition } = useLayoutSlots();
+  const { hero, sidebar, sidebarPosition, sidebarVisible } = useLayoutSlots();
 
   return (
     <>
@@ -106,14 +106,14 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
               {children}
             </main>
           </div>
-
-          {/* Sidebar - fixed, pinned to left or right side of frame */}
-          {sidebar && (
-            <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] bottom-[55px] w-[400px] z-30`}>
-              {sidebar}
-            </aside>
-          )}
         </div>
+
+        {/* Sidebar - fixed positioning, outside content flow */}
+        {sidebar && (
+          <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto max-h-[calc(100vh-110px)] transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            {sidebar}
+          </aside>
+        )}
 
         {/* Right Border */}
         <div className="fixed right-0 top-0 h-screen w-[16px] z-50 pointer-events-none bg-[#ededed]" />
