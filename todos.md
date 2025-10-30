@@ -1,20 +1,30 @@
 - Styling
-  - [x] homepage hero transparency
-  - [x] homepage urbit logo should collapse but not open menu
-  - [ ] Blog index
-    - [ ] Mobile
-    - [ ] Desktop
-  - [ ] Ecosystem page
-  - [x] Mobile Hamburger Menu
-    - [x] unified mobile menu
-    - [x] mobile submenus
-  - [ ] Functioning Anchor Links
   - [ ] Frame Layout
     - [ ] border line weight
     - [ ] fix cracks in between elements
     - [ ] change button styles to match designs
     - [ ] footer element on mid-size screens
-  - [ ] hide scrollbars on dual scrolling elements
+  - [ ] Homepage
+    - [x] homepage hero transparency
+    - [x] homepage urbit logo should collapse but not open menu
+    - [ ] Mobile
+  - [ ] Overview
+    - [ ] next page nav buttons
+    - [ ] sidebar element styling
+    - [ ] mobile
+  - [ ] Ecosystem page
+    - [ ] company icons
+    - [ ] restyling press entries
+    - [ ] sidebar sections
+    - [ ] Mobile
+  - [ ] Blog index
+    - [ ] Mobile
+    - [ ] Desktop
+  - [x] Mobile Hamburger Menu
+    - [x] unified mobile menu
+    - [x] mobile submenus
+  - [ ] Functioning Anchor Links
+  - [x] hide scrollbars on dual scrolling elements
   - [ ] Fonts -- well structured globals.css and tailwind config
   - [ ] Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
   - [ ] email signup text entry field overflow
