@@ -1,12 +1,15 @@
 - Styling
-  - [ ] Frame Layout
-    - [ ] border line weight
-    - [ ] fix cracks in between elements
-    - [ ] change button styles to match designs
+  - [x] Frame Layout
+    - [x] border line weight
+    - [x] fix cracks in between elements
+    - [x] change button styles to match designs
     - [ ] footer element on mid-size screens
   - [ ] Homepage
     - [x] homepage hero transparency
     - [x] homepage urbit logo should collapse but not open menu
+    - [ ] dual column scrolling
+    - [ ] Section images
+    - [ ] section reference links
     - [ ] Mobile
   - [ ] Overview
     - [ ] next page nav buttons
@@ -23,18 +26,33 @@
   - [x] Mobile Hamburger Menu
     - [x] unified mobile menu
     - [x] mobile submenus
+    - [ ] fix colors
   - [ ] Functioning Anchor Links
   - [x] hide scrollbars on dual scrolling elements
   - [ ] Fonts -- well structured globals.css and tailwind config
-  - [ ] Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
+  - [x] Colors -- darkmode and properly structured classes (i.e. bg-primary instead of bg-white that is black in dark mode)
+  - [ ] Implement colors thoughtout
   - [ ] email signup text entry field overflow
   - [ ] add announcements to desktop view
+  - TESTING
+    - Desktop
+      - [ ] Brave
+      - [ ] Firefox
+      - [ ] Safari
+      - [ ] Chrome
+    - Mobile
+      - [ ] iOS
+        - [ ] Safari
+        - [ ] Brave
+        - [ ] Chrome
+      - [ ] Android ????
 - Content
   - [ ] Overview Prose Narrative
   - [ ] Blurbs (see below)
   - [ ] Ecosystem page updates
   - [ ] ~dozreg developer spotlight article
   - [ ] grants page placeholder
+    - [ ] modify star reward rendering style
 - Analytics
   - [ ] Button clicks
   - [ ] email signups (per page data?)

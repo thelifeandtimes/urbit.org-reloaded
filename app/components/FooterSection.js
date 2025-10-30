@@ -2,13 +2,14 @@ import Link from "next/link";
 import { NewsletterSignup } from "./NewsletterSignup";
 import React from "react";
 
+
 export const FooterSection = ({ footerData }) => {
   // Separate resources and socials from footerData
   const resources = footerData?.find(col => col.column_label === "resources");
   const socials = footerData?.find(col => col.column_label === "socials");
 
   return (
-    <section className="md:m-auto w-full z-10 h-max font-mono text-large md:container text-gray-87 leading-120">
+    <section className="w-full z-10 h-max font-mono text-large text-gray-87 leading-120">
 
       {/* Mobile View */}
       <div className="block md:hidden">
@@ -56,64 +57,89 @@ const MobileFooter = ({ resources, socials }) => {
 };
 
 // Desktop Component: Resources inline, socials as icons
+// TODO : Fix the mid-range width, from md:768px to xl:1288px 
 const DesktopFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-row text-sm gap-x-8 justify-end items-center p-2">
-      <Link
-        href="/"
-        target="_self"
-      >
-        <img
-          src="/icons/urbit-neu.svg"
-          alt="Urbit wordmark"
-          className="pb-1.5"
-        />
-      </Link>
-      <NewsletterSignup className="z-10  mb-8" />
-      {/* Resources - Inline row */}
-      {resources && (
-        <div>
-          <div className="flex flex-row flex-wrap gap-x-6 gap-y-2">
-            {resources.subItems.map((link, idx) => (
-              <Link
-                key={link.title || idx}
-                href={link.url}
-                target={link.external ? "_blank" : "_self"}
-                rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-white hover:text-gray-d9 transition-colors w-max"
-              >
-                {link.title}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
+    <div>
+      {/* Extra Large Screens */}
+      <div className="hidden xl:block">
+        <div className="flex flex-row text-sm gap-x-8 justify-end items-center py-2">
+          <Link
+            href="/"
+            target="_self"
+          >
+            <img
+              src="/icons/urbit-neu.svg"
+              alt="Urbit wordmark"
+              className="pb-1.5"
+            />
+          </Link>
+          {/* Resources - Inline row */}
+          {resources && (
+            <div>
+              <div className="flex flex-row flex-wrap gap-x-6 gap-y-2">
+                {resources.subItems.map((link, idx) => (
+                  <Link
+                    key={link.title || idx}
+                    href={link.url}
+                    target={link.external ? "_blank" : "_self"}
+                    rel={link.external ? "noopener noreferrer" : undefined}
+                    className="text-contrast-3 hover:text-contrast-2 transition-colors w-max"
+                  >
+                    {link.title}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
+          <NewsletterSignup className="z-10  mb-8" />
 
-      {/* Socials - Icons only */}
-      {socials && (
-        <div>
-          <div className="flex flex-row flex-wrap gap-y-4 gap-x-4">
-            {socials.subItems.map((link, idx) => (
-              <Link
-                key={link.title || idx}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-max group"
-                aria-label={link.label || link.title}
-              >
-                {link.logo && (
-                  <img
-                    src={link.logo}
-                    alt={link.label || link.title}
-                    className="w-[1em] h-[1em] invert"
-                  />
-                )}
-              </Link>
-            ))}
-          </div>
+          {/* Socials - Icons only */}
+          {socials && (
+            <div>
+              <div className="flex flex-row flex-wrap gap-y-4 gap-x-4">
+                {socials.subItems.map((link, idx) => (
+                  <Link
+                    key={link.title || idx}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-max group"
+                    aria-label={link.label || link.title}
+                  >
+                    {link.logo && (
+                      <img
+                        src={link.logo}
+                        alt={link.label || link.title}
+                        className="w-[1em] h-[1em] invert"
+                      />
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+
+      </div>
+      {/* Mid Size Screens */}
+      <div className="hidden md:block xl:hidden">
+        <div className="flex flex-row text-sm gap-x-4 justify-end items-center py-2">
+          <Link
+            href="/"
+            target="_self"
+          >
+            <img
+              src="/icons/urbit-neu.svg"
+              alt="Urbit wordmark"
+              className="pb-1.5"
+            />
+          </Link>
+          <NewsletterSignup className="z-10  mb-8" />
+          {/* Resources - clicking should toggle 'Resources' element to get show under the LayoutFrame component */}
+          {/* Contact - clicking should toggle 'socials' element to get shown from the LayoutFrame component */}
+        </div>
+      </div>
+    </div >
   );
 };

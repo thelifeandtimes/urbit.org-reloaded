@@ -51,7 +51,7 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
 
   const routeMap = {
     "": "",
-    "get-on-the-network": "Configure",
+    "get-on-the-network": "Run Urbit",
     overview: "Overview",
     blog: "Blog",
     ecosystem: "Ecosystem",

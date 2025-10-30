@@ -127,7 +127,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
             </div>
           </div>
           <div className="flex items-end flex-shrink-0 ml-[-0.5px]">
-            <div className="h-[48px] bg-contrast-1 flex items-center px-4 relative">
+            <div className="h-[48px] bg-contrast-1 flex items-center relative">
               <svg className="absolute top-[-0.5px] left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" style={{ display: 'block' }}>
                 <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </svg>

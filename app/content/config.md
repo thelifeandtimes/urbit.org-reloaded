@@ -43,11 +43,11 @@ nav:
   external: false
   icon: 'urbit-digi.svg'
 mobileNav:
-- title: Configure
+- title: Run Urbit
   url: "/get-on-the-network"
   variant: 'primary'
   external: false
-  icon: 'urbit-foundation-b.svg'
+  icon: 'urbit-digi.svg'
 - title: Overview
   url: "/overview"
   external: false
