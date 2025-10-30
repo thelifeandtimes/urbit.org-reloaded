@@ -3,12 +3,12 @@
   <path 
     id="Vector" 
     d="M0 0V16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48V0H0Z" 
-    fill="var(--contrast-1)"
+    fill="#EDEDED"
   />
   <path 
     d="M0 16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48" 
     fill="none"
-    stroke="var(--foreground)"
+    style={{ stroke: 'var(--foreground)' }}
     strokeWidth="1"
   />
 </g>
