@@ -37,11 +37,11 @@ nav:
   url: "/blog"
   external: false
   aside_title: "Recommended Reading"
-- title: Configure
+- title: Run Urbit
   url: "/get-on-the-network"
   variant: 'primary'
   external: false
-  icon: 'urbit-foundation-b.svg'
+  icon: 'urbit-digi.svg'
 mobileNav:
 - title: Configure
   url: "/get-on-the-network"

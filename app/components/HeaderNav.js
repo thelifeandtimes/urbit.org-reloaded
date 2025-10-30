@@ -201,7 +201,7 @@ const GlobalNav = ({ nav }) => {
 
   return (
     <React.Fragment>
-      <ul className="flex mb-0 flex-row gap-x-4 pt-0 text-large font-[600]">
+      <ul className="flex mb-0 flex-row gap-x-3 pt-0 text-large font-[600]">
         {nav?.map((navItem, i) => {
 
           const isActive = currentRoute.startsWith(navItem.url);
@@ -209,12 +209,12 @@ const GlobalNav = ({ nav }) => {
           return (
             <Link
               className={classNames(
-                "flex items-center gap-2 border py-[5px] px-[15px] text-base rounded-md",
+                "text-lg flex items-center py-1 px-3 gap-x-2 rounded-md",
                 navItem.variant == 'primary'
-                  ? "bg-secondary text-primary rounded-lg"
+                  ? "text-background bg-foreground rounded-lg hover:text-contrast-1"
                   : isActive
-                    ? "bg-primary text-secondary rounded-lg border-secondary"
-                    : "bg-primary text-secondary rounded-lg border-secondary"
+                    ? "text-contrast-3 rounded-lg border-secondary"
+                    : "text-contrast-2 rounded-lg border-secondary"
               )}
               key={`${navItem} + ${i}`}
               href={navItem.url}
