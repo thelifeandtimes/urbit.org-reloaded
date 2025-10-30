@@ -1,6 +1,8 @@
 import React from "react";
 import { getPostsTree, getToml, getMarkdownContent } from "../lib/queries";
-import { SidebarPositionSlot } from "../lib/layoutSlots";
+import { SidebarPositionSlot, SidebarSlot } from "../lib/layoutSlots";
+import { SidebarElement } from "../components/SidebarElement";
+import { BlogNav } from "../components/BlogNav";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,19 +29,47 @@ export default async function BlogHome() {
 
   allPostFrontMatter.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
+  // Group posts by year
+  const yearGroups = allPostFrontMatter.reduce((groups, post) => {
+    const year = new Date(post.data.date).getFullYear().toString();
+    if (!groups[year]) {
+      groups[year] = [];
+    }
+    groups[year].push(post);
+    return groups;
+  }, {});
+
+  // Create navigation sections (sorted newest first)
+  const yearSections = Object.keys(yearGroups)
+    .sort((a, b) => b - a)
+    .map(year => ({
+      id: year,
+      title: year,
+      count: yearGroups[year].length
+    }));
+
   return (
-    <div className="mb-32  text-xlarge leading-[100%] max-w-[1200px] mx-auto">
+    <div>
       {/* Set sidebar position */}
       <SidebarPositionSlot position={sidebarPosition} />
-      {/* <section className="md:grid grid-cols-6 gap-x-4 w-full"> */}
-      {/*   <div className="col-span-1"></div> */}
-      {/*   <div className="col-span-4 leading-[120%] font-[400]"> */}
-      {/*     Stories from the broader Urbit community, the Urbit Foundation, and */}
-      {/*     the many people contributing to Urbit. */}
-      {/*   </div> */}
-      {/* </section> */}
-      <section className="">
-        {allPostFrontMatter.map((post) => {
+
+      {/* Sidebar navigation */}
+      <SidebarSlot>
+        <SidebarElement title="Blog">
+          <BlogNav sections={yearSections} />
+        </SidebarElement>
+      </SidebarSlot>
+
+      <div className="mb-32 text-xlarge leading-[100%] max-w-[1200px] mx-auto">
+        {Object.entries(yearGroups)
+          .sort(([yearA], [yearB]) => yearB - yearA)
+          .map(([year, posts]) => (
+          <section key={year} id={year} className="mb-16">
+            {/* Year header */}
+            <h2 className="text-4xl font-serif mb-8 px-4">{year}</h2>
+
+            {/* Posts for this year */}
+            {posts.map((post) => {
           const { title, date, description, aliases, extra } = post.data;
 
           return (
@@ -84,7 +114,9 @@ export default async function BlogHome() {
             </Link>
           );
         })}
-      </section>
-    </div >
+          </section>
+        ))}
+      </div>
+    </div>
   );
 }
