@@ -18,8 +18,8 @@
     - [ ] sidebar sections
     - [ ] Mobile
   - [ ] Blog index
-    - [ ] Mobile
     - [ ] Desktop
+    - [ ] Mobile
   - [x] Mobile Hamburger Menu
     - [x] unified mobile menu
     - [x] mobile submenus

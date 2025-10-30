@@ -69,7 +69,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
           </div>
           <div className="h-[51px] w-[48px] flex-shrink-0">
             <div className="w-full h-full scale-y-[-1]">
-              <img src="/components/frame/corner-a.svg" alt="" className="w-full h-full block" />
+              <img src="/components/frame/corner-a-border.svg" alt="" className="w-full h-full block" />
             </div>
           </div>
           <div className="flex items-end flex-shrink-0">
@@ -78,7 +78,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
             </div>
             <div className="h-[55px] w-[23px] flex-shrink-0">
               <div className="w-full h-full scale-y-[-1]">
-                <img src="/components/frame/corner-right.svg" alt="" className="w-full h-full block" />
+                <img src="/components/frame/corner-right-border.svg" alt="" className="w-full h-full block" />
               </div>
             </div>
           </div>

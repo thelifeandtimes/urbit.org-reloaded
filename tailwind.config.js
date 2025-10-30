@@ -57,10 +57,26 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        accent: "var(--accent)",
-        primary: "var(--background)",
-        secondary: "var(--foreground)",
-        tertiary: "var(--accent)",
+
+        primary: "var(--primary)",
+        secondary: "var(--secondary)",
+        tertiary: "var(--tertiary)",
+
+        // Accent colors
+        accent: {
+          1: "var(--accent-1)",
+          2: "var(--accent-2)",
+          3: "var(--accent-3)",
+          DEFAULT: "var(--accent-1)", // Optional: makes 'bg-accent' work
+        },
+
+        // Contrast colors
+        contrast: {
+          1: "var(--contrast-1)",
+          2: "var(--contrast-2)",
+          3: "var(--contrast-3)",
+        },
+
         gray: {
           "ED": "#EDEDED",
           "3c": "#3C3E41",
@@ -69,7 +85,8 @@ module.exports = {
           "d9": "#d9d9d9",
           "f5": "#f5f5f5",
         },
-        white: "var(--foreground)",
+
+        white: "#FFFFFF",
         "off-white": "var(--off-white)",
       },
     },
