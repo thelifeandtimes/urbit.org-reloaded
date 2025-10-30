@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import { useLayoutSlots } from "../lib/layoutSlots";
 import { HeaderNav } from "./HeaderNav";
-import { FooterSection } from "./FooterSection";
+import { FooterSection, FooterExpansion } from "./FooterSection";
 
 /**
  * LayoutFrame - Client component that renders the frame with hero/sidebar slots
@@ -11,6 +12,12 @@ import { FooterSection } from "./FooterSection";
  */
 export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, announcements, runningUrbitSections }) {
   const { hero, sidebar, sidebarPosition, sidebarVisible } = useLayoutSlots();
+  const [expansionHeight, setExpansionHeight] = useState(0);
+  const [expandedSection, setExpandedSection] = useState(null);
+
+  // Separate resources and socials from footerData for FooterExpansion
+  const resources = footerData?.find(col => col.column_label === "resources");
+  const socials = footerData?.find(col => col.column_label === "socials");
 
   return (
     <>
@@ -88,75 +95,103 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
           </div>
         </div>
 
-        {/* Bottom Footer Bar */}
-        <div className="fixed bottom-0 left-0 right-0 z-50 flex gap-0 pointer-events-auto items-end">
-          <div className="flex flex-1 items-end">
-            <div className="h-[32px] w-[32px] flex-shrink-0">
-              <div className="rotate-[-90deg] w-[32px] h-[32px]">
-                <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="Group 7">
-                    <path id="Vector" d="M9.97943e-05 -0.000745489L9.83955e-05 31.9846L15.9861 31.9846C15.9861 23.1453 23.1559 15.9786 32.0001 15.9786L32.0001 -0.000744091L9.97943e-05 -0.000745489Z" fill="var(--contrast-1)" />
-                    <path d="M16 32C16 23.1453 23.1559 16 32 16" fill="none" stroke="var(--foreground)" strokeWidth="1" />
-                  </g>
+        {/* Bottom Footer Bar - grows to include expansion */}
+        <div
+          className="fixed bottom-0 left-0 right-0 z-50 flex flex-col pointer-events-auto transition-all duration-300"
+        >
+          {/* Footer Bar Row (top row when expansion is open) */}
+          <div className="flex gap-0 items-end">
+            <div className="flex flex-1 items-end">
+              <div className="h-[32px] w-[32px] flex-shrink-0">
+                <div className="rotate-[-90deg] w-[32px] h-[32px]">
+                  <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="Group 7">
+                      <path id="Vector" d="M9.97943e-05 -0.000745489L9.83955e-05 31.9846L15.9861 31.9846C15.9861 23.1453 23.1559 15.9786 32.0001 15.9786L32.0001 -0.000744091L9.97943e-05 -0.000745489Z" fill="var(--contrast-1)" />
+                      <path d="M16 32C16 23.1453 23.1559 16 32 16" fill="none" stroke="var(--foreground)" strokeWidth="1" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div className="h-[16px] bg-contrast-1 flex-1 items-end relative">
+                <svg className="absolute top-[-0.5px] left-0 w-full h-full" preserveAspectRatio="none" style={{ display: 'block' }}>
+                  <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
                 </svg>
               </div>
             </div>
-            <div className="h-[16px] bg-contrast-1 flex-1 items-end relative">
-              <svg className="absolute top-[-0.5px] left-0 w-full h-full" preserveAspectRatio="none" style={{ display: 'block' }}>
-                <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-              </svg>
-            </div>
-          </div>
-          <div className="h-[51px] w-[48px] flex-shrink-0 ml-[-0.5px]">
-            <div className="w-full h-full scale-y-[-1]">
-              <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 48 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="a">
-                  <path
-                    id="Vector"
-                    d="M0 0V16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48V0H0Z"
-                    fill="var(--contrast-1)"
-                  />
-                  <path
-                    d="M0 16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48"
-                    fill="none"
-                    stroke="var(--foreground)"
-                    strokeWidth="1"
-                  />
-                </g>
-              </svg>
-            </div>
-          </div>
-          <div className="flex items-end flex-shrink-0 ml-[-0.5px]">
-            <div className="h-[48px] bg-contrast-1 flex items-center relative">
-              <svg className="absolute top-[-0.5px] left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" style={{ display: 'block' }}>
-                <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
-              </svg>
-              <FooterSection footerData={footerData} />
-            </div>
-            <div className="h-[55px] w-[23px] flex-shrink-0 ml-[-0.5px]">
+            <div className="h-[51px] w-[48px] flex-shrink-0 ml-[-0.5px]">
               <div className="w-full h-full scale-y-[-1]">
-                <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 23 55" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <g id="a" clipPath="url(#clip0_218_191)">
+                <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 48 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="a">
                     <path
                       id="Vector"
-                      d="M23 0H7.55972e-09L0 48C4.02181 48 7 50.9795 7 55L23 55V0Z"
+                      d="M0 0V16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48V0H0Z"
                       fill="var(--contrast-1)"
                     />
                     <path
-                      d="M0 48C4.02181 48 7 50.9795 7 55"
+                      d="M0 16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48"
                       fill="none"
                       stroke="var(--foreground)"
                       strokeWidth="1"
                     />
                   </g>
-                  <defs>
-                    <clipPath id="clip0_218_191">
-                      <rect width="23" height="55" fill="white" />
-                    </clipPath>
-                  </defs>
                 </svg>
               </div>
             </div>
+            <div className="flex items-end flex-shrink-0 ml-[-0.5px]">
+              <div className="h-[48px] bg-contrast-1 flex items-center relative">
+                <svg className="absolute top-[-0.5px] left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" style={{ display: 'block' }}>
+                  <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
+                </svg>
+                <FooterSection
+                  footerData={footerData}
+                  onExpansionHeightChange={setExpansionHeight}
+                  expandedSection={expandedSection}
+                  setExpandedSection={setExpandedSection}
+                />
+              </div>
+              <div className="h-[55px] w-[23px] flex-shrink-0 ml-[-0.5px]">
+                <div className="w-full h-full scale-y-[-1]">
+                  <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 23 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="a" clipPath="url(#clip0_218_191)">
+                      <path
+                        id="Vector"
+                        d="M23 0H7.55972e-09L0 48C4.02181 48 7 50.9795 7 55L23 55V0Z"
+                        fill="var(--contrast-1)"
+                      />
+                      <path
+                        d="M0 48C4.02181 48 7 50.9795 7 55"
+                        fill="none"
+                        stroke="var(--foreground)"
+                        strokeWidth="1"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_218_191">
+                        <rect width="23" height="55" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Expansion Row (bottom row - only visible when expanded) */}
+          <div className="hidden md:block xl:hidden">
+            <FooterExpansion
+              isOpen={expandedSection === 'resources'}
+              type="resources"
+              footerData={resources}
+              onClose={() => setExpandedSection(null)}
+              onHeightChange={setExpansionHeight}
+            />
+            <FooterExpansion
+              isOpen={expandedSection === 'contact'}
+              type="contact"
+              footerData={socials}
+              onClose={() => setExpandedSection(null)}
+              onHeightChange={setExpansionHeight}
+            />
           </div>
         </div>
 
@@ -185,13 +220,19 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
 
         {/* Sidebar - fixed positioning, outside content flow */}
         {sidebar && (
-          <aside className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto scrollbar-hide max-h-[calc(100vh-110px)] transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+          <aside
+            className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            style={{ maxHeight: `calc(100vh - 110px - ${expansionHeight}px)` }}
+          >
             {sidebar}
           </aside>
         )}
 
         {/* Right Border */}
-        <div className="fixed right-0 top-[55px] bottom-[55px] h-auto w-[16px] z-50 pointer-events-none bg-contrast-1">
+        <div
+          className="fixed right-0 top-[55px] h-screen w-[16px] z-40 pointer-events-none bg-contrast-1 transition-all duration-300"
+          style={{ bottom: `${55 || expansionHeight}px` }}
+        >
           <svg className="absolute top-0 left-[-0.5px] w-full h-full" preserveAspectRatio="none" style={{ display: 'block' }}>
             <line x1="0" y1="0" x2="0" y2="100%" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
           </svg>
