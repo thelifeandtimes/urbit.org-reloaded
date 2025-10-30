@@ -57,7 +57,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
               </svg>
             </div>
           </div>
-          <div className="h-[51px] w-[48px] flex-shrink-0">
+          <div className="h-[51px] w-[48px] flex-shrink-0 ml-[-0.5px]">
             <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 48 51" fill="none" xmlns="http://www.w3.org/2000/svg">
               <g id="a">
                 <path id="Vector" d="M0 0V16C7.93522 16 15.3464 19.8762 19.8611 26.3744L27.4669 37.3205C31.9816 43.82 39.3941 48 48 48V0H0Z" fill="var(--contrast-1)" />
@@ -65,14 +65,14 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
               </g>
             </svg>
           </div>
-          <div className="flex items-stretch">
+          <div className="flex items-stretch ml-[-0.5px]">
             <div className="h-[48px] bg-contrast-1 flex items-center px-4 relative">
               <svg className="absolute bottom-[-0.5px] left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" style={{ display: 'block' }}>
                 <line x1="0" y1="100%" x2="100%" y2="100%" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </svg>
               <HeaderNav nav={nav} homepage={homepage} inFrame={true} />
             </div>
-            <div className="h-[55px] w-[23px] flex-shrink-0">
+            <div className="h-[55px] w-[23px] flex-shrink-0 ml-[-0.5px]">
               <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 23 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="a" clipPath="url(#clip0_218_191_top)">
                   <path id="Vector" d="M23 0H7.55972e-09L0 48C4.02181 48 7 50.9795 7 55L23 55V0Z" fill="var(--contrast-1)" />
@@ -107,7 +107,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
               </svg>
             </div>
           </div>
-          <div className="h-[51px] w-[48px] flex-shrink-0">
+          <div className="h-[51px] w-[48px] flex-shrink-0 ml-[-0.5px]">
             <div className="w-full h-full scale-y-[-1]">
               <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 48 51" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="a">
@@ -126,14 +126,14 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
               </svg>
             </div>
           </div>
-          <div className="flex items-end flex-shrink-0">
+          <div className="flex items-end flex-shrink-0 ml-[-0.5px]">
             <div className="h-[48px] bg-contrast-1 flex items-center px-4 relative">
               <svg className="absolute top-[-0.5px] left-0 w-full h-full pointer-events-none" preserveAspectRatio="none" style={{ display: 'block' }}>
                 <line x1="0" y1="0" x2="100%" y2="0" stroke="var(--foreground)" strokeWidth="2" vectorEffect="non-scaling-stroke" />
               </svg>
               <FooterSection footerData={footerData} />
             </div>
-            <div className="h-[55px] w-[23px] flex-shrink-0">
+            <div className="h-[55px] w-[23px] flex-shrink-0 ml-[-0.5px]">
               <div className="w-full h-full scale-y-[-1]">
                 <svg preserveAspectRatio="none" width="100%" height="100%" overflow="visible" style={{ display: 'block' }} viewBox="0 0 23 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="a" clipPath="url(#clip0_218_191)">
