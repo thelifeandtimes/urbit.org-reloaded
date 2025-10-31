@@ -86,7 +86,7 @@ export function EcosystemNav({ sections = [] }) {
   }, [sections, activeSection]);
 
   return (
-    <nav className="flex flex-col gap-4">
+    <nav className="flex flex-col gap-2">
       {sections.map((section) => {
         const isActive = activeSection === section.id;
 
@@ -94,8 +94,8 @@ export function EcosystemNav({ sections = [] }) {
           <button
             key={section.id}
             onClick={() => handleSectionClick(section.id)}
-            className={`text-left text-large font-[600] transition-colors ${
-              isActive ? "text-white" : "text-gray-87 hover:text-white"
+            className={`font-sans text-left text-2xl font-[400] transition-colors ${
+              isActive ? "text-primary" : "text-contrast-2 hover:text-contrast-3"
             }`}
           >
             {section.title}

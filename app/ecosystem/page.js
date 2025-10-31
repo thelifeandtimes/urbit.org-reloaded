@@ -178,14 +178,14 @@ export default async function EcosystemHome() {
               href={org.data.URL}
               target="_blank"
               key={i}
-              className="relative"
+              className="relative group"
             >
               <div className="ml-8 md:ml-0 relative">
                 <img
                   src={org.data.image}
                   className="w-12 grayscale opacity-[.5] invert absolute bottom-[-.5em] left-[-2.1em]  "
                 />
-                <h1 className="text-xlarge leading-[110%]">{org.data.title}</h1>
+                <h1 className="text-5xl font-bold font-serif text-accent-1 group-hover:text-primary leading-[110%]">{org.data.title}</h1>
               </div>
             </Link>
           );
@@ -195,11 +195,11 @@ export default async function EcosystemHome() {
       <Section id="articles-press" className="container" title="Articles & Press">
         {allArticlesFrontMatter.map((article, i) => {
           return (
-            <Link href={article.data.URL} key={i} target="_blank" className="hover:text-gray-87 text-xlarge leading-[110%] cursor-pointer mb-[1em] flex flex-col">
-              <h3 className="text-sm text-gray-87">{article.data.publication}</h3>
-              <h1 className="font-[900]">{article.data.title}</h1>
-              <h3 className="text-gray-87 font-extrabold">Author: {article.data.author}</h3>
-              <h3 className="text-gray-87">Date: {article.data.date}</h3>
+            <Link href={article.data.URL} key={i} target="_blank" className="group leading-[110%] cursor-pointer mb-[1em] flex flex-col">
+              <h3 className="font-mono text-base text-contrast-2 group-hover:text-primary">{article.data.publication}</h3>
+              <h1 className="font-bold font-serif text-5xl text-accent-1 group-hover:text-primary">{article.data.title}</h1>
+              <h3 className="font-mono text-base text-contrast-2 group-hover:text-primary">Author: {article.data.author}</h3>
+              <h3 className="font-mono text-base text-contrast-2 group-hover:text-primary">Date: {article.data.date}</h3>
             </Link>
           );
         })}
@@ -212,7 +212,7 @@ export const Section = ({ id, title, children, className = "" }) => {
   return (
     <section id={id} className={`${className} md:grid grid-cols-6 w-full h-max [&:not(:first-of-type)]:pt-4 mb-12 gap-x-4`}>
       <div className="col-span-1 mb-4 ">
-        <h1 className="">{title}</h1>
+        <h1 className="font-serif text-2xl font-[400] text-primary">{title}</h1>
       </div>
       <div className="col-span-5">{children}</div>
     </section>

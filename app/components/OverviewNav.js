@@ -17,17 +17,17 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
     <nav className="flex flex-col gap-8">
       {/* Urbit Explained Section */}
       <div>
-        <h3 className="text-large font-[600] mb-4">Urbit Explained</h3>
-        <ul className="flex flex-col gap-2 text-base">
+        <h3 className="text-2xl font-sans font-[400] mb-4">Urbit Explained</h3>
+        <ul className="flex flex-col gap-2 text-2xl font-sans">
           <Link
-            className={currentRoute === "/overview" ? "text-white" : "text-gray-87"}
+            className={currentRoute === "/overview" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"}
             href="/overview"
           >
             <span className="nav-button">Introduction</span>
           </Link>
           <Link
             className={
-              currentRoute === "/overview/urbit-os" ? "text-white" : "text-gray-87"
+              currentRoute === "/overview/urbit-os" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
             }
             href="/overview/urbit-os"
           >
@@ -35,7 +35,7 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
           </Link>
           <Link
             className={
-              currentRoute === "/overview/urbit-id" ? "text-white" : "text-gray-87"
+              currentRoute === "/overview/urbit-id" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
             }
             href="/overview/urbit-id"
           >
@@ -43,7 +43,7 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
           </Link>
           <Link
             className={
-              currentRoute === "/overview/history" ? "text-white" : "text-gray-87"
+              currentRoute === "/overview/history" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
             }
             href="/overview/history"
           >
@@ -54,12 +54,12 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
 
       {/* Running Urbit Section */}
       <div>
-        <h3 className="text-large font-[600] mb-4">Running Urbit</h3>
-        <ul className="flex flex-col gap-2 text-base">
+        <h3 className="text-2xl font-sans font-[400] mb-4">Running Urbit</h3>
+        <ul className="flex flex-col gap-2 text-2xl font-sans">
           {runningUrbitSections.map((section) => (
             <Link
               key={section.id}
-              className="text-gray-87"
+              className="text-contrast-2 hover:text-contrast-3 transition-colors"
               href={`/overview/running-urbit#${section.id}`}
             >
               <span className="nav-button">{section.title}</span>

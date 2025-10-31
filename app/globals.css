@@ -71,14 +71,14 @@
   :root {
   --background: #3F3F3F;
   --foreground: #FFFFFF;
-  --accent-1: #5E604C;
-  --accent-2: #C2C59A;
+  --accent-1: #C2C59A;
+  --accent-2: #5E604C;
   --accent-3: #FBD85F;
   --contrast-1: #797979;
   --contrast-2: #B2B2B2;
   --contrast-3: #EDEDED;
 
-  --primary: #3F3F3F;
+  --primary: #EDEDED;
   --secondary: #C2C59A;
   --tertiary: #797979;
   }
@@ -181,11 +181,11 @@ body {
   }
 
   .overview-section-title {
-    @apply col-span-1 md:col-span-1 md:text-large font-[600] md:mb-0 mb-8;
+    @apply col-span-1 md:col-span-1 text-2xl font-serif font-[400] text-primary md:mb-0 mb-8;
   }
 
   .overview-section-body {
-    @apply col-span-1 md:col-span-4 text-xlarge leading-120;
+    @apply col-span-1 md:col-span-4 font-sans text-xlarge leading-120;
   }
 
   .overview-section-body p:last-of-type {
