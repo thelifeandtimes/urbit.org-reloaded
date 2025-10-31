@@ -17,11 +17,11 @@
  */
 export function SidebarElement({ title, children, className = "" }) {
   return (
-    <div className={`flex flex-col h-full bg-background ${className}`}>
+    <div className={` flex flex-col h-full bg-background ${className}`}>
       {/* Pinned title */}
       {title && (
         <div className="px-6 py-6 shrink-0 border-b border-gray-d9">
-          <h2 className="text-2xl font-serif">{title}</h2>
+          <h2 className="text-2xl font-sans">{title}</h2>
         </div>
       )}
 

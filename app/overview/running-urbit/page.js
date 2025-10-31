@@ -3,7 +3,7 @@ import { getMarkdownContent } from "../../lib/queries";
 import { SidebarSlot } from "../../lib/layoutSlots";
 import { SidebarElement } from "../../components/SidebarElement";
 import { OverviewNav } from "../../components/OverviewNav";
-import { CollapsibleContentBlurb } from "../../components/CollapsibleContentBlurb";
+import { CollapsibleContentBlurb } from "../../components/ContentBlurbs";
 import Markdoc from "@markdoc/markdoc";
 import { glob } from "glob";
 import path from "path";

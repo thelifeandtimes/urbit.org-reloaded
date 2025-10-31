@@ -84,16 +84,16 @@ export default async function PostPage({ params }) {
       {/* Main content - no longer needs sidebar safe zone (handled by layout) */}
       <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
-          <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
+          <h1 className="text-6xl text-accent-1 font-serif font-tall leading-[120%] mb-4">
             {postData.frontMatter.title}
           </h1>
-          <h3 className="text-3xl font-serif leading-[120%] mb-4">
+          <h3 className="text-3xl font-sans leading-[120%] mb-4">
             {postData.frontMatter.description}
           </h3>
           <div className="flex flex-row justify-between mb-8">
-            <h3 className="text-large font-mono mb-4">{postData.frontMatter.date}</h3>
+            <h3 className="text-large font-mono text-contrast-2 mb-4">{postData.frontMatter.date}</h3>
             {(extra.author || extra.ship) && (
-              <div className="flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-[#B2B2B2]">
+              <div className="flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-contrast-2">
                 {extra.author && <div className="mb-[.1em] font-mono">{extra.author}</div>}
                 {extra.ship && <div>{extra.ship}</div>}
               </div>

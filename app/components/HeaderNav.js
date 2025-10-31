@@ -91,6 +91,11 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
               <img
                 src="/icons/urbit-neu.svg"
                 alt="Urbit wordmark"
+                className="pb-1.5 dark:hidden"
+              />
+              <img
+                src="/icons/urbit-neu-dark.svg"
+                alt="Urbit wordmark"
                 className="pb-1.5"
               />
             </Link>
@@ -102,17 +107,31 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
             <span className="pr-4">{routeMap[splitRoute[1]]}</span>
             <span className="">{menuIsOpen
               ?
-              <img
-                src="/icons/hamburger.svg"
-                alt="hamburger menu open"
-                className="w-7 h-6"
-              />
+              <div>
+                <img
+                  src="/icons/hamburger-dark.svg"
+                  alt="hamburger menu open"
+                  className="w-7 h-6 hidden dark:block"
+                />
+                <img
+                  src="/icons/hamburger.svg"
+                  alt="hamburger menu open"
+                  className="w-7 h-6 dark:hidden"
+                />
+              </div>
               :
-              <img
-                src="/icons/hamburger.svg"
-                alt="hamburger menu closed"
-                className="w-7 h-6"
-              />
+              <div>
+                <img
+                  src="/icons/hamburger-dark.svg"
+                  alt="hamburger menu closed"
+                  className="w-7 h-6 hidden dark:block"
+                />
+                <img
+                  src="/icons/hamburger.svg"
+                  alt="hamburger menu closed"
+                  className="w-7 h-6 dark:hidden"
+                />
+              </div>
             }</span>
           </div>
         </div>
@@ -135,7 +154,7 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
                 <Link
                   className={classNames(
                     "text-3xl leading-[1cap] first-of-type:mt-4 last-of-type:mb-4 transition-colors",
-                    (isActive || isHome) ? "text-secondary" : "text-gray-87"
+                    (isActive || isHome) ? "text-primary" : "text-contrast-3"
                   )}
                   key={`${navItem} + ${i}`}
                   href={navItem.url}
@@ -165,12 +184,12 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
             {/* External Resources Section */}
             {nav?.filter(navItem => navItem.external).length > 0 && (
               <div className="flex flex-col gap-4 pt-4 border-t border-gray-3c">
-                <h3 className="text-sm uppercase tracking-wider text-gray-87 opacity-60">Resources</h3>
+                <h3 className="text-sm uppercase tracking-wider text-contrast-3 opacity-60">Resources</h3>
                 <div className="flex flex-col gap-4">
                   {nav?.filter(navItem => navItem.external).map((navItem, i) => {
                     return (
                       <Link
-                        className="text-xl leading-[1cap] text-gray-87 transition-colors hover:text-secondary"
+                        className="text-xl leading-[1cap] text-primary transition-colors hover:text-contrast-2"
                         key={`${navItem} + ${i}`}
                         href={navItem.url}
                         onClick={toggleMenu}

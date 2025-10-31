@@ -80,30 +80,31 @@ export default async function BlogHome() {
                     className="w-full group"
                   >
                     <div className="py-4 flex flex-col leading-[120%]">
-                      <div className="flex flex-row gap-x-4 justify-between">
-                        <div className="font-bold font-serif text-5xl text-accent-1 group-hover:text-primary">{title}</div>
-                        <div className="flex flex-col">
-                          {extra && (extra.author || extra.ship) && (
-                            <div className="hidden md:flex flex-col w-auto font-mono text-base items-end whitespace-nowrap text-contrast-2 group-hover:text-primary">
-                              {extra.ship ? (
-                                <div>{extra.ship}</div>
-                              ) : (
-                                extra.author && <div>{extra.author}</div>
-                              )}
-                              {date && <div>{date}</div>}
-                            </div>
-                          )}
+                      <div className="px-2">
+                        <div className="flex flex-row gap-x-4 justify-between">
+                          <div className="font-bold font-serif text-5xl text-accent-1 group-hover:text-primary md:mb-2">{title}</div>
+                          <div className="flex flex-col">
+                            {extra && (extra.author || extra.ship) && (
+                              <div className="hidden md:flex flex-col w-auto font-mono text-base items-end w-[160px] text-contrast-2 group-hover:text-primary">
+                                {extra.ship ? (
+                                  <div>{extra.ship}</div>
+                                ) : (
+                                  extra.author && <div>{extra.author}</div>
+                                )}
+                                {date && <div>{date}</div>}
+                              </div>
+                            )}
+                          </div>
                         </div>
+                        <div className="font-sans md:mb-0 text-2xl text-primary group-hover:text-primary line-clamp-3">{description}</div>
                       </div>
-                      <div className="font-sans mb-4 md:mb-0 text-2xl text-primary group-hover:text-primary">{description}</div>
-
                       {/* <div className="font-mono flex md:hidden flex-col justify-between"> */}
                       {/*   <div className="">{extra.author}</div> */}
                       {/*   <div>{extra.ship}</div> */}
                       {/* </div> */}
                       {/* <div className="text-gray-87 mb-2">{formatDate(date)}</div> */}
                       {extra?.image && (
-                        <div className="xl:w-auto w-full relative mb-2 md:mb-0 ">
+                        <div className="xl:w-auto w-full relative mb-2 md:mb-0">
                           <img className="aspect-[21/9] object-cover w-full h-36 xl:w-auto xl:h-full" loading="lazy" src={extra.image} alt={title} />
                         </div>
                       )}

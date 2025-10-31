@@ -34,7 +34,7 @@ export function RecommendedReading({ posts }) {
           <h3 className="font-serif text-lg leading-120 mb-2 group-hover:text-gray-87 transition-colors">
             {post.title}
           </h3>
-          <p className="text-base leading-120 text-gray-87 line-clamp-2">
+          <p className="font-sans text-base leading-120 text-gray-87 line-clamp-2">
             {post.description}
           </p>
         </Link>
