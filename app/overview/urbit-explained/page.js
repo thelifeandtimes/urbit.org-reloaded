@@ -1,5 +1,5 @@
 import React from "react";
-import { getMarkdownContent } from "../../lib/queries";
+import { getMarkdownContent, getSectionContent } from "../../lib/queries";
 import { SidebarSlot, SidebarPositionSlot } from "../../lib/layoutSlots";
 import { OverviewNav } from "../../components/OverviewNav";
 import { SidebarElement } from "../../components/SidebarElement";
@@ -10,8 +10,23 @@ export default async function UrbitExplained() {
 
   // Load Running Urbit sections for navigation
   const configData = await getMarkdownContent("overview/running-urbit/config.md");
-  const sections = configData.frontMatter.sections || [];
-  const navSections = sections.map(({ id, title }) => ({ id, title }));
+  const configSections = configData.frontMatter.sections || [];
+
+  const navSections = [];
+  for (const configSection of configSections) {
+    const sectionId = configSection["section-id"];
+    try {
+      const sectionData = await getSectionContent(`overview/running-urbit/sections/${sectionId}.md`);
+      if (sectionData.frontMatter) {
+        navSections.push({
+          id: sectionId,
+          title: sectionData.frontMatter.title
+        });
+      }
+    } catch (error) {
+      console.error(`Error loading section ${sectionId}:`, error);
+    }
+  }
 
   // Load overview config for sidebar position
   const overviewConfig = await getMarkdownContent("overview/config.md");

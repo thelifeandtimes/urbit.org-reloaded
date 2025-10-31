@@ -36,18 +36,18 @@ export function HomepageSubsection({ id, title, description, image, links = [] }
       {links.length > 0 && (
         <div className="flex flex-col sm:flex-row gap-4">
           {links.map((link, idx) => {
-            const isExternal = link.ref.startsWith("http");
+            const isExternal = link.link.startsWith("http");
 
             return (
               <Link
                 key={idx}
-                href={link.ref}
+                href={link.link}
                 className="inline-flex items-center justify-center px-4 py-2 text-base font-semibold
                   bg-[#44420c] text-white border border-[#3f3f3f] rounded-[5px]
                   hover:bg-[#3f3f3f] transition-colors"
                 {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
               >
-                {link.label}
+                {link.title}
               </Link>
             );
           })}

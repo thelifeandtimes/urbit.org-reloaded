@@ -4,14 +4,19 @@ description = "Azimuth identities are cryptographically owned Urbit address spac
 parent-section = "get-urbit-id"
 tags = ["ethereum", "layer 1", "layer 2", "urbit id", "nft"]
 lastest-update ="<some-arvo-hash>"
+image = ""
+imageDark = ""
 references = [
     { title = "Network Explorer", link = "https://network.urbit.org" },
     { title = "Bridge", link = "https://bridge.urbit.org" },
     { title = "Technical documentation", link = "https://docs.urbit.org" }
 ]
 
+[cta-button]
+label = ""
+link = ""
+
 [extra]
-image = "s3.media.urbit.org/path/to/image.jpg"
 wip = true
 +++
 

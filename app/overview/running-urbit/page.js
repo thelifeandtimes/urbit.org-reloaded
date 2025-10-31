@@ -1,65 +1,84 @@
 import React from "react";
-import { getMarkdownContent } from "../../lib/queries";
+import { getMarkdownContent, getSectionContent } from "../../lib/queries";
 import { SidebarSlot } from "../../lib/layoutSlots";
 import { SidebarElement } from "../../components/SidebarElement";
 import { OverviewNav } from "../../components/OverviewNav";
 import { CollapsibleContentBlurb } from "../../components/ContentBlurbs";
 import Markdoc from "@markdoc/markdoc";
-import { glob } from "glob";
-import path from "path";
-
-const CONTENT_PATH = "app/content/overview/running-urbit";
 
 export default async function RunningUrbitPage() {
   // Load the config
   const configData = await getMarkdownContent("overview/running-urbit/config.md");
-  const sections = configData.frontMatter.sections || [];
+  const configSections = configData.frontMatter.sections || [];
+
+  // Build sections array by iterating through config order
+  const sections = [];
+
+  for (const configSection of configSections) {
+    const sectionId = configSection["section-id"];
+
+    try {
+      // Load the section file for this section-id
+      const sectionData = await getSectionContent(`overview/running-urbit/sections/${sectionId}.md`);
+
+      if (sectionData.frontMatter) {
+        // Render intro and outro content
+        const introRendered = sectionData.introContent
+          ? Markdoc.renderers.react(sectionData.introContent, React)
+          : null;
+        const outroRendered = sectionData.outroContent
+          ? Markdoc.renderers.react(sectionData.outroContent, React)
+          : null;
+
+        sections.push({
+          id: sectionId,
+          title: sectionData.frontMatter.title,
+          description: sectionData.frontMatter.description,
+          introLabel: sectionData.frontMatter["intro-label"] || "",
+          outroLabel: sectionData.frontMatter["outro-label"] || "",
+          introContent: introRendered,
+          outroContent: outroRendered,
+          blurbSlugs: configSection?.blurbs || [],
+        });
+      }
+    } catch (error) {
+      console.error(`Error loading section ${sectionId}:`, error);
+    }
+  }
 
   // Create a serializable version for the nav (only id and title)
   const navSections = sections.map(({ id, title }) => ({ id, title }));
 
-  // Load all content files in the running-urbit directory
-  const contentFiles = await glob(
-    path.join(process.cwd(), CONTENT_PATH, "*.md")
-  );
+  // Load all blurbs
+  const blurbsBySlug = {};
 
-  // Parse each content file and organize by parent-section
-  const contentBySection = {};
+  for (const section of sections) {
+    for (const blurbSlug of section.blurbSlugs) {
+      if (!blurbsBySlug[blurbSlug]) {
+        try {
+          const blurbData = await getMarkdownContent(`blurbs/${blurbSlug}.md`, "toml");
 
-  for (const filePath of contentFiles) {
-    // Skip config.md
-    if (filePath.includes("config.md") || filePath.includes("todos.md")) continue;
+          // Render the Markdoc content to React on the server
+          const renderedContent = Markdoc.renderers.react(blurbData.content, React);
 
-    const slug = path
-      .relative(path.join(process.cwd(), "app/content"), filePath)
-      .replace(/\.md$/, "");
+          // Serialize references to plain objects
+          const references = (blurbData.frontMatter.references || []).map(ref => ({
+            title: ref.title,
+            link: ref.link,
+          }));
 
-    try {
-      const fileData = await getMarkdownContent(slug + ".md", "toml");
-      const parentSection = fileData.frontMatter["parent-section"];
-
-      if (parentSection) {
-        if (!contentBySection[parentSection]) {
-          contentBySection[parentSection] = [];
+          blurbsBySlug[blurbSlug] = {
+            title: blurbData.frontMatter.title,
+            description: blurbData.frontMatter.description,
+            content: renderedContent,
+            references,
+            image: blurbData.frontMatter.image || "",
+            imageDark: blurbData.frontMatter.imageDark || "",
+          };
+        } catch (error) {
+          console.error(`Error loading blurb ${blurbSlug}:`, error);
         }
-        // Render the Markdoc content to React on the server
-        const renderedContent = Markdoc.renderers.react(fileData.content, React);
-
-        // Serialize references to plain objects
-        const references = (fileData.frontMatter.references || []).map(ref => ({
-          title: ref.title,
-          link: ref.link,
-        }));
-
-        contentBySection[parentSection].push({
-          title: fileData.frontMatter.title,
-          description: fileData.frontMatter.description,
-          content: renderedContent,
-          references,
-        });
       }
-    } catch (error) {
-      console.error(`Error loading ${filePath}:`, error);
     }
   }
 
@@ -88,21 +107,46 @@ export default async function RunningUrbitPage() {
               <div key={section.id} id={section.id} className="mb-16 scroll-mt-24">
                 <h2 className="text-3xl font-serif font-[600] mb-4">{section.title}</h2>
                 <p className="font-sans text-large text-gray-87 mb-6">{section.description}</p>
-                <p className="text-xlarge mb-8">{section.content}</p>
+
+                {/* Render intro content as separate article */}
+                {section.introContent && (
+                  <article className="prose prose-invert max-w-none mb-8">
+                    {section.introLabel && (
+                      <h3 className="text-xl font-[600] mb-4">{section.introLabel}</h3>
+                    )}
+                    {section.introContent}
+                  </article>
+                )}
 
                 {/* Render collapsible content blurbs for this section */}
-                {contentBySection[section.id] && (
+                {section.blurbSlugs.length > 0 && (
                   <div className="space-y-0">
-                    {contentBySection[section.id].map((item, idx) => (
-                      <CollapsibleContentBlurb
-                        key={idx}
-                        title={item.title}
-                        description={item.description}
-                        content={item.content}
-                        references={item.references}
-                      />
-                    ))}
+                    {section.blurbSlugs.map((blurbSlug, idx) => {
+                      const blurb = blurbsBySlug[blurbSlug];
+                      if (!blurb) return null;
+                      return (
+                        <CollapsibleContentBlurb
+                          key={idx}
+                          title={blurb.title}
+                          description={blurb.description}
+                          content={blurb.content}
+                          references={blurb.references}
+                          image={blurb.image}
+                          imageDark={blurb.imageDark}
+                        />
+                      );
+                    })}
                   </div>
+                )}
+
+                {/* Render outro content as separate article */}
+                {section.outroContent && (
+                  <article className="prose prose-invert max-w-none mt-8">
+                    {section.outroLabel && (
+                      <h3 className="text-xl font-[600] mb-4">{section.outroLabel}</h3>
+                    )}
+                    {section.outroContent}
+                  </article>
                 )}
               </div>
             ))}

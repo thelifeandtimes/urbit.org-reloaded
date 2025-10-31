@@ -6,12 +6,13 @@ import Link from "next/link";
 /**
  * HomepageAccordion - Mobile accordion view for homepage sections
  *
- * Displays sections as collapsible accordions, each containing their subsections.
+ * Displays sections as collapsible accordions, each containing their blurbs.
  * Only one section can be expanded at a time.
  *
- * @param {Array} sections - Array of section objects with subsections
+ * @param {Array} sections - Array of section objects with blurbSlugs
+ * @param {Object} blurbsBySlug - Object mapping blurb slugs to blurb data
  */
-export function HomepageAccordion({ sections = [] }) {
+export function HomepageAccordion({ sections = [], blurbsBySlug = {} }) {
   const [expandedSection, setExpandedSection] = useState(null);
 
   const toggleSection = (sectionId) => {
@@ -53,44 +54,49 @@ export function HomepageAccordion({ sections = [] }) {
               </div>
             </button>
 
-            {/* Expanded Content - Subsections */}
+            {/* Expanded Content - Blurbs */}
             {isExpanded && (
               <div className="pb-6 animate-fadeIn">
                 <p className="text-base text-gray-87 mb-6">{section.description}</p>
 
                 <div className="flex flex-col gap-8">
-                  {section.subsections.map((subsection) => (
-                    <div key={subsection.id}>
-                      <h3 className="text-large font-[600] mb-2">{subsection.title}</h3>
-                      <p className="text-base text-gray-87 mb-4">
-                        {subsection.description}
-                      </p>
+                  {section.blurbSlugs.map((blurbSlug) => {
+                    const blurb = blurbsBySlug[blurbSlug];
+                    if (!blurb) return null;
 
-                      {subsection.links && subsection.links.length > 0 && (
-                        <div className="flex flex-col gap-3">
-                          {subsection.links.map((link, idx) => {
-                            const isExternal = link.ref.startsWith("http");
+                    return (
+                      <div key={blurb.id}>
+                        <h3 className="text-large font-[600] mb-2">{blurb.title}</h3>
+                        <p className="text-base text-gray-87 mb-4">
+                          {blurb.description}
+                        </p>
 
-                            return (
-                              <Link
-                                key={idx}
-                                href={link.ref}
-                                className="inline-flex items-center justify-center px-4 py-2 text-sm font-[600]
-                                  bg-primary text-secondary border-2 border-secondary rounded-lg
-                                  hover:bg-secondary hover:text-primary transition-colors"
-                                {...(isExternal && {
-                                  target: "_blank",
-                                  rel: "noopener noreferrer",
-                                })}
-                              >
-                                {link.label}
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                        {blurb.references && blurb.references.length > 0 && (
+                          <div className="flex flex-col gap-3">
+                            {blurb.references.map((link, idx) => {
+                              const isExternal = link.link.startsWith("http");
+
+                              return (
+                                <Link
+                                  key={idx}
+                                  href={link.link}
+                                  className="inline-flex items-center justify-center px-4 py-2 text-sm font-[600]
+                                    bg-primary text-secondary border-2 border-secondary rounded-lg
+                                    hover:bg-secondary hover:text-primary transition-colors"
+                                  {...(isExternal && {
+                                    target: "_blank",
+                                    rel: "noopener noreferrer",
+                                  })}
+                                >
+                                  {link.title}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             )}

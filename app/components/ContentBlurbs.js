@@ -1,13 +1,34 @@
 "use client"
 import { useState } from "react";
 
-export const CollapsibleContentBlurb = ({ title, description, content, references }) => {
+export const CollapsibleContentBlurb = ({ title, description, content, references, image, imageDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="">
       <div className="flex justify-between items-start gap-4">
         <div className="flex-1">
+          {/* Render images if provided */}
+          {(image || imageDark) && (
+            <div className="mb-4">
+              {/* Light mode image */}
+              {image && (
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-12 h-12 md:w-16 md:h-16 dark:hidden"
+                />
+              )}
+              {/* Dark mode image - falls back to light image if imageDark not specified */}
+              {(imageDark || image) && (
+                <img
+                  src={imageDark || image}
+                  alt={title}
+                  className="w-12 h-12 md:w-16 md:h-16 hidden dark:block"
+                />
+              )}
+            </div>
+          )}
           <h3 className="text-4xl text-accent-1 font-[600] font-serif group-hover:text-gray-87 transition-colors">
             {title}
           </h3>
@@ -25,7 +46,7 @@ export const CollapsibleContentBlurb = ({ title, description, content, reference
               </li>
             ))}
           </ul>
-          <p className="text-base text-gray-87 line-clamp-5">{content}</p>
+          <div className="text-base text-gray-87 line-clamp-5">{content}</div>
         </div>
       </div>
       <button
@@ -58,13 +79,34 @@ export const CollapsibleContentBlurb = ({ title, description, content, reference
   );
 };
 
-export const PreviewContentBlurb = ({ title, description, content, references }) => {
+export const PreviewContentBlurb = ({ title, description, content, references, image, imageDark }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <div className="">
       <div className="flex justify-between items-start gap-4">
         <div className="flex-1">
+          {/* Render images if provided */}
+          {(image || imageDark) && (
+            <div className="mb-4">
+              {/* Light mode image */}
+              {image && (
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-12 h-12 md:w-16 md:h-16 dark:hidden"
+                />
+              )}
+              {/* Dark mode image - falls back to light image if imageDark not specified */}
+              {(imageDark || image) && (
+                <img
+                  src={imageDark || image}
+                  alt={title}
+                  className="w-12 h-12 md:w-16 md:h-16 hidden dark:block"
+                />
+              )}
+            </div>
+          )}
           <h3 className="text-4xl text-accent-1 font-[600] font-serif group-hover:text-gray-87 transition-colors">
             {title}
           </h3>
@@ -82,7 +124,7 @@ export const PreviewContentBlurb = ({ title, description, content, references })
               </li>
             ))}
           </ul>
-          <p className="text-base text-gray-87 line-clamp-5">{content}</p>
+          <div className="text-base text-gray-87 line-clamp-5">{content}</div>
         </div>
       </div>
       <button

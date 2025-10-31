@@ -4,14 +4,19 @@ description = "Groundwire identities are cryptographically owned Urbit address s
 parent-section = "get-urbit-id"
 tags = ["bitcoin", "urbit-id", "ordinal"]
 lastest-update ="<some-arvo-hash>"
+image = ""
+imageDark = ""
 references = [
     # { title = "Network Explorer", link = "https://network.urbit.org" },
     # { title = "Bridge", link = "https://bridge.urbit.org" },
     # { title = "Technical documentation, link = "https://docs.urbit.org" }
 ]
 
+[cta-button]
+label = ""
+link = ""
+
 [extra]
-image = "s3.media.urbit.org/path/to/image.jpg"
 wip = true
 +++
 

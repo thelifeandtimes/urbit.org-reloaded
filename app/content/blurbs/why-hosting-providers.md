@@ -4,13 +4,18 @@ description = "Urbit is a personal server, yet there are still service providers
 parent-section = "hosting-providers"
 tags = ["hosting", "hosting-provider", "urbit-os"]
 lastest-update ="<some-arvo-hash>"
+image = ""
+imageDark = ""
 references = [
     # { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" },
     { title = "Tlon Corporation", link = "https://tlon.io" }
 ]
 
+[cta-button]
+label = ""
+link = ""
+
 [extra]
-image = "s3.media.urbit.org/path/to/image.jpg"
 wip = true
 +++
 

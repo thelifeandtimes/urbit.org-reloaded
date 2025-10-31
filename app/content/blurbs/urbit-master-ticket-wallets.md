@@ -4,13 +4,18 @@ description = "Master ticket wallets are an easy and secure way for managing own
 parent-section = "get-urbit-id"
 tags = ["ethereum", "wallet", "azimuth"]
 lastest-update ="<some-arvo-hash>"
+image = ""
+imageDark = ""
 references = [
     { title = "Bridge", link = "https://bridge.urbit.org" },
     { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" }
 ]
 
+[cta-button]
+label = ""
+link = ""
+
 [extra]
-image = "s3.media.urbit.org/path/to/image.jpg"
 wip = true
 +++
 
