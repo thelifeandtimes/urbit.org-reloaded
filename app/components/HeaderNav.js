@@ -66,7 +66,7 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
 
   return (
     <>
-      <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-accent justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
+      <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-contrast-1 justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
         <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
           <div
             className="flex items-center cursor-pointer h-full w-full justify-between select-none relative"
@@ -121,7 +121,7 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
         {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
         <ul
           className={classNames(
-            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-accent min-h-[60vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
+            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-contrast-1 min-h-[60vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
             { hidden: !menuIsOpen }
           )}
         >

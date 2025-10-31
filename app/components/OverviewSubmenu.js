@@ -20,7 +20,7 @@ export const OverviewSubmenu = ({ runningUrbitSections = [] }) => {
   };
 
   return (
-    <div className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-accent border-b-[1.5px] border-gray-3c z-40">
+    <div className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-contrast-1 border-b-[1.5px] border-gray-3c z-40">
       {/* Primary tabs */}
       <div className="overflow-x-auto no-scrollbar border-b border-gray-3c/30">
         <div className="flex gap-6 px-4 py-3 min-w-max">

@@ -36,7 +36,7 @@ export const EcosystemSubmenu = () => {
   ];
 
   return (
-    <div className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-accent border-b-[1.5px] border-gray-3c z-40">
+    <div className="md:hidden fixed top-[4.5rem] left-0 right-0 bg-contrast-1 border-b-[1.5px] border-gray-3c z-40">
       <div className="overflow-x-auto no-scrollbar">
         <div className="flex gap-6 px-4 py-3 min-w-max">
           {tabs.map((tab) => (

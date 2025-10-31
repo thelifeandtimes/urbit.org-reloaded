@@ -130,7 +130,7 @@ export const FooterExpansion = ({ isOpen, type, footerData, onClose, onHeightCha
 // Mobile Component: Resources stacked vertically, socials as icons
 const MobileFooter = ({ resources, socials }) => {
   return (
-    <div className="flex flex-col text-[16px] bg-accent gap-y-6 border-t border-t-1 border-foreground p-4">
+    <div className="flex flex-col text-[16px] bg-contrast-1 gap-y-6 border-t border-t-1 border-foreground p-4">
       <NewsletterSignup className="z-10 mb-2" />
       {/* Socials - Icons only */}
       {socials && (
