@@ -50,7 +50,7 @@ export default async function EcosystemHome() {
 
       {/* Sidebar navigation - renders in layout */}
       <SidebarSlot>
-        <SidebarElement title="Ecosystem">
+        <SidebarElement title="">
           <EcosystemNav sections={sections} />
         </SidebarElement>
       </SidebarSlot>

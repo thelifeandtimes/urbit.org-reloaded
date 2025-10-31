@@ -13,6 +13,8 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
     setSidebarVisible(true);
   }, [setSidebarVisible]);
 
+  const isUrbitExplainedRoute = currentRoute.startsWith("/overview/urbit-explained") || currentRoute === "/overview" || currentRoute === "/overview/urbit-os" || currentRoute === "/overview/urbit-id" || currentRoute === "/overview/history";
+
   return (
     <nav className="flex flex-col gap-8">
       {/* Urbit Explained Section */}
@@ -20,32 +22,30 @@ export const OverviewNav = ({ runningUrbitSections = [] }) => {
         <h3 className="text-2xl font-sans font-[400] mb-4">Urbit Explained</h3>
         <ul className="flex flex-col gap-2 text-2xl font-sans">
           <Link
-            className={currentRoute === "/overview" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"}
-            href="/overview"
+            className="text-contrast-2 hover:text-contrast-3 transition-colors"
+            href="/overview/urbit-explained"
+            scroll={true}
           >
             <span className="nav-button">Introduction</span>
           </Link>
           <Link
-            className={
-              currentRoute === "/overview/urbit-os" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
-            }
-            href="/overview/urbit-os"
+            className="text-contrast-2 hover:text-contrast-3 transition-colors"
+            href="/overview/urbit-explained#urbit-os"
+            scroll={true}
           >
             <span className="nav-button">Urbit OS</span>
           </Link>
           <Link
-            className={
-              currentRoute === "/overview/urbit-id" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
-            }
-            href="/overview/urbit-id"
+            className="text-contrast-2 hover:text-contrast-3 transition-colors"
+            href="/overview/urbit-explained#urbit-id"
+            scroll={true}
           >
             <span className="nav-button">Urbit ID</span>
           </Link>
           <Link
-            className={
-              currentRoute === "/overview/history" ? "text-primary transition-colors" : "text-contrast-2 hover:text-contrast-3 transition-colors"
-            }
-            href="/overview/history"
+            className="text-contrast-2 hover:text-contrast-3 transition-colors"
+            href="/overview/urbit-explained#history"
+            scroll={true}
           >
             <span className="nav-button">History</span>
           </Link>

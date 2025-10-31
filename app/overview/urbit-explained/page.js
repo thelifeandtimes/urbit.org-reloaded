@@ -1,28 +1,36 @@
 import React from "react";
 import { getMarkdownContent } from "../../lib/queries";
-import Markdoc from "@markdoc/markdoc";
-import { SidebarSlot } from "../../lib/layoutSlots";
+import { SidebarSlot, SidebarPositionSlot } from "../../lib/layoutSlots";
 import { OverviewNav } from "../../components/OverviewNav";
 import { SidebarElement } from "../../components/SidebarElement";
+import Markdoc from "@markdoc/markdoc";
 
-export default async function overview() {
-  const pageData = await getMarkdownContent("overview/history.md");
+export default async function UrbitExplained() {
+  const pageData = await getMarkdownContent("overview/urbit-explained.md");
 
   // Load Running Urbit sections for navigation
   const configData = await getMarkdownContent("overview/running-urbit/config.md");
   const sections = configData.frontMatter.sections || [];
   const navSections = sections.map(({ id, title }) => ({ id, title }));
 
+  // Load overview config for sidebar position
+  const overviewConfig = await getMarkdownContent("overview/config.md");
+  const sidebarPosition = overviewConfig.frontMatter?.sidebar_position || 'right';
+
   return (
     <div>
+      {/* Set sidebar position */}
+      <SidebarPositionSlot position={sidebarPosition} />
+
       {/* Sidebar slot - renders in layout */}
       <SidebarSlot>
-        <SidebarElement title="Overview">
+        <SidebarElement title="">
           <OverviewNav runningUrbitSections={navSections} />
         </SidebarElement>
       </SidebarSlot>
 
-      {/* Main content - no longer needs sidebar safe zone */}
+      {/* Main content */}
+      <img src="/icons/digi-logo-1.svg" className="hidden md:block pb-4" />
       <section className="mt-9 md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <article>
