@@ -16,29 +16,42 @@ const POSTS_DIR = path.join(process.cwd(), BLOG_PATH);
 export async function generateMetadata({ params }, parent) {
   const postSlug = `/blog/${params.blog}.md`;
   const postData = await getMarkdownContent(postSlug, "toml");
-  return {
+
+  const metadata = {
     title: `${postData.frontMatter.title} • Blog`,
     description: `${postData.frontMatter.description}`,
-    openGraph: {
+  };
+
+  // Only add openGraph image if it exists
+  if (postData.frontMatter?.extra?.image) {
+    metadata.openGraph = {
       images: [
         {
-          url: `${postData.frontMatter?.extra.image}`,
+          url: postData.frontMatter.extra.image,
           width: 1200,
           height: 630,
         },
       ]
-    },
-  };
+    };
+  }
+
+  return metadata;
 }
 export async function generateStaticParams() {
   const postPaths = await glob(path.join(POSTS_DIR, "**/*.md"));
-  const paths = postPaths?.map((postPath) => {
-    const p = path.basename(postPath, ".md");
-    return {
-      blog: JSON.parse(JSON.stringify(p)),
-      // Strip the .md extension
-    };
-  });
+  const paths = postPaths
+    ?.filter((postPath) => {
+      const filename = path.basename(postPath, ".md");
+      // Exclude config files from blog post generation
+      return filename !== "config";
+    })
+    .map((postPath) => {
+      const p = path.basename(postPath, ".md");
+      return {
+        blog: JSON.parse(JSON.stringify(p)),
+        // Strip the .md extension
+      };
+    });
 
   return paths;
 }
@@ -46,7 +59,7 @@ export async function generateStaticParams() {
 export default async function PostPage({ params }) {
   const postSlug = `/blog/${params.blog}.md`; // Append .md here to use in the file path
   const postData = await getMarkdownContent(postSlug, "toml");
-  const { title, date, extra, taxonomies } = postData.frontMatter;
+  const { title, date, extra = {}, taxonomies } = postData.frontMatter;
 
   // Get recommended posts
   const allPosts = await getAllBlogPosts();
@@ -79,10 +92,12 @@ export default async function PostPage({ params }) {
           </h3>
           <div className="flex flex-row justify-between mb-8">
             <h3 className="text-large font-mono mb-4">{postData.frontMatter.date}</h3>
-            <div className="flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-[#B2B2B2]">
-              <div className="mb-[.1em] font-mono">{extra.author}</div>
-              <div>{extra.ship}</div>
-            </div>
+            {(extra.author || extra.ship) && (
+              <div className="flex flex-col leading-[120%] mb-4 font-mono text-large tracking-[.01em] text-[#B2B2B2]">
+                {extra.author && <div className="mb-[.1em] font-mono">{extra.author}</div>}
+                {extra.ship && <div>{extra.ship}</div>}
+              </div>
+            )}
           </div>
           {Markdoc.renderers.react(postData.content, React)}
         </div>
