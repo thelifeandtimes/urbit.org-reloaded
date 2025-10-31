@@ -209,8 +209,8 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
             {/* Main content - centered, with conditional padding for sidebar safe zone */}
             <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] ${sidebar
               ? sidebarPosition === 'left'
-                ? 'pl-[455px]'
-                : 'pr-[455px]'
+                ? 'md:pl-[305px] lg:pl-[365px] xl:pl-[405px]'
+                : 'md:pr-[305px] lg:pr-[365px] xl:pr-[405px]'
               : ''
               }`}>
               {children}
@@ -221,7 +221,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
         {/* Sidebar - fixed positioning, outside content flow */}
         {sidebar && (
           <aside
-            className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] md:w-[300px] lg:w-[360px] xl:w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             style={{ maxHeight: `calc(100vh - 110px - ${expansionHeight}px)` }}
           >
             {sidebar}
