@@ -1,5 +1,5 @@
 import React from "react";
-import { getMarkdownContent, getPostsTree } from "../../lib/queries";
+import { getMarkdownContent } from "../../lib/queries";
 import { SidebarSlot } from "../../lib/layoutSlots";
 import { SidebarElement } from "../../components/SidebarElement";
 import { OverviewNav } from "../../components/OverviewNav";
@@ -67,7 +67,7 @@ export default async function RunningUrbitPage() {
     <div>
       {/* Sidebar slot - renders in layout */}
       <SidebarSlot>
-        <SidebarElement title="Overview">
+        <SidebarElement title="">
           <OverviewNav runningUrbitSections={navSections} />
         </SidebarElement>
       </SidebarSlot>
@@ -109,6 +109,37 @@ export default async function RunningUrbitPage() {
           </div>
         </div>
       </section>
+
+      {/* Inline script for anchor scrolling - runs client-side after hydration */}
+      <script dangerouslySetInnerHTML={{
+        __html: `
+        (function() {
+          function scrollToAnchor(hash) {
+            if (!hash) return;
+            const id = hash.startsWith('#') ? hash.slice(1) : hash;
+            const element = document.getElementById(id);
+            if (element) {
+              const top = element.getBoundingClientRect().top + window.scrollY - 100;
+              window.scrollTo({ top, behavior: 'smooth' });
+            }
+          }
+
+          // Handle initial load with hash
+          if (window.location.hash) {
+            setTimeout(() => scrollToAnchor(window.location.hash), 100);
+          }
+
+          // Handle hash changes (clicking anchor links)
+          window.addEventListener('hashchange', () => {
+            scrollToAnchor(window.location.hash);
+          });
+
+          // Handle popstate (browser back/forward)
+          window.addEventListener('popstate', () => {
+            setTimeout(() => scrollToAnchor(window.location.hash), 50);
+          });
+        })();
+      `}} />
     </div>
   );
 }
