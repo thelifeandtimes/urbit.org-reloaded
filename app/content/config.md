@@ -11,15 +11,6 @@ site_metadata:
   canonicalUrl: "https://urbit.org"
   meta_image: "/meta/og-image.png"
   meta_image_alt: "Urbit meta image"
-homepage:
-  headline: "Urbit : a clean-slate OS and network for the 21st century"
-  links:
-    - title: "Get on the network"
-      href: "/get-on-the-network"
-      external: false
-    - title: "Docs"
-      href: "https://docs.urbit.org/"
-      external: true
 nav:
 - title: Overview
   url: "/overview"
@@ -27,12 +18,6 @@ nav:
 - title: Ecosystem
   url: "/ecosystem"
   external: false
-# - title: Grants
-#   url: "/grants"
-#   external: false
-# - title: Events
-#   url: "/events"
-#   external: false
 - title: Blog
   url: "/blog"
   external: false

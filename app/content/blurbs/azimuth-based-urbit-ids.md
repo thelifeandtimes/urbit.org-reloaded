@@ -1,20 +1,20 @@
 +++
 title = "Azimuth-based Urbit IDs"
 description = "Azimuth identities are cryptographically owned Urbit address space on the Ethereum blockchain"
-parent-section = "get-urbit-id"
 tags = ["ethereum", "layer 1", "layer 2", "urbit id", "nft"]
 lastest-update ="<some-arvo-hash>"
 image = ""
 imageDark = ""
 references = [
-    { title = "Network Explorer", link = "https://network.urbit.org" },
-    { title = "Bridge", link = "https://bridge.urbit.org" },
-    { title = "Technical documentation", link = "https://docs.urbit.org" }
+    { title = "Network Explorer", link = "https://network.urbit.org", description = "Explore the Urbit address space and network" },
+    { title = "Bridge", link = "https://bridge.urbit.org", description = "Manage your Urbit ID and keys" },
+    { title = "Technical documentation", link = "https://docs.urbit.org", description = "Learn more about Urbit's architecture" }
 ]
 
-[cta-button]
+[call-to-action]
 label = ""
 link = ""
+description = ""
 
 [extra]
 wip = true

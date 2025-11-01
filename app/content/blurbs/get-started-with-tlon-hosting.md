@@ -1,19 +1,19 @@
 +++
 title = "Tlon hosting"
 description = "Tlon Corporation is the preeminent hosting provider which provides free and seamless onboarding to the Urbit network"
-parent-section = "hosting-providers"
 tags = ["hosting", "hosting-provider", "urbit-os", "tlon", "layer 2"]
 lastest-update ="<some-arvo-hash>"
 image = ""
 imageDark = ""
 references = [
-    # { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet" },
-    { title = "Tlon Corporation", link = "https://tlon.io" }
+    # { title = "Technical documentation", link = "https://docs.urbit.org/user-manual/id/hd-wallet", description = "" },
+    { title = "Tlon Corporation", link = "https://tlon.io", description = "Learn more about Tlon's hosting services" }
 ]
 
-[cta-button]
+[call-to-action]
 label = ""
 link = ""
+description = ""
 
 [extra]
 wip = true

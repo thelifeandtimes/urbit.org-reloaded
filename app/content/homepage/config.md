@@ -29,11 +29,16 @@ hero:
     link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
 
 # Below-the-fold sections
+# Each section has a section-blurb (displays as section header/intro)
+# and subsection-blurbs (displays as individual subsections)
 sections:
   - section-id: "self-hosting"
-    blurbs: ["get-started-with-command-line", "get-started-with-native-planet", "get-started-with-cloud-server"]
+    section-blurb: "homepage-self-hosting"
+    subsection-blurbs: ["get-started-with-command-line", "get-started-with-native-planet", "get-started-with-cloud-server"]
   - section-id: "hosting-providers"
-    blurbs: ["get-started-with-tlon-hosting"]
+    section-blurb: "homepage-hosting-providers"
+    subsection-blurbs: ["get-started-with-tlon-hosting"]
   - section-id: "go-deeper"
-    blurbs: ["build-out-your-urbit"]
+    section-blurb: "homepage-go-deeper"
+    subsection-blurbs: ["build-out-your-urbit"]
 ---

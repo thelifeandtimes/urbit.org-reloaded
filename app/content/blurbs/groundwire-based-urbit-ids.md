@@ -1,20 +1,20 @@
 +++
 title = "Groundwire-based Urbit IDs"
 description = "Groundwire identities are cryptographically owned Urbit address space on the Bitcoin blockchain"
-parent-section = "get-urbit-id"
 tags = ["bitcoin", "urbit-id", "ordinal"]
 lastest-update ="<some-arvo-hash>"
 image = ""
 imageDark = ""
 references = [
-    # { title = "Network Explorer", link = "https://network.urbit.org" },
-    # { title = "Bridge", link = "https://bridge.urbit.org" },
-    # { title = "Technical documentation, link = "https://docs.urbit.org" }
+    # { title = "Network Explorer", link = "https://network.urbit.org", description = "" },
+    # { title = "Bridge", link = "https://bridge.urbit.org", description = "" },
+    # { title = "Technical documentation", link = "https://docs.urbit.org", description = "" }
 ]
 
-[cta-button]
+[call-to-action]
 label = ""
 link = ""
+description = ""
 
 [extra]
 wip = true

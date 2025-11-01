@@ -3,7 +3,7 @@ import { getMarkdownContent } from "../../../lib/queries";
 import { SidebarSlot, SidebarPositionSlot } from "../../../lib/layoutSlots";
 import { OverviewNav } from "../../../components/OverviewNav";
 import { SidebarElement } from "../../../components/SidebarElement";
-import { CollapsibleContentBlurb } from "../../../components/ContentBlurbs";
+import { ContentBlurb } from "../../../components/ContentBlurbs";
 import Markdoc from "@markdoc/markdoc";
 
 export async function generateStaticParams() {
@@ -67,10 +67,11 @@ export default async function RunningUrbitSection({ params }) {
       // Render the Markdoc content to React on the server
       const renderedContent = Markdoc.renderers.react(blurbData.content, React);
 
-      // Serialize references to plain objects
+      // Serialize references to plain objects with descriptions
       const references = (blurbData.frontMatter.references || []).map(ref => ({
         title: ref.title,
         link: ref.link,
+        description: ref.description || "",
       }));
 
       blurbsBySlug[blurbSlug] = {
@@ -80,6 +81,7 @@ export default async function RunningUrbitSection({ params }) {
         references,
         image: blurbData.frontMatter.image || "",
         imageDark: blurbData.frontMatter.imageDark || "",
+        ctaButton: blurbData.frontMatter["call-to-action"] || null,
       };
     } catch (error) {
       console.error(`Error loading blurb ${blurbSlug}:`, error);
@@ -121,14 +123,14 @@ export default async function RunningUrbitSection({ params }) {
             {Markdoc.renderers.react(sectionData.content, React)}
           </article>
 
-          {/* Render collapsible content blurbs */}
+          {/* Render content blurbs */}
           {blurbSlugs.length > 0 && (
-            <div className="space-y-0">
+            <div className="space-y-12">
               {blurbSlugs.map((blurbSlug, idx) => {
                 const blurb = blurbsBySlug[blurbSlug];
                 if (!blurb) return null;
                 return (
-                  <CollapsibleContentBlurb
+                  <ContentBlurb
                     key={idx}
                     title={blurb.title}
                     description={blurb.description}
@@ -136,6 +138,7 @@ export default async function RunningUrbitSection({ params }) {
                     references={blurb.references}
                     image={blurb.image}
                     imageDark={blurb.imageDark}
+                    ctaButton={blurb.ctaButton}
                   />
                 );
               })}
