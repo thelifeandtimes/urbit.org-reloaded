@@ -38,13 +38,13 @@ nav:
   external: false
   aside_title: "Recommended Reading"
 - title: Run Urbit
-  url: "/get-on-the-network"
+  url: "/overview/running-urbit"
   variant: 'primary'
   external: false
   icon: 'urbit-digi.svg'
 mobileNav:
 - title: Run Urbit
-  url: "/get-on-the-network"
+  url: "/overview/running-urbit"
   variant: 'primary'
   external: false
   icon: 'urbit-digi.svg'

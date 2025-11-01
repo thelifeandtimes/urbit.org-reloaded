@@ -10,7 +10,7 @@ import { FooterSection, FooterExpansion } from "./FooterSection";
  *
  * Split from layout.js to allow server-side generateMetadata export
  */
-export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, announcements, runningUrbitSections }) {
+export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, announcements, urbitExplainedSections, runningUrbitSections }) {
   const { hero, sidebar, sidebarPosition, sidebarVisible } = useLayoutSlots();
   const [expansionHeight, setExpansionHeight] = useState(0);
   const [expandedSection, setExpandedSection] = useState(null);
@@ -28,6 +28,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
           homepage={homepage}
           mobileNav={mobileNav}
           announcements={announcements}
+          urbitExplainedSections={urbitExplainedSections}
           runningUrbitSections={runningUrbitSections}
         />
 

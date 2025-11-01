@@ -26,9 +26,30 @@ export async function generateMetadata({ params }, parent) {
 export default async function RootLayout({ children }) {
   const config = await getMarkdownContent("config.md");
 
-  // Fetch running urbit sections for OverviewSubmenu
+  // Load both urbit-explained and running-urbit sections for OverviewSubmenu
+  const urbitExplainedConfig = await getMarkdownContent("overview/urbit-explained/config.md");
   const runningUrbitConfig = await getMarkdownContent("overview/running-urbit/config.md");
-  const runningUrbitSections = runningUrbitConfig.frontMatter.sections?.map(({ id, title }) => ({ id, title })) || [];
+
+  // Build section arrays with slugs and titles
+  const urbitExplainedSections = [];
+  for (const slug of urbitExplainedConfig.frontMatter.sections || []) {
+    try {
+      const data = await getMarkdownContent(`overview/urbit-explained/${slug}.md`);
+      urbitExplainedSections.push({ slug, title: data.frontMatter.title });
+    } catch (error) {
+      console.error(`Error loading section ${slug}:`, error);
+    }
+  }
+
+  const runningUrbitSections = [];
+  for (const slug of runningUrbitConfig.frontMatter.sections || []) {
+    try {
+      const data = await getMarkdownContent(`overview/running-urbit/${slug}.md`);
+      runningUrbitSections.push({ slug, title: data.frontMatter.title });
+    } catch (error) {
+      console.error(`Error loading section ${slug}:`, error);
+    }
+  }
 
   return (
     <html lang="en" className="light">
@@ -63,6 +84,7 @@ export default async function RootLayout({ children }) {
             footerData={config.frontMatter?.footer}
             mobileNav={config.frontMatter?.mobileNav}
             announcements={config.frontMatter?.announcements}
+            urbitExplainedSections={urbitExplainedSections}
             runningUrbitSections={runningUrbitSections}
           >
             {children}

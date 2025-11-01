@@ -1,13 +1,28 @@
 import React from "react";
-import { getMarkdownContent } from "../../lib/queries";
-import { SidebarSlot, SidebarPositionSlot } from "../../lib/layoutSlots";
-import { OverviewNav } from "../../components/OverviewNav";
-import { SidebarElement } from "../../components/SidebarElement";
+import { getMarkdownContent } from "../../../lib/queries";
+import { SidebarSlot, SidebarPositionSlot } from "../../../lib/layoutSlots";
+import { OverviewNav } from "../../../components/OverviewNav";
+import { SidebarElement } from "../../../components/SidebarElement";
 import Markdoc from "@markdoc/markdoc";
 
-export default async function UrbitExplained() {
-  // Load intro section
-  const introData = await getMarkdownContent("overview/urbit-explained/intro.md");
+export async function generateStaticParams() {
+  // Get the config to know which sections exist
+  const configData = await getMarkdownContent("overview/urbit-explained/config.md");
+  const sections = configData.frontMatter.sections || [];
+
+  // Filter out 'intro' since it's handled by the landing page
+  return sections
+    .filter(slug => slug !== 'intro')
+    .map((slug) => ({
+      slug: slug,
+    }));
+}
+
+export default async function UrbitExplainedSection({ params }) {
+  const { slug } = params;
+
+  // Load the section content
+  const sectionData = await getMarkdownContent(`overview/urbit-explained/${slug}.md`);
 
   // Load both config files for navigation
   const urbitExplainedConfig = await getMarkdownContent("overview/urbit-explained/config.md");
@@ -64,13 +79,13 @@ export default async function UrbitExplained() {
       <section className="mt-[8rem] md:mt-[6rem] container mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
-            {urbitExplainedConfig.frontMatter.title}
+            {sectionData.frontMatter.title}
           </h1>
           <h3 className="text-3xl font-sans leading-[120%] mb-12">
-            {urbitExplainedConfig.frontMatter.description}
+            {sectionData.frontMatter.description}
           </h3>
           <article>
-            {Markdoc.renderers.react(introData.content, React)}
+            {Markdoc.renderers.react(sectionData.content, React)}
           </article>
         </div>
       </section>

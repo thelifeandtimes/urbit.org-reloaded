@@ -9,7 +9,7 @@ import { AnnouncementsSubmenu } from "./AnnouncementsSubmenu";
 import { OverviewSubmenu } from "./OverviewSubmenu";
 import { EcosystemSubmenu } from "./EcosystemSubmenu";
 
-export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav, announcements, runningUrbitSections }) => {
+export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav, announcements, urbitExplainedSections, runningUrbitSections }) => {
   const headerRef = useRef(null);
 
   const currentRoute = usePathname();
@@ -20,6 +20,7 @@ export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav, announcem
         nav={mobileNav || nav}
         currentRoute={currentRoute}
         announcements={announcements}
+        urbitExplainedSections={urbitExplainedSections}
         runningUrbitSections={runningUrbitSections}
       />
 
@@ -46,7 +47,7 @@ export const HeaderNav = ({ nav, homepage, inFrame = false, mobileNav, announcem
   );
 };
 
-const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) => {
+const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, runningUrbitSections }) => {
   const [menuIsOpen, setMenuOpen] = useState(false);
 
   const routeMap = {
@@ -80,7 +81,7 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
                   if (menuIsOpen) {
                     toggleMenu(); // Close menu if open
                   }
-                  // Do nothing if menu is closed, 
+                  // Do nothing if menu is closed,
                 } else if (menuIsOpen) {
                   toggleMenu(); // Close menu and allow navigation
                 }
@@ -136,11 +137,16 @@ const MobileNav = ({ nav, currentRoute, announcements, runningUrbitSections }) =
           </div>
         </div>
         {/* Persistent Submenus - Mobile Only */}
-        {currentRoute.startsWith('/overview') && <OverviewSubmenu runningUrbitSections={runningUrbitSections} />}
+        {currentRoute.startsWith('/overview') && (
+          <OverviewSubmenu
+            urbitExplainedSections={urbitExplainedSections}
+            runningUrbitSections={runningUrbitSections}
+          />
+        )}
         {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
         <ul
           className={classNames(
-            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-contrast-1 min-h-[60vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
+            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-contrast-1 min-h-[40vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
             { hidden: !menuIsOpen }
           )}
         >
