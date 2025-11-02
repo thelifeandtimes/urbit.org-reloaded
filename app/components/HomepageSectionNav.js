@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useLayoutSlots } from "../lib/layoutSlots";
+import { ContentBlurb } from "./ContentBlurbs";
 
 /**
  * HomepageSectionNav - Sidebar navigation for homepage sections
@@ -11,25 +12,79 @@ import { useLayoutSlots } from "../lib/layoutSlots";
  * Controls sidebar visibility to hide it when hero is visible on screen.
  *
  * @param {Array} sections - Array of section objects with {id, title, label, description, subsections}
+ * @param {Object} sidebarBlurb - Optional blurb to display at top of sidebar
  */
-export function HomepageSectionNav({ sections = [] }) {
+export function HomepageSectionNav({ sections = [], sidebarBlurb = null }) {
   const [activeSection, setActiveSection] = useState("");
   const [activeSubsection, setActiveSubsection] = useState("");
   const navRef = useRef(null);
   const { setSidebarVisible } = useLayoutSlots();
 
+  // Helper to get the visible element when there are duplicate IDs (desktop vs mobile)
+  const getVisibleElement = (id) => {
+    const elements = document.querySelectorAll(`#${id}`);
+    if (elements.length === 0) return null;
+    // Find the element with non-zero height (the visible one)
+    return Array.from(elements).find(el => el.getBoundingClientRect().height > 0) || null;
+  };
+
   const handleSectionClick = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = getVisibleElement(sectionId);
+    if (!element) {
+      console.warn(`No visible element found for section: ${sectionId}`);
+      return;
     }
+
+    // Responsive offset: 72px mobile, 80px desktop (matches scroll-mt)
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    const offset = isMobile ? 72 : 80;
+
+    const rect = element.getBoundingClientRect();
+    const targetPosition = rect.top + window.pageYOffset - offset;
+
+    console.log('Section scroll:', {
+      sectionId,
+      isMobile,
+      offset,
+      'rect.top': rect.top,
+      'window.pageYOffset': window.pageYOffset,
+      targetPosition
+    });
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
   };
 
   const handleSubsectionClick = (subsectionId) => {
-    const element = document.getElementById(subsectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    const element = getVisibleElement(subsectionId);
+    if (!element) {
+      console.warn(`No visible element found for subsection: ${subsectionId}`);
+      return;
     }
+
+    // Responsive offset: 72px mobile, 80px desktop (matches scroll-mt)
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    const offset = isMobile ? 72 : 80;
+
+    const rect = element.getBoundingClientRect();
+    const targetPosition = rect.top + window.pageYOffset - offset;
+
+    console.log('Subsection scroll:', {
+      subsectionId,
+      isMobile,
+      offset,
+      'rect.top': rect.top,
+      'rect.height': rect.height,
+      'window.pageYOffset': window.pageYOffset,
+      targetPosition
+    });
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
   };
 
   // Scroll-spy to track active section and control sidebar visibility
@@ -40,16 +95,29 @@ export function HomepageSectionNav({ sections = [] }) {
       const shouldShowSidebar = window.scrollY > heroHeight * 0.8; // Show when 80% past hero
       setSidebarVisible(shouldShowSidebar);
 
-      // Find active subsection based on scroll position
-      const offset = 200; // Offset from top of viewport
+      // Find active section and subsection based on scroll position
+      // Responsive offset: 72px mobile, 80px desktop (matches scroll-mt)
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const offset = isMobile ? 72 : 80;
       let currentSection = "";
       let currentSubsection = "";
 
-      // Find active subsection based on scroll position
+      // First, check if any section wrapper is in upper viewport
       for (const section of sections) {
+        const sectionElement = getVisibleElement(section.id);
+        if (sectionElement) {
+          const rect = sectionElement.getBoundingClientRect();
+
+          // Section is active if its top is above offset and bottom is below top of viewport
+          if (rect.top <= offset && rect.bottom > 0) {
+            currentSection = section.id;
+          }
+        }
+
+        // Then check subsections within this section
         if (section.subsections) {
           for (const subsection of section.subsections) {
-            const element = document.getElementById(subsection.id);
+            const element = getVisibleElement(subsection.id);
             if (element) {
               const rect = element.getBoundingClientRect();
 
@@ -70,7 +138,7 @@ export function HomepageSectionNav({ sections = [] }) {
         for (const section of sections) {
           if (section.subsections) {
             for (const subsection of section.subsections) {
-              const element = document.getElementById(subsection.id);
+              const element = getVisibleElement(subsection.id);
               if (element) {
                 const rect = element.getBoundingClientRect();
                 const viewportHeight = window.innerHeight;
@@ -114,6 +182,21 @@ export function HomepageSectionNav({ sections = [] }) {
 
   return (
     <nav ref={navRef} className="flex flex-col gap-8 h-full overflow-y-auto">
+      {/* Sidebar Blurb - displays at top if provided */}
+      {sidebarBlurb && (
+        <div className="pb-8 border-b border-gray-87/30">
+          <ContentBlurb
+            title={sidebarBlurb.title}
+            description={sidebarBlurb.description}
+            content={sidebarBlurb.content}
+            references={sidebarBlurb.references}
+            image={sidebarBlurb.image}
+            imageDark={sidebarBlurb.imageDark}
+            ctaButton={sidebarBlurb.ctaButton}
+          />
+        </div>
+      )}
+
       {sections.map((section) => {
         const isSectionActive = activeSection === section.id;
 
@@ -124,7 +207,11 @@ export function HomepageSectionNav({ sections = [] }) {
               onClick={() => handleSectionClick(section.id)}
               className="text-left transition-colors"
             >
-              <div className="text-sm font-mono text-[#b2b2b2] mb-1">
+              <div className={`text-sm font-mono mb-1 transition-colors ${
+                isSectionActive
+                  ? 'text-[#44420c] font-bold'
+                  : 'text-[#b2b2b2]'
+              }`}>
                 {section.label}
               </div>
             </button>

@@ -14,6 +14,7 @@ export default async function HomePage() {
   const hero = configData.frontMatter.hero || {};
   const configSections = configData.frontMatter.sections || [];
   const sidebarPosition = configData.frontMatter?.sidebar_position || 'left';
+  const sidebarBlurbSlug = configData.frontMatter?.sidebar_blurb || null;
 
   // Build sections array with full data
   const sections = [];
@@ -46,6 +47,11 @@ export default async function HomePage() {
       }
     }
   };
+
+  // Load sidebar blurb if specified
+  if (sidebarBlurbSlug) {
+    await loadBlurb(sidebarBlurbSlug);
+  }
 
   // Load all blurbs for all sections
   for (const configSection of configSections) {
@@ -96,7 +102,10 @@ export default async function HomePage() {
 
       {/* Desktop Sidebar Navigation - renders in FrameLayout */}
       <SidebarSlot>
-        <HomepageSectionNav sections={navSections} />
+        <HomepageSectionNav
+          sections={navSections}
+          sidebarBlurb={sidebarBlurbSlug ? blurbsBySlug[sidebarBlurbSlug] : null}
+        />
       </SidebarSlot>
 
       {/* Desktop Main Content */}
@@ -106,7 +115,7 @@ export default async function HomePage() {
           if (!sectionBlurb) return null;
 
           return (
-            <section key={section.id} id={section.id} className="mb-16">
+            <section key={section.id} id={section.id} className="mb-16 scroll-mt-[72px] md:scroll-mt-[80px]">
               <div className="border-t border-[#3f3f3f] pt-6 mb-8">
                 <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
                   {sectionBlurb.title}

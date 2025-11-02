@@ -20,17 +20,37 @@ export function EcosystemNav({ sections = [] }) {
     setSidebarVisible(true);
   }, [setSidebarVisible]);
 
+  // Force scroll to top on initial page load
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const handleSectionClick = (sectionId) => {
     const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!element) {
+      console.warn(`Section element not found: ${sectionId}`);
+      return;
     }
+
+    // Responsive offset: 72px mobile, 100px desktop
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    const offset = isMobile ? 72 : 100;
+
+    const rect = element.getBoundingClientRect();
+    const targetPosition = rect.top + window.pageYOffset - offset;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
   };
 
   // Scroll-spy to track active section
   useEffect(() => {
     const handleScroll = () => {
-      const offset = 200; // Offset from top of viewport
+      // Responsive offset: 72px mobile, 100px desktop (matches scroll-mt)
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const offset = isMobile ? 72 : 100;
       let currentSection = "";
 
       // Find active section based on scroll position
