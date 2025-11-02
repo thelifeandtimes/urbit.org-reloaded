@@ -225,7 +225,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
             className={`fixed ${sidebarPosition === 'left'
               ? 'left-[32px] md:left-[max(32px,calc((100vw-1200px)/2-300px))] lg:left-[max(32px,calc((100vw-1200px)/2-240px))] xl:left-[max(32px,calc((100vw-1200px)/2-80px))]'
               : 'right-[32px]'
-              } top-[55px] md:w-[260px] lg:w-[340px] xl:w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              } top-[16px] md:py-12 md:w-[260px] lg:w-[340px] xl:w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             style={{ maxHeight: `calc(100vh - 110px - ${expansionHeight}px)` }}
           >
             {sidebar}
