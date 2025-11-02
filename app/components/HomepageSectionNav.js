@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { useLayoutSlots } from "../lib/layoutSlots";
-import { ContentBlurb } from "./ContentBlurbs";
+import { MicroBlurb } from "./ContentBlurbs";
 
 /**
  * HomepageSectionNav - Sidebar navigation for homepage sections
@@ -181,11 +181,11 @@ export function HomepageSectionNav({ sections = [], sidebarBlurb = null }) {
   }, [sections, activeSection, activeSubsection]);
 
   return (
-    <nav ref={navRef} className="flex flex-col gap-8 h-full overflow-y-auto">
+    <nav ref={navRef} className="flex flex-col gap-4 h-full overflow-y-auto">
       {/* Sidebar Blurb - displays at top if provided */}
       {sidebarBlurb && (
-        <div className="pb-8 border-b border-gray-87/30">
-          <ContentBlurb
+        <div className="pb-4">
+          <MicroBlurb
             title={sidebarBlurb.title}
             description={sidebarBlurb.description}
             content={sidebarBlurb.content}
@@ -193,6 +193,7 @@ export function HomepageSectionNav({ sections = [], sidebarBlurb = null }) {
             image={sidebarBlurb.image}
             imageDark={sidebarBlurb.imageDark}
             ctaButton={sidebarBlurb.ctaButton}
+            showFullContent={false}
           />
         </div>
       )}
@@ -201,24 +202,23 @@ export function HomepageSectionNav({ sections = [], sidebarBlurb = null }) {
         const isSectionActive = activeSection === section.id;
 
         return (
-          <div key={section.id} className="flex flex-col gap-4">
+          <div key={section.id} className="flex flex-col">
             {/* Section Header */}
             <button
               onClick={() => handleSectionClick(section.id)}
               className="text-left transition-colors"
             >
-              <div className={`text-sm font-mono mb-1 transition-colors ${
-                isSectionActive
-                  ? 'text-[#44420c] font-bold'
-                  : 'text-[#b2b2b2]'
-              }`}>
+              <div className={`text-sm font-mono mb-1 transition-colors ${isSectionActive
+                ? 'text-accent-1 font-bold'
+                : 'text-contrast-2'
+                }`}>
                 {section.label}
               </div>
             </button>
 
             {/* Subsection Buttons - always visible */}
             {section.subsections && section.subsections.length > 0 && (
-              <div className="flex flex-col gap-2 items-start w-full">
+              <div className="flex flex-col gap-1 items-start w-full">
                 {section.subsections.map((subsection) => {
                   const isSubsectionActive = activeSubsection === subsection.id;
 
@@ -226,9 +226,9 @@ export function HomepageSectionNav({ sections = [], sidebarBlurb = null }) {
                     <button
                       key={subsection.id}
                       onClick={() => handleSubsectionClick(subsection.id)}
-                      className={`px-4 py-2 text-base font-semibold text-left rounded-[5px] transition-colors w-full ${isSubsectionActive
-                        ? "bg-[#44420c] text-primary border border-[#44420c]"
-                        : "bg-primary text-[#3f3f3f] border border-[#3f3f3f] hover:bg-[#44420c] hover:text-primary"
+                      className={`text-3xl font-sans font-semibold text-left transition-colors w-full ${isSubsectionActive
+                        ? "text-accent-1"
+                        : "text-contrast-2 hover:text-accent-1"
                         }`}
                     >
                       {subsection.label}

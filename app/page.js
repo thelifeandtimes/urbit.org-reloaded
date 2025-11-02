@@ -3,7 +3,7 @@ import { getMarkdownContent, getSectionContent } from "./lib/queries";
 import { HeroSlot, SidebarSlot, SidebarPositionSlot } from "./lib/layoutSlots";
 import { HeroSection } from "./components/HeroSection";
 import { HomepageSectionNav } from "./components/HomepageSectionNav";
-import { HomepageBlurb } from "./components/HomepageBlurb";
+import { HomepageBlurb, PreviewContentBlurb } from "./components/ContentBlurbs";
 import { HomepageSubsection } from "./components/HomepageSubsection";
 import { HomepageAccordion } from "./components/HomepageAccordion";
 import Markdoc from "@markdoc/markdoc";
@@ -116,10 +116,7 @@ export default async function HomePage() {
 
           return (
             <section key={section.id} id={section.id} className="mb-16 scroll-mt-[72px] md:scroll-mt-[80px]">
-              <div className="border-t border-[#3f3f3f] pt-6 mb-8">
-                <h2 className="text-[48px] font-serif italic text-[#44420c] leading-[45px]">
-                  {sectionBlurb.title}
-                </h2>
+              <div className="border-t border-contrast-2">
               </div>
 
               {/* Render section-level blurb */}
@@ -135,13 +132,13 @@ export default async function HomePage() {
               />
 
               {/* Render subsection-level blurbs */}
-              <div className="space-y-16 mt-16">
+              <div className="space-y-16 mt-16 pl-4">
                 {section.subsectionBlurbSlugs.map((blurbSlug) => {
                   const blurb = blurbsBySlug[blurbSlug];
                   if (!blurb) return null;
 
                   return (
-                    <HomepageBlurb
+                    <PreviewContentBlurb
                       key={blurb.id}
                       id={blurb.id}
                       title={blurb.title}
