@@ -222,7 +222,10 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
         {/* Sidebar - fixed positioning, outside content flow */}
         {sidebar && (
           <aside
-            className={`fixed ${sidebarPosition === 'left' ? 'left-[32px]' : 'right-[32px]'} top-[55px] md:w-[200px] lg:w-[240px] xl:w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`fixed ${sidebarPosition === 'left'
+              ? 'left-[32px] md:left-[max(32px,calc((100vw-1200px)/2-300px))] lg:left-[max(32px,calc((100vw-1200px)/2-240px))] xl:left-[max(32px,calc((100vw-1200px)/2-80px))]'
+              : 'right-[32px]'
+              } top-[55px] md:w-[260px] lg:w-[340px] xl:w-[400px] z-30 overflow-y-auto scrollbar-hide transition-opacity duration-300 ${sidebarVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             style={{ maxHeight: `calc(100vh - 110px - ${expansionHeight}px)` }}
           >
             {sidebar}
