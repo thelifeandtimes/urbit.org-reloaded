@@ -48,7 +48,7 @@ export function HeroSection({ hero }) {
     >
 
       {/* Content Container */}
-      <div className="relative z-20 container mx-auto px-16 py-16 flex flex-col max-w-4xl">
+      <div className="relative z-20 container md:mx-auto md:px-16 md:py-16 flex flex-col max-w-4xl">
         {/* Logo */}
         {logo && (
           <div className="mb-12">
@@ -57,15 +57,22 @@ export function HeroSection({ hero }) {
               alt="Urbit"
               width={197}
               height={86}
-              className="h-16 md:h-20 lg:h-24 w-auto"
+              className="hidden md:block h-16 md:h-20 lg:h-24 w-auto"
               priority
+            />
+            <Image
+              src="/icons/digi-logo-1.svg"
+              alt="urbit digi logo"
+              width={90}
+              height={90}
+              className="mt-36 md:hidden"
             />
           </div>
         )}
 
         {/* Title */}
         {title && (
-          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-serif italic mb-12 leading-tight text-gray-87 z-20">
+          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-semibold font-serif italic mb-12 leading-tight text-accent-1 z-20">
             {title}
           </h1>
         )}
@@ -78,13 +85,13 @@ export function HeroSection({ hero }) {
         )}
 
         {/* Mobile CTA Buttons */}
-        <div className="md:hidden flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="md:hidden mb-8 flex-col gap-4">
           {/* Primary Mobile CTA */}
           {primaryMobileCta && (
             <Link
               href={primaryMobileCta.link}
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
-                bg-secondary text-primary border-2 border-secondary rounded-lg
+              className="font-sans text-2xl flex w-fit items-center justify-center my-2 px-4 py-2
+                bg-accent-1 text-secondary rounded-lg
                 hover:bg-primary hover:text-secondary transition-all transform"
             >
               {primaryMobileCta.label}
@@ -95,9 +102,9 @@ export function HeroSection({ hero }) {
           {secondaryMobileCta && (
             <Link
               href={secondaryMobileCta.link}
-              className="font-mono inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
-                bg-primary text-secondary border-2 border-secondary rounded-lg
-                hover:bg-secondary hover:text-primary transition-all"
+              className="font-sans text-2xl flex w-fit items-center justify-center my-2 px-2 py-1
+                bg-background text-accent-1 border border-accent-1 rounded-lg
+                hover:bg-primary hover:text-secondary transition-all transform"
             >
               {secondaryMobileCta.label}
             </Link>
