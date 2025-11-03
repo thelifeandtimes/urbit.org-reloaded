@@ -21,26 +21,55 @@ export function BlogNav({ sections = [] }) {
   }, [setSidebarVisible]);
 
   const handleSectionClick = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    // Find the visible element (not the first one which might be hidden)
+    const getVisibleElement = (id) => {
+      const escapedId = CSS.escape(id);
+      const elements = document.querySelectorAll(`#${escapedId}`);
+      return Array.from(elements).find(el => el.getBoundingClientRect().height > 0) || null;
+    };
+
+    const element = getVisibleElement(sectionId);
+    if (!element) {
+      return;
     }
+
+    // Responsive offset: 72px mobile, 100px desktop (matches scroll-mt)
+    const isMobile = window.innerWidth < 768; // md breakpoint
+    const offset = isMobile ? 72 : 100;
+
+    const rect = element.getBoundingClientRect();
+    const targetPosition = rect.top + window.scrollY - offset;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth"
+    });
   };
 
   // Scroll-spy to track active year
   useEffect(() => {
     const handleScroll = () => {
-      const offset = 200; // Offset from top of viewport
+      // Responsive offset: 72px mobile, 100px desktop (matches scroll-mt)
+      const isMobile = window.innerWidth < 768; // md breakpoint
+      const offset = isMobile ? 72 : 100;
       let currentSection = "";
+
+      // Helper to find visible element
+      const getVisibleElement = (id) => {
+        const escapedId = CSS.escape(id);
+        const elements = document.querySelectorAll(`#${escapedId}`);
+        return Array.from(elements).find(el => el.getBoundingClientRect().height > 0) || null;
+      };
 
       // Find active year based on scroll position
       for (const section of sections) {
-        const element = document.getElementById(section.id);
+        const element = getVisibleElement(section.id);
         if (element) {
           const rect = element.getBoundingClientRect();
+          const isInRange = rect.top <= offset && rect.bottom >= offset;
 
           // Check if section is near the top of the viewport
-          if (rect.top <= offset && rect.bottom >= offset) {
+          if (isInRange) {
             currentSection = section.id;
             break;
           }
@@ -50,7 +79,7 @@ export function BlogNav({ sections = [] }) {
       // Fallback: find the first visible section if none are at offset
       if (!currentSection) {
         for (const section of sections) {
-          const element = document.getElementById(section.id);
+          const element = getVisibleElement(section.id);
           if (element) {
             const rect = element.getBoundingClientRect();
             const viewportHeight = window.innerHeight;

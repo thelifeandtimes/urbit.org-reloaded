@@ -65,7 +65,7 @@ export default async function BlogHome() {
         {Object.entries(yearGroups)
           .sort(([yearA], [yearB]) => yearB - yearA)
           .map(([year, posts]) => (
-            <section key={year} id={year} className="">
+            <section key={year} id={year} className="scroll-mt-[72px] md:scroll-mt-[100px]">
               {/* Year header */}
               {/* <h2 className="text-secondary text-4xl font-serif mb-8 px-4">{year}</h2> */}
 

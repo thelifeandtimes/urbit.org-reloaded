@@ -26,9 +26,15 @@ export function EcosystemNav({ sections = [] }) {
   }, []);
 
   const handleSectionClick = (sectionId) => {
-    const element = document.getElementById(sectionId);
+    // Find the visible element (not the first one which might be hidden)
+    const getVisibleElement = (id) => {
+      const escapedId = CSS.escape(id);
+      const elements = document.querySelectorAll(`#${escapedId}`);
+      return Array.from(elements).find(el => el.getBoundingClientRect().height > 0) || null;
+    };
+
+    const element = getVisibleElement(sectionId);
     if (!element) {
-      console.warn(`Section element not found: ${sectionId}`);
       return;
     }
 
@@ -37,7 +43,7 @@ export function EcosystemNav({ sections = [] }) {
     const offset = isMobile ? 72 : 100;
 
     const rect = element.getBoundingClientRect();
-    const targetPosition = rect.top + window.pageYOffset - offset;
+    const targetPosition = rect.top + window.scrollY - offset;
 
     window.scrollTo({
       top: targetPosition,
@@ -53,14 +59,22 @@ export function EcosystemNav({ sections = [] }) {
       const offset = isMobile ? 72 : 100;
       let currentSection = "";
 
+      // Helper to find visible element
+      const getVisibleElement = (id) => {
+        const escapedId = CSS.escape(id);
+        const elements = document.querySelectorAll(`#${escapedId}`);
+        return Array.from(elements).find(el => el.getBoundingClientRect().height > 0) || null;
+      };
+
       // Find active section based on scroll position
       for (const section of sections) {
-        const element = document.getElementById(section.id);
+        const element = getVisibleElement(section.id);
         if (element) {
           const rect = element.getBoundingClientRect();
+          const isInRange = rect.top <= offset && rect.bottom >= offset;
 
           // Check if section is near the top of the viewport
-          if (rect.top <= offset && rect.bottom >= offset) {
+          if (isInRange) {
             currentSection = section.id;
             break;
           }
@@ -70,7 +84,7 @@ export function EcosystemNav({ sections = [] }) {
       // Fallback: find the first visible section if none are at offset
       if (!currentSection) {
         for (const section of sections) {
-          const element = document.getElementById(section.id);
+          const element = getVisibleElement(section.id);
           if (element) {
             const rect = element.getBoundingClientRect();
             const viewportHeight = window.innerHeight;
