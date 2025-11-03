@@ -48,10 +48,18 @@ export function HeroSection({ hero }) {
     >
 
       {/* Content Container */}
-      <div className="relative z-20 container md:mx-auto md:px-16 md:py-16 flex flex-col max-w-4xl">
-        {/* Logo */}
+      <div className="relative z-20 container md:ml-[5%] lg:ml-[10%] sm:mx-auto md:px-16 flex flex-col max-w-4xl">
+        <div className="hidden md:block">
+          <Image
+            src="/icons/urbit-digi-accent-2.svg"
+            alt="urbit digi logo"
+            width={90}
+            height={90}
+            className="h-16 w-16"
+          />
+        </div>
         {logo && (
-          <div className="mb-12">
+          <div className="my-12">
             <Image
               src={logo}
               alt="Urbit"
@@ -61,7 +69,7 @@ export function HeroSection({ hero }) {
               priority
             />
             <Image
-              src="/icons/digi-logo-1.svg"
+              src="/icons/urbit-digi-accent-2.svg"
               alt="urbit digi logo"
               width={90}
               height={90}
@@ -72,7 +80,7 @@ export function HeroSection({ hero }) {
 
         {/* Title */}
         {title && (
-          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-semibold font-serif italic mb-12 leading-tight text-accent-1 z-20">
+          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-semibold font-serif italic mb-12 leading-tight text-accent-1 md:text-primary z-20">
             {title}
           </h1>
         )}
@@ -127,14 +135,14 @@ export function HeroSection({ hero }) {
 
 
         {/* Desktop CTA Buttons */}
-        <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-8">
+        <div className="hidden md:flex flex-col sm:flex-row gap-4 mb-2">
           {/* Primary CTA */}
           {primaryCta && (
             <Link
               href={primaryCta.link}
-              className="inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
-                bg-secondary text-primary border-2 border-secondary rounded-lg
-                hover:bg-primary hover:text-secondary transition-all transform"
+              className="font-sans font-normal inline-flex items-center justify-center px-4 py-1 text-2xl font-[600]
+                bg-accent-1 text-secondary rounded-lg
+                hover:bg-accent-2 hover:text-primary transition-all transform"
             >
               {primaryCta.label}
             </Link>
@@ -144,9 +152,9 @@ export function HeroSection({ hero }) {
           {secondaryCta && (
             <Link
               href={secondaryCta.link}
-              className="font-mono inline-flex items-center justify-center px-8 py-4 text-lg font-[600]
-                bg-primary text-secondary border-2 border-secondary rounded-lg
-                hover:bg-secondary hover:text-primary transition-all"
+              className="font-sans font-normal inline-flex items-center justify-center px-4 py-1 text-2xl font-[600]
+                border border-accent-1 text-accent bg-secondary rounded-lg
+                hover:bg-accent-2 hover:text-primary transition-all transform"
             >
               {secondaryCta.label}
             </Link>
@@ -157,7 +165,7 @@ export function HeroSection({ hero }) {
         {tertiaryLink && (
           <Link
             href={tertiaryLink.link}
-            className="hidden md:block text-base text-gray-87 hover:text-white transition-colors underline underline-offset-4"
+            className="hidden md:block font-mono text-sm text-contrast-2 hover:text-primary transition-colors"
             {...(tertiaryLink.link.startsWith('http') && {
               target: "_blank",
               rel: "noopener noreferrer",

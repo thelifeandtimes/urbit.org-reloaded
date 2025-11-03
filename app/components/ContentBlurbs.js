@@ -57,9 +57,9 @@ export const CollapsibleContentBlurb = ({ title, description, content, reference
       >
         {isExpanded
           ?
-          (<div>read less</div>)
+          (<div>Read less</div>)
           :
-          (<div>read more</div>)
+          (<div>Read more</div>)
         }
       </button>
 
@@ -125,7 +125,7 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
               </li>
             ))}
           </ul>
-          <div className="text-base text-gray-87 line-clamp-5">{content}</div>
+          <div className={`text-base text-primary transition-transform duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>{content}</div>
         </div>
       </div>
       <button
@@ -135,25 +135,35 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
       >
         {isExpanded
           ?
-          (<div>read less</div>)
+          (<div className="flex items-center gap-x-2">
+            <div className="text-primary">
+              Read less
+            </div>
+            <img
+              src="/icons/toggle-karat.svg"
+              alt=""
+              className={`
+                w-[9px] h-[7px] invert transition-transform duration-300
+                ${isExpanded ? 'rotate-180' : 'rotate-0'}
+              `}
+            />
+          </div>)
           :
-          (<div>read more</div>)
+          (<div className="flex items-center gap-x-2">
+            <div className="text-contrast-2 hover:text-primary">
+              Read more
+            </div>
+            <img
+              src="/icons/toggle-karat.svg"
+              alt=""
+              className={`
+                w-[9px] h-[7px] invert transition-transform duration-300
+                ${isExpanded ? 'rotate-180' : 'rotate-0'}
+              `}
+            />
+          </div>)
         }
       </button>
-
-      {isExpanded && (
-        <div className="mt-6 animate-fadeIn">
-          <article className="prose prose-invert max-w-none">
-            {content}
-          </article>
-
-          {references && references.length > 0 && (
-            <div className="mt-8 pt-6 border-t border-gray-87">
-              <h4 className="text-base font-[600] mb-3">References</h4>
-            </div>
-          )}
-        </div>
-      )}
     </div>
   );
 };
@@ -471,24 +481,6 @@ export function HomepageBlurb({
           </button>
         )}
       </div>
-
-      {/* References - displayed at top for homepage */}
-      {references.length > 0 && (
-        <ul className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6">
-          {references.map((ref, idx) => (
-            <li key={idx}>
-              <a
-                href={ref.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-[#3f3f3f] hover:text-[#44420c] font-mono underline transition-colors"
-              >
-                {ref.title}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
 
       {/* Expandable Details Section */}
       {hasDetails && isDetailsExpanded && (

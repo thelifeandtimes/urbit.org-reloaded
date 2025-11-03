@@ -92,12 +92,12 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
               <img
                 src="/icons/urbit-neu.svg"
                 alt="Urbit wordmark"
-                className="pb-1.5 dark:hidden"
+                className="pb-1.5"
               />
               <img
                 src="/icons/urbit-neu-dark.svg"
                 alt="Urbit wordmark"
-                className="pb-1.5"
+                className="pb-1.5 hidden"
               />
             </Link>
           </div>
@@ -112,12 +112,12 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
                 <img
                   src="/icons/hamburger-dark.svg"
                   alt="hamburger menu open"
-                  className="w-7 h-6 hidden dark:block"
+                  className="w-7 h-6 hidden"
                 />
                 <img
                   src="/icons/hamburger.svg"
                   alt="hamburger menu open"
-                  className="w-7 h-6 dark:hidden"
+                  className="w-7 h-6"
                 />
               </div>
               :
@@ -125,12 +125,12 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
                 <img
                   src="/icons/hamburger-dark.svg"
                   alt="hamburger menu closed"
-                  className="w-7 h-6 hidden dark:block"
+                  className="w-7 h-6 hidden"
                 />
                 <img
                   src="/icons/hamburger.svg"
                   alt="hamburger menu closed"
-                  className="w-7 h-6 dark:hidden"
+                  className="w-7 h-6"
                 />
               </div>
             }</span>
