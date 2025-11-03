@@ -277,18 +277,15 @@ export const ContentBlurb = ({ title, description, content, references, image, i
 
       {/* CTA Button - smaller for narrow layout */}
       {ctaButton && ctaButton.link && ctaButton.label && (
-        <div className="flex mt-4 justify-end">
-          {ctaButton.description && (
-            <p className="text-2xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
-              <a
-                href={ctaButton.link}
-                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
-                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-md transition-colors"
-              >
-                {ctaButton.label}
-              </a></p>
-          )}
+        <div className="flex mt-4 justify-start">
+          <a
+            href={ctaButton.link}
+            target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+            rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="whitespace-nowrap items-center px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-md transition-colors"
+          >
+            {ctaButton.label}
+          </a>
         </div>
       )}
     </div>
@@ -392,18 +389,15 @@ export const MicroBlurb = ({
 
       {/* CTA Button - smaller for narrow layout */}
       {ctaButton && ctaButton.link && ctaButton.label && (
-        <div className="flex mt-4 justify-end">
-          {ctaButton.description && (
-            <p className="text-xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
-              <a
-                href={ctaButton.link}
-                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
-                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
-              >
-                {ctaButton.label}
-              </a></p>
-          )}
+        <div className="flex mt-2 justify-start">
+          <a
+            href={ctaButton.link}
+            target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+            rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="whitespace-nowrap items-center px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
+          >
+            {ctaButton.label}
+          </a>
         </div>
       )}
     </div>
@@ -525,18 +519,15 @@ export function HomepageBlurb({
 
       {/* CTA Button - smaller for narrow layout */}
       {ctaButton && ctaButton.link && ctaButton.label && (
-        <div className="flex mt-4 justify-end">
-          {ctaButton.description && (
-            <p className="text-2xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
-              <a
-                href={ctaButton.link}
-                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
-                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
-              >
-                {ctaButton.label}
-              </a></p>
-          )}
+        <div className="flex mt-4 justify-start">
+          <a
+            href={ctaButton.link}
+            target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+            rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+            className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
+          >
+            {ctaButton.label}
+          </a>
         </div>
       )}
     </div>

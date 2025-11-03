@@ -13,7 +13,7 @@ references = [
 [call-to-action]
 label = "Get an Urbit ID"
 link = "/overview/running-urbit/get-urbit-id"
-description = "Ready? Click here to"
+description = " "
 
 [extra]
 wip = false

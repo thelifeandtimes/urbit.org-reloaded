@@ -85,7 +85,7 @@ export default async function BlogHome() {
                           <div className="font-bold font-serif text-5xl text-accent-1 group-hover:text-primary md:mb-2">{title}</div>
                           <div className="flex flex-col">
                             {extra && (extra.author || extra.ship) && (
-                              <div className="hidden md:flex flex-col font-mono text-base items-end min-w-[160px] text-contrast-2 group-hover:text-primary">
+                              <div className="hidden md:flex flex-col font-mono text-right text-base items-end min-w-[160px] text-contrast-2 group-hover:text-primary">
                                 {extra.ship ? (
                                   <div>{extra.ship}</div>
                                 ) : (

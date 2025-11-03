@@ -34,7 +34,7 @@ export function HeroSection({ hero }) {
 
   return (
     <section
-      className="relative flex items-center md:items-start md:pt-[15vh] min-h-screen md:min-h-[calc(100vh+300px)] z-0"
+      className="relative flex items-start md:pt-[15vh] min-h-screen md:min-h-[calc(100vh+300px)] z-0"
       {...(backgroundImage && {
         style: {
           backgroundImage: `
@@ -74,7 +74,7 @@ export function HeroSection({ hero }) {
               alt="urbit digi logo"
               width={90}
               height={90}
-              className="mt-36 md:hidden"
+              className="mt-24 md:hidden"
             />
           </div>
         )}
