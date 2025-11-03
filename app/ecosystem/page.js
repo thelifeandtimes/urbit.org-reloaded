@@ -38,7 +38,7 @@ export default async function EcosystemHome() {
   const allOrgsFrontMatter = paths.orgs.frontMatter;
 
   return (
-    <div className="mb-32 mt-9">
+    <div className="mb-32 mt-[55px]">
       {/* Set sidebar position */}
       <SidebarPositionSlot position={sidebarPosition} />
 

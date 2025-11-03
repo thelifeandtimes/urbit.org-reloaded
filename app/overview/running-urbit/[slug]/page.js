@@ -93,7 +93,7 @@ export default async function RunningUrbitSection({ params }) {
   const sidebarPosition = overviewConfig.frontMatter?.sidebar_position || 'right';
 
   return (
-    <div>
+    <div className="mx-4 md:mt-[55px]">
       {/* Set sidebar position */}
       <SidebarPositionSlot position={sidebarPosition} />
 
@@ -109,7 +109,7 @@ export default async function RunningUrbitSection({ params }) {
 
       {/* Main content */}
       <img src="/icons/digi-logo-1.svg" className="hidden md:block pb-4" />
-      <section className="mt-[8rem] md:mt-[6rem] container mb-32 md:mx-auto">
+      <section className="mt-[8rem] md:mt-[6rem] mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
           <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
             {sectionData.frontMatter.title}
