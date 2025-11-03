@@ -1,7 +1,7 @@
 +++
 title = "~tocwex.syndicate"
 description = "recursively building digital syndicates"
-image = "https://azimuth.network/erc721/48483.svg"
+image = "icons/tocwex-light.svg"
 URL = "https://syndicate.box"
 twitter = "tocwex"
 ships = ['~tocwex']

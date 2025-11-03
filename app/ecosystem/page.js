@@ -59,16 +59,10 @@ export default async function EcosystemHome() {
               className="relative group max-h-12"
             >
               <div className="flex gap-x-4 md:gap-x-8 items-center py-2 md:py-4">
-                {/* Light mode image */}
+                {/* Light mode image; needs additional code for darkmode support */}
                 <img
                   src={org.data.image}
-                  className="w-12 h-12 md:w-16 md:h-16 dark:hidden group-hover:grayscale"
-                  alt={org.data.title}
-                />
-                {/* Dark mode image - falls back to light image if imageDark not specified */}
-                <img
-                  src={org.data.imageDark || org.data.image}
-                  className="w-12 h-12 md:w-20 md:h-20 hidden dark:block group-hover:opacity-50"
+                  className="w-12 h-12 md:w-16 md:h-16 group-hover:grayscale"
                   alt={org.data.title}
                 />
                 <h1 className="text-3xl md:text-6xl font-bold font-serif text-accent-1 group-hover:text-primary leading-8 tracking-tight">{org.data.title}</h1>

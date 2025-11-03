@@ -275,19 +275,19 @@ export const ContentBlurb = ({ title, description, content, references, image, i
         {content}
       </article>
 
-      {/* CTA Button if provided - requires link, label, and description */}
-      {ctaButton && ctaButton.link && ctaButton.label && ctaButton.description && (
-        <div className="mt-8">
-          <a
-            href={ctaButton.link}
-            target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
-            rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-            className="inline-flex items-center px-6 py-3 bg-primary hover:bg-primary/90 text-contrast-3 font-mono text-small font-[600] rounded transition-colors"
-          >
-            {ctaButton.label}
-          </a>
+      {/* CTA Button - smaller for narrow layout */}
+      {ctaButton && ctaButton.link && ctaButton.label && (
+        <div className="flex mt-4 justify-end">
           {ctaButton.description && (
-            <p className="text-sm text-gray-87 mt-2">{ctaButton.description}</p>
+            <p className="text-2xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
+              <a
+                href={ctaButton.link}
+                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-md transition-colors"
+              >
+                {ctaButton.label}
+              </a></p>
           )}
         </div>
       )}
@@ -399,7 +399,7 @@ export const MicroBlurb = ({
                 href={ctaButton.link}
                 target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
                 rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="whitespace-nowrap items-center mx-2 px-4 py-2 min-h-[44px] inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-xl transition-colors"
+                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
               >
                 {ctaButton.label}
               </a></p>
@@ -523,23 +523,19 @@ export function HomepageBlurb({
         {content}
       </article>
 
-      {/* CTA Button */}
-      {ctaButton && ctaButton.label && ctaButton.link && (
-        <div className="mt-6 md:mt-8">
-          <Link
-            href={ctaButton.link}
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold min-h-[44px]
-              bg-[#44420c] text-white border border-[#3f3f3f] rounded-[5px]
-              md:hover:bg-[#3f3f3f] transition-colors"
-            {...(ctaButton.link.startsWith('http') && {
-              target: "_blank",
-              rel: "noopener noreferrer"
-            })}
-          >
-            {ctaButton.label}
-          </Link>
+      {/* CTA Button - smaller for narrow layout */}
+      {ctaButton && ctaButton.link && ctaButton.label && (
+        <div className="flex mt-4 justify-end">
           {ctaButton.description && (
-            <p className="text-sm text-[#3f3f3f] mt-2">{ctaButton.description}</p>
+            <p className="text-2xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
+              <a
+                href={ctaButton.link}
+                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="whitespace-nowrap items-center mx-2 px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-lg md:text-xl font-[600] rounded-md transition-colors"
+              >
+                {ctaButton.label}
+              </a></p>
           )}
         </div>
       )}

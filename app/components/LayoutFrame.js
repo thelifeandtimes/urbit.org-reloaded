@@ -206,7 +206,7 @@ export function LayoutFrame({ children, nav, homepage, footerData, mobileNav, an
           )}
 
           {/* Main Content Area */}
-          <div className="relative z-10 flex-1 px-4 md:-mt-[300px]">
+          <div className={`relative z-10 flex-1 px-4 ${hero ? 'md:-mt-[300px]' : ''}`}>
             {/* Main content - centered, with conditional padding for sidebar safe zone */}
             <main className={`max-w-[1200px] mx-auto pb-[55px] pt-[55px] md:pt-0 md:px-4 ${sidebar
               ? sidebarPosition === 'left'

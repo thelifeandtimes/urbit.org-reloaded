@@ -230,8 +230,8 @@ export default async function HomePage() {
                     const blurb = blurbsBySlug[blurbSlug];
                     if (!blurb) return null;
 
-                    // Use PreviewContentBlurb for first 2 subsections, MicroBlurb for rest
-                    const usePreview = index < 2;
+                    // Use PreviewContentBlurb for all subsections to maintain visual consistency
+                    const usePreview = true;
 
                     return usePreview ? (
                       <PreviewContentBlurb

@@ -1,7 +1,7 @@
 +++
 title = "Octu Ventures"
 description = "A member-driven venture DAO investing in teams building on urbit"
-image = "https://azimuth.network/erc721/48483.svg"
+image = "/icons/octu-light.svg"
 URL = "https://octu.ventures"
 twitter = "OctuVentures"
 ships = []
