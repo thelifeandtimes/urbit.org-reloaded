@@ -3,9 +3,9 @@ import { getMarkdownContent, getSectionContent } from "./lib/queries";
 import { HeroSlot, SidebarSlot, SidebarPositionSlot } from "./lib/layoutSlots";
 import { HeroSection } from "./components/HeroSection";
 import { HomepageSectionNav } from "./components/HomepageSectionNav";
-import { HomepageBlurb, PreviewContentBlurb } from "./components/ContentBlurbs";
+import { HomepageBlurb, PreviewContentBlurb, MicroBlurb, ContentBlurb } from "./components/ContentBlurbs";
 import { HomepageSubsection } from "./components/HomepageSubsection";
-import { HomepageAccordion } from "./components/HomepageAccordion";
+import { MobileFloatingNav } from "./components/MobileFloatingNav";
 import Markdoc from "@markdoc/markdoc";
 
 export default async function HomePage() {
@@ -90,6 +90,32 @@ export default async function HomePage() {
     }).filter(Boolean)
   }));
 
+  // Build flat list of all mobile anchors (sections + subsections) in document order
+  const mobileAnchors = sections.flatMap(({ id, sectionBlurb, subsectionBlurbSlugs }) => {
+    const anchors = [];
+
+    // Add section anchor
+    if (sectionBlurb) {
+      anchors.push({
+        id: `mobile-${id}`,
+        label: sectionBlurb.title || ""
+      });
+    }
+
+    // Add all subsection anchors for this section
+    subsectionBlurbSlugs.forEach(slug => {
+      const blurb = blurbsBySlug[slug];
+      if (blurb) {
+        anchors.push({
+          id: `mobile-${slug}`,
+          label: blurb.title || ""
+        });
+      }
+    });
+
+    return anchors;
+  });
+
   return (
     <div>
       {/* Hero Section - Full viewport width via layout slot */}
@@ -157,11 +183,91 @@ export default async function HomePage() {
         })}
       </div>
 
-      {/* Mobile Accordion Layout */}
+      {/* Mobile Content Layout */}
       <div className="block md:hidden">
-        <div className="container mx-auto pb-16">
-          <HomepageAccordion sections={sections} blurbsBySlug={blurbsBySlug} />
+        <div className="container mx-auto pb-16 px-4">
+          {/* Sidebar blurb at top on mobile */}
+          {sidebarBlurbSlug && blurbsBySlug[sidebarBlurbSlug] && (
+            <div className="mb-12 pt-8">
+              <ContentBlurb
+                id={blurbsBySlug[sidebarBlurbSlug].id}
+                title={blurbsBySlug[sidebarBlurbSlug].title}
+                description={blurbsBySlug[sidebarBlurbSlug].description}
+                content={blurbsBySlug[sidebarBlurbSlug].content}
+                image={blurbsBySlug[sidebarBlurbSlug].image}
+                imageDark={blurbsBySlug[sidebarBlurbSlug].imageDark}
+                references={blurbsBySlug[sidebarBlurbSlug].references}
+                ctaButton={blurbsBySlug[sidebarBlurbSlug].ctaButton}
+              />
+            </div>
+          )}
+
+          {/* Sections and subsections */}
+          {sections.map((section) => {
+            const sectionBlurb = section.sectionBlurb;
+            if (!sectionBlurb) return null;
+
+            return (
+              <section key={section.id} id={`mobile-${section.id}`} className="mb-12 scroll-mt-[72px]">
+                {/* Section divider */}
+                <div className="border-t border-contrast-2 mb-8"></div>
+
+                {/* Section-level blurb */}
+                <HomepageBlurb
+                  id={sectionBlurb.id}
+                  title={sectionBlurb.title}
+                  description={sectionBlurb.description}
+                  content={sectionBlurb.content}
+                  image={sectionBlurb.image}
+                  imageDark={sectionBlurb.imageDark}
+                  references={sectionBlurb.references}
+                  ctaButton={sectionBlurb.ctaButton}
+                />
+
+                {/* Subsection-level blurbs */}
+                <div className="space-y-8 mt-8">
+                  {section.subsectionBlurbSlugs.map((blurbSlug, index) => {
+                    const blurb = blurbsBySlug[blurbSlug];
+                    if (!blurb) return null;
+
+                    // Use PreviewContentBlurb for first 2 subsections, MicroBlurb for rest
+                    const usePreview = index < 2;
+
+                    return usePreview ? (
+                      <PreviewContentBlurb
+                        key={blurb.id}
+                        id={`mobile-${blurb.id}`}
+                        title={blurb.title}
+                        description={blurb.description}
+                        content={blurb.content}
+                        image={blurb.image}
+                        imageDark={blurb.imageDark}
+                        references={blurb.references}
+                        ctaButton={blurb.ctaButton}
+                      />
+                    ) : (
+                      <MicroBlurb
+                        key={blurb.id}
+                        id={`mobile-${blurb.id}`}
+                        title={blurb.title}
+                        description={blurb.description}
+                        content={blurb.content}
+                        image={blurb.image}
+                        imageDark={blurb.imageDark}
+                        references={blurb.references}
+                        ctaButton={blurb.ctaButton}
+                        showFullContent={false}
+                      />
+                    );
+                  })}
+                </div>
+              </section>
+            );
+          })}
         </div>
+
+        {/* Mobile Floating Navigation */}
+        <MobileFloatingNav anchors={mobileAnchors} heroHeight={800} />
       </div>
     </div>
   );

@@ -108,17 +108,17 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
               )}
             </div>
           )}
-          <h3 className="text-4xl text-accent-1 font-[600] leading-10 font-serif group-hover:text-gray-87 transition-colors">
+          <h3 className="text-3xl md:text-4xl text-accent-1 font-[600] leading-10 font-serif md:group-hover:text-gray-87 transition-colors">
             {title}
           </h3>
-          <ul className="flex items-center gap-x-2 py-2">
+          <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 py-2">
             {references.map((ref, idx) => (
               <li key={idx}>
                 <a
                   href={ref.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-small text-contrast-2 hover:text-primary font-mono"
+                  className="text-small text-contrast-2 md:hover:text-primary font-mono"
                 >
                   {ref.title}
                 </a>
@@ -130,7 +130,7 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
       </div>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full text-left font-mono text-small group"
+        className="w-full text-left font-mono text-small group py-2 min-h-[44px] flex items-center"
         aria-expanded={isExpanded}
       >
         {isExpanded
@@ -150,7 +150,7 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
           </div>)
           :
           (<div className="flex items-center gap-x-2">
-            <div className="text-contrast-2 hover:text-primary">
+            <div className="text-contrast-2 md:hover:text-primary">
               Read more
             </div>
             <img
@@ -296,6 +296,7 @@ export const ContentBlurb = ({ title, description, content, references, image, i
 };
 
 export const MicroBlurb = ({
+  id,
   title,
   description,
   content,
@@ -311,7 +312,7 @@ export const MicroBlurb = ({
   const hasDetails = description || (references && references.some(ref => ref.description));
 
   return (
-    <div className="">
+    <div id={id} className="scroll-mt-[72px] md:scroll-mt-[80px]">
       {/* Images - smaller size for narrow layout */}
       {(image || imageDark) && (
         <div className="mb-3">
@@ -340,7 +341,7 @@ export const MicroBlurb = ({
         {hasDetails && (
           <button
             onClick={() => setIsDetailsExpanded(!isDetailsExpanded)}
-            className="flex-shrink-0 p-1 hover:opacity-70 transition-opacity"
+            className="flex-shrink-0 p-2 md:p-1 md:hover:opacity-70 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle details"
           >
             <img src="/icons/info.svg" alt="Info" className="w-5 h-5" />
@@ -393,12 +394,12 @@ export const MicroBlurb = ({
       {ctaButton && ctaButton.link && ctaButton.label && (
         <div className="flex mt-4 justify-end">
           {ctaButton.description && (
-            <p className="text-2xl font-sans text-primary mt-2">{ctaButton.description}
+            <p className="text-xl md:text-2xl font-sans text-primary mt-2">{ctaButton.description}
               <a
                 href={ctaButton.link}
                 target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
                 rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                className="whitespace-nowrap items-center mx-2 px-4 py-2 bg-accent-1 hover:text-contrast-2 text-secondary font-sans text-lg font-[600] rounded-xl transition-colors"
+                className="whitespace-nowrap items-center mx-2 px-4 py-2 min-h-[44px] inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-xl transition-colors"
               >
                 {ctaButton.label}
               </a></p>
@@ -438,16 +439,16 @@ export function HomepageBlurb({
   // Check if there are any details to show
   const hasDetails = description || (references && references.some(ref => ref.description));
   return (
-    <div id={id} className="mb-16 scroll-mt-[72px] md:scroll-mt-[80px] snap-start">
+    <div id={id} className="mb-12 md:mb-16 scroll-mt-[72px] md:scroll-mt-[80px] snap-start">
       {/* Header Images */}
       {(image || imageDark) && (
-        <div className="mb-6">
+        <div className="mb-4 md:mb-6">
           {/* Light mode image */}
           {image && (
             <img
               src={image}
               alt={title}
-              className="w-16 h-16 dark:hidden"
+              className="w-12 h-12 md:w-16 md:h-16 dark:hidden"
             />
           )}
           {/* Dark mode image - falls back to light image if imageDark not specified */}
@@ -455,7 +456,7 @@ export function HomepageBlurb({
             <img
               src={imageDark || image}
               alt={title}
-              className="w-16 h-16 hidden dark:block"
+              className="w-12 h-12 md:w-16 md:h-16 hidden dark:block"
             />
           )}
         </div>
@@ -463,20 +464,20 @@ export function HomepageBlurb({
 
       {/* Title with Info Button */}
       <div className="flex items-center justify-between gap-4 mb-4">
-        <h3 className="text-xl font-mono text-contrast-3 leading-[45px]">
+        <h3 className="text-lg md:text-xl font-mono text-contrast-3 leading-[45px]">
           {title}
         </h3>
         {/* Info button - only show if there are details */}
         {hasDetails && (
           <button
             onClick={() => setIsDetailsExpanded(!isDetailsExpanded)}
-            className="flex-shrink-0 p-2 hover:opacity-70 transition-opacity mt-2"
+            className="flex-shrink-0 p-3 md:p-2 md:hover:opacity-70 transition-opacity mt-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             aria-label="Toggle details"
           >
             <img
               src="/icons/info.svg"
               alt="Info"
-              className="w-4 h-4"
+              className="w-5 h-5 md:w-4 md:h-4"
             />
           </button>
         )}
@@ -524,12 +525,12 @@ export function HomepageBlurb({
 
       {/* CTA Button */}
       {ctaButton && ctaButton.label && ctaButton.link && (
-        <div className="mt-8">
+        <div className="mt-6 md:mt-8">
           <Link
             href={ctaButton.link}
-            className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold
+            className="inline-flex items-center justify-center px-6 py-3 text-base font-semibold min-h-[44px]
               bg-[#44420c] text-white border border-[#3f3f3f] rounded-[5px]
-              hover:bg-[#3f3f3f] transition-colors"
+              md:hover:bg-[#3f3f3f] transition-colors"
             {...(ctaButton.link.startsWith('http') && {
               target: "_blank",
               rel: "noopener noreferrer"
