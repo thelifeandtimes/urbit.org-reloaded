@@ -34,11 +34,11 @@ export function HeroSection({ hero }) {
 
   return (
     <section
-      className="relative flex items-center min-h-screen max-h-[1080px] z-0"
+      className="relative flex items-center md:items-start md:pt-[15vh] min-h-screen md:min-h-[calc(100vh+300px)] z-0"
       {...(backgroundImage && {
         style: {
           backgroundImage: `
-            linear-gradient(rgba(256, 256, 256, 0.8), rgba(256, 256, 256, 0.8)),
+            linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 80%, rgba(255, 255, 255, 1) 100%),
             url(${backgroundImage})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
@@ -93,12 +93,12 @@ export function HeroSection({ hero }) {
         )}
 
         {/* Mobile CTA Buttons */}
-        <div className="md:hidden mb-8 flex-col gap-4">
+        <div className="md:hidden mb-2 flex-col gap-4">
           {/* Primary Mobile CTA */}
           {primaryMobileCta && (
             <Link
               href={primaryMobileCta.link}
-              className="font-sans text-2xl flex w-fit items-center justify-center my-2 px-4 py-2
+              className="font-sans text-2xl flex w-fit items-center justify-center my-2 px-2 py-2
                 bg-accent-1 text-secondary rounded-lg
                 hover:bg-primary hover:text-secondary transition-all transform"
             >
@@ -123,7 +123,7 @@ export function HeroSection({ hero }) {
         {tertiaryMobileLink && (
           <Link
             href={tertiaryMobileLink.link}
-            className="md:hidden text-base text-gray-87 hover:text-white transition-colors underline underline-offset-4"
+            className="md:hidden text-base text-contrast-2 hover:text-primary transition-colors font-mono"
             {...(tertiaryMobileLink.link.startsWith('http') && {
               target: "_blank",
               rel: "noopener noreferrer",
