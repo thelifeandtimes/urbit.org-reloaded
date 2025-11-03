@@ -294,7 +294,7 @@ body {
     }
 
     a.external {
-      @apply text-gray-87 no-underline hover:text-gray-f5;
+      @apply text-contrast-2 no-underline hover:text-contrast-3;
     }
 
     a.external:after {
@@ -302,7 +302,7 @@ body {
     }
 
     ul {
-      @apply relative;
+      @apply font-sans relative mb-4;
     }
 
     ul li {
