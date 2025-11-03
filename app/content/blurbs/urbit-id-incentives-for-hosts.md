@@ -15,7 +15,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 In the world of MEGACORP SaaS services, you are wholly subject to the whims of your service provider. They chose what version of the software you run, who you can connect with, and whether or not you even exist. As in, if you have an identity in the first place. With Urbit, the paradigm shifts and a better solution to the principal-agent problem presents itself. In separating out ownership and control of both the Urbit OS and Urbit ID, it becomes easy to place the locus of control back in the hands of the user. 

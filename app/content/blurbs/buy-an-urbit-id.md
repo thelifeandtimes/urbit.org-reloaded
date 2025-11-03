@@ -16,7 +16,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 The primary way to acquire a persistent identity on the Urbit network is via a planet-level identity. A "planet" has a 4 syllable handle, or `@p`, like `~sampel-palnet` and is owned on the Ethereum network as a ERC-721 NFT or via Urbit's Layer 2, the "Naive Rollup".

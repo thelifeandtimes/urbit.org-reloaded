@@ -15,7 +15,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 Urbit is intended to be 'your personal server'. Your own always-on, networked computer that is so simple it is as easy to run as caring for a cactus. If this is true, why are there companies that provide hosting as a service? Presently it is for two core reasons:

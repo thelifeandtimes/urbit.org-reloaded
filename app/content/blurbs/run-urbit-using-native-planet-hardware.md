@@ -17,7 +17,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 Native Planet is an organization that builds and sells beautiful computer hardware specifically optimized towards running Urbit nodes. Blending the benefits of hands-free managed hosting services, self-sovereign local hosting, and reliable cloud datacenters, running your urbit on Native Planet hardware is a highly recommended path for the Urbit 'power user', or even the technical developer who would rather spend time writing software than handling home networking issues.

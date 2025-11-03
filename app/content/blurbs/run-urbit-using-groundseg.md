@@ -16,7 +16,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 Groundseg is, in the words of Native Planet, "The best way to run an Urbit ship". Practically speaking, it gives the Urbit user a straightforward GUI for booting a new urbit ship, or uploading an existing pier, and then managing the operation of that instance of Urbit OS. You can adjust the available loom space to make room for additional apps or content in your urbit, you can truncate your event log to save space on your host machine, and you can even adjust automatic maintenance routines that keep your urbit running smoothly.

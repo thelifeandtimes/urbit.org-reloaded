@@ -16,7 +16,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 Tlon Corporation offers free and seamless hosting for your urbit with a specific care taken to have a smooth onboarding experience to Tlon Messenger, Urbit's most widely used application.

@@ -15,7 +15,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 For the technical user, running urbit on a server from your favorite cloud provider is an easy way to sidestep the tedious nature of home networking, and get high reliability and uptime our of your urbit. It is also a fun process for the intrepid power user who wants to better understand how their computer works. 

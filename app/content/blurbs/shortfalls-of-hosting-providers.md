@@ -15,7 +15,7 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
 Hosting providers are a great solution for handling running and maintained large numbers of urbit ships at scale, and it is thanks to urbit's unique design that running your operating system as a hosted node doesn't mean your are forever trapped in MEGACORP's datacenter. But there are some considerations to having a hosting provider run your urbit for you that are worth considering.
