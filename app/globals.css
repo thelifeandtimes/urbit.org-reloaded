@@ -53,6 +53,9 @@
   --primary: #3F3F3F;
   --tertiary: #B2B2B2;
 
+  --code-foreground: #606060;
+  --code-background: #F3F4F5;
+  --code-accent: 'var(--accent-3)';
   --header-height: 4.5rem;
   --footer-height: 170px;
 
@@ -320,7 +323,7 @@ body {
 
     code,
     pre {
-      @apply text-xlarge rounded-5px px-1 mb-8 bg-[#FBD85F] bg-opacity-10 text-[#FBD85F];
+      @apply text-xlarge rounded-5px px-1 mb-8 bg-code-background bg-opacity-10 text-code-foreground;
       font-family: "Space Mono", monospace;
       font-variation-settings: "xtab" 500;
     }

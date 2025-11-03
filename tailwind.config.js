@@ -62,6 +62,13 @@ module.exports = {
         secondary: "var(--secondary)",
         tertiary: "var(--tertiary)",
 
+        // code colors
+        code: {
+          foreground: "var(--code-foreground)",
+          background: "var(--code-background)",
+          accent: "var(--code-accent)",
+          DEFAULT: "var(--code-accent)", // Optional: makes 'bg-accent' work
+        },
         // Accent colors
         accent: {
           1: "var(--accent-1)",
