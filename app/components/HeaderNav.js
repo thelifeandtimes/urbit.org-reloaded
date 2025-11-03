@@ -67,8 +67,8 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
 
   return (
     <>
-      <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-contrast-1 justify-center leading-120 border-b-[1.5px] border-gray-3c z-50">
-        <div className="h-[4.5rem] flex items-center font-[600] relative w-full">
+      <section className="md:hidden font-sans fixed flex w-full top-0 left-0  h-auto items-center bg-contrast-1 justify-center leading-120 z-50">
+        <div className={`h-[4.5rem] flex items-center font-[600] relative w-full ${(menuIsOpen || currentRoute.startsWith("/overview") || currentRoute.startsWith("/ecosystem")) ? "" : "border-b-[1.5px] border-contrast-3"}`}>
           <div
             className="flex items-center cursor-pointer h-full w-full justify-between select-none relative"
           >
@@ -89,6 +89,7 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
               href="/"
               className="flex w-36 h-16 relative items-center pl-[.7em]"
             >
+              {/* TODO fix icons for supporting darkmode */}
               <img
                 src="/icons/urbit-neu.svg"
                 alt="Urbit wordmark"
@@ -146,7 +147,7 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
         {currentRoute.startsWith('/ecosystem') && <EcosystemSubmenu />}
         <ul
           className={classNames(
-            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-contrast-1 min-h-[40vh] w-[100vw] border-b-[1.5px] border-gray-3c z-50",
+            "absolute flex flex-col justify-between top-0 font-[600]  mt-[4.5rem] left-0 bg-contrast-1 min-h-[40vh] w-[100vw] border-b-[1.5px] border-contrast-3 z-50",
             { hidden: !menuIsOpen }
           )}
         >
@@ -168,8 +169,9 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
                 >
                   <span className="nav-button leading-inherit flex items-center gap-2">
                     {navItem.title}
+                    {/* TODO Super hacky way of handling different color requirements between nav items with this icon */}
                     {navItem.icon && (
-                      <img src={`/icons/${navItem.icon}`}
+                      <img src={`/icons/reverse-${navItem.icon}`}
                         alt="Urbit configurator icon"
                         className='w-4 h-4'
                       />
@@ -189,7 +191,7 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
 
             {/* External Resources Section */}
             {nav?.filter(navItem => navItem.external).length > 0 && (
-              <div className="flex flex-col gap-4 pt-4 border-t border-gray-3c">
+              <div className="flex flex-col gap-4 pt-4 border-t border-contrast-3">
                 <h3 className="text-sm uppercase tracking-wider text-contrast-3 opacity-60">Resources</h3>
                 <div className="flex flex-col gap-4">
                   {nav?.filter(navItem => navItem.external).map((navItem, i) => {
@@ -214,9 +216,10 @@ const MobileNav = ({ nav, currentRoute, announcements, urbitExplainedSections, r
             )}
           </div>
         </ul>
-      </section>
+      </section >
 
-      {currentRoute === '/' && <AnnouncementsSubmenu announcement={announcements} />}
+      {currentRoute === '/' && <AnnouncementsSubmenu announcement={announcements} />
+      }
     </>
   );
 };

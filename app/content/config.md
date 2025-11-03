@@ -3,7 +3,7 @@
 title: Urbit
 subtitle: Leave the internet behind
 announcements:
-  active: true
+  active: false
   text: "Join us for Assembly 2025 - Register now! It is going to be *dope*"
 # headline: Urbit is a new computing paradigm that provides complete ownership of your digital world 
 site_metadata:

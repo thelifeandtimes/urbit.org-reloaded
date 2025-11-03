@@ -50,9 +50,9 @@ export const OverviewSubmenu = ({ urbitExplainedSections = [], runningUrbitSecti
             className={classNames(
               "font-sans font-bold text-[17px] tracking-[-0.34px] whitespace-nowrap transition-colors",
               expandedSection === "explained"
-                ? "text-gray-3c"
+                ? "text-accent-1"
                 : isInUrbitExplained
-                  ? "text-gray-3c"
+                  ? "text-contrast-3"
                   : "text-[#cbcbca]"
             )}
           >
@@ -63,10 +63,10 @@ export const OverviewSubmenu = ({ urbitExplainedSections = [], runningUrbitSecti
             className={classNames(
               "font-sans font-bold text-[17px] tracking-[-0.34px] whitespace-nowrap transition-colors",
               expandedSection === "running"
-                ? "text-gray-3c"
+                ? "text-contrast-3"
                 : isInRunningUrbit
-                  ? "text-gray-3c"
-                  : "text-[#cbcbca]"
+                  ? "text-contrast-3"
+                  : "text-contrast-2"
             )}
           >
             Running Urbit
@@ -90,7 +90,7 @@ export const OverviewSubmenu = ({ urbitExplainedSections = [], runningUrbitSecti
                 onClick={handleLinkClick}
                 className={classNames(
                   "font-sans text-base py-1 transition-colors",
-                  isActive ? "text-secondary font-bold" : "text-gray-87 hover:text-secondary"
+                  isActive ? "text-contrast-3 font-bold" : "text-contrast-2"
                 )}
               >
                 {section.title}
@@ -116,7 +116,7 @@ export const OverviewSubmenu = ({ urbitExplainedSections = [], runningUrbitSecti
                 onClick={handleLinkClick}
                 className={classNames(
                   "font-sans text-base py-1 transition-colors",
-                  isActive ? "text-secondary font-bold" : "text-gray-87 hover:text-secondary"
+                  isActive ? "text-contrast-3 font-bold" : "text-contrast-2"
                 )}
               >
                 {section.title}
