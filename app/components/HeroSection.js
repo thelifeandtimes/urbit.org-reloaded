@@ -43,6 +43,7 @@ export function HeroSection({ hero }) {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          transition: 'background-size 0.5s ease-in-out, min-height 0.5s ease-in-out',
         }
       })}
     >
