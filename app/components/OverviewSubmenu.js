@@ -63,7 +63,7 @@ export const OverviewSubmenu = ({ urbitExplainedSections = [], runningUrbitSecti
             className={classNames(
               "font-sans font-bold text-[17px] tracking-[-0.34px] whitespace-nowrap transition-colors",
               expandedSection === "running"
-                ? "text-contrast-3"
+                ? "text-accent-1"
                 : isInRunningUrbit
                   ? "text-contrast-3"
                   : "text-contrast-2"
