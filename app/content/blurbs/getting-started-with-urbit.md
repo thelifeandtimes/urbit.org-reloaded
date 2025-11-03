@@ -11,12 +11,12 @@ references = [
 ]
 
 [call-to-action]
-label = "Buy an Urbit ID"
+label = "Get an Urbit ID"
 link = "/overview/running-urbit/get-urbit-id"
-description = "Purchase your permanent digital identity"
+description = "Ready? Click here to"
 
 [extra]
 wip = false
 +++
 
-Urbit is a new computing paradigm that provides complete ownership of your digital world. Getting started is easy - you can either use a hosting provider like Tlon for instant access, or run Urbit yourself on your own hardware.
+Urbit starts, at it's core, by giving you control over your digital identity. From there, you can gain control over your data and compute.

@@ -12,22 +12,22 @@ hero:
   subtitle: ""
   primaryCta:
     label: "Get started"
-    link: "#self-hosting"
+    link: "/overview/running-urbit"
   secondaryCta:
     label: "Docs"
-    link: "/overview"
+    link: "https://docs.urbit.org"
   tertiaryLink:
     label: "Quickstart"
     link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
   primaryMobileCta:
     label: "Get started"
-    link: "#self-hosting"
+    link: "/overview/running-urbit"
   secondaryMobileCta:
-    label: "Docs"
-    link: "/overview"
-  tertiaryMobileLink:
     label: "Quickstart"
     link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
+  tertiaryMobileLink:
+    label: "Technical documentation"
+    link: "https://docs.urbit.org"
 
 # Below-the-fold sections
 # Each section has a section-blurb (displays as section header/intro)

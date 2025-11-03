@@ -1,5 +1,5 @@
 +++
-title = "Buy An Urbit ID"
+title = "Buy an Urbit ID"
 description = "Learn how to acquire your own self-sovereign digital identity"
 tags = ["urbit-id"]
 lastest-update = ""

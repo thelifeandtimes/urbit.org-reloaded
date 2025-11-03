@@ -302,7 +302,7 @@ body {
     }
 
     ul {
-      @apply font-sans relative mb-4;
+      @apply font-sans relative mb-6;
     }
 
     ul li {
@@ -314,7 +314,7 @@ body {
     }
 
     ol {
-      @apply relative mb-6;
+      @apply font-sans relative mb-6;
     }
 
     ol li {

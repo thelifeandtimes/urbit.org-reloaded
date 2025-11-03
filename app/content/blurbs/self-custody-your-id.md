@@ -1,5 +1,5 @@
 +++
-title = "Self-custody Your ID"
+title = "Self-custody your Urbit ID"
 description = "As a cryptographic asset, there are many ways to control and secure your Urbit ID"
 tags = ["wallet", "ledger", "trezor", "metamask", "urbit-id"]
 lastest-update = ""
