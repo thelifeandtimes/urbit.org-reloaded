@@ -33,14 +33,14 @@ export const CollapsibleContentBlurb = ({ title, description, content, reference
           <h3 className="text-4xl text-accent-1 font-[600] font-serif group-hover:text-gray-87 transition-colors">
             {title}
           </h3>
-          <ul className="flex items-center gap-x-2 py-2">
+          <ul className="flex items-center py-2">
             {references.map((ref, idx) => (
               <li key={idx}>
                 <a
                   href={ref.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-small text-contrast-2 hover:text-primary font-mono"
+                  className="text-small gap-x-4 text-contrast-2 hover:text-primary font-mono"
                 >
                   {ref.title}
                 </a>
@@ -199,8 +199,8 @@ export const ContentBlurb = ({ title, description, content, references, image, i
               )}
             </div>
           )}
-          <div className="flex items-center justify-between gap-4 mb-2">
-            <h3 className="text-4xl text-accent-1 font-[600] font-serif group-hover:text-gray-87 transition-colors">
+          <div className="flex items-center justify-between gap-2 mb-2">
+            <h3 className="text-4xl text-accent-1 font-[600] font-serif group-hover:text-contrast-2 transition-colors">
               {title}
             </h3>
             {/* Info button - only show if there are details */}
@@ -218,7 +218,7 @@ export const ContentBlurb = ({ title, description, content, references, image, i
               </button>
             )}
           </div>
-          <ul className="flex items-center gap-x-2 py-2">
+          <ul className="flex items-center gap-x-8">
             {references && references.map((ref, idx) => (
               <li key={idx}>
                 <a

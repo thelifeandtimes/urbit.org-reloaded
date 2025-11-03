@@ -18,13 +18,11 @@ description = ""
 wip = false
 +++
 
-Urbit IDs have accompanying security realities that must be taken seriously. The responsibility for keeping cryptographic assets safe rests fully with the party that owns them.
+'Self-custody' is the idea that you should be the only one that knows and controls your cryptographic assets by being the one in control of the wallet which holds your cryptographic secrets (e.g. the seed phrase, or private key). In this paradigm, the responsibility for keeping cryptographic assets safe rests fully with the party that owns them, **you**. The nature of decentralization is such that there is generally no authority that has the power to restore any lost or stolen wallet. 
 
-The nature of decentralization is such that there is generally no authority that has the power to restore any lost or stolen wallet. 
+Nobody can force you to follow good security practices. At most, they can give you recommendations. Urbit IDs have accompanying security realities that must be taken seriously, so remember: if critical items, such as your ownership key, are lost or compromised, your assets are likely gone forever.
 
-Nobody can force you to follow good security practices. At most, they can give you recommendations. Remember: if critical items, such as your ownership key, are lost or compromised, your assets are likely gone forever.
-
-There are a few common methods of self-custody that Urbit users follow. Using more common methods increase the likelyhood that a specific interaction pattern is well supported, but if you are an advanced cryptocurrency user, using your own techniques is always an option as well. If all of this is too daunting for you, using a [Hosting Provider](/overview/running-urbit/hosting-providers) is an option and they will generally support easy co-custody of your Urbit ID.
+There are a few common methods of self-custody that Urbit users follow. Using more common methods increase the likelyhood that a specific interaction pattern is well supported, but if you are an advanced cryptocurrency user, using your own techniques is always an option as well. If all of this is too daunting for you, using a [Hosting Provider](/overview/running-urbit/hosting-providers) is an option and they will generally support easy co-custody of your Urbit ID, until you are ready to take your sovereignty into your own hands.
 
 ## Urbit HD / master ticket wallets
 Urbit's default wallet option is the master ticket wallet. It was specifically designed for interacting with the different permissions and 'proxies' that control your urbit identity. By default this is a 'paper wallet', and is what you will be given if your urbit planet was generated via Bridge's default invite creation flow for Layer 2 identities. 

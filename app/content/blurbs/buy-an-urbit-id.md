@@ -31,7 +31,7 @@ Below are a few options for where to buy a planet:
 - [subject.network](https://subject.network/buy/) - Buy a Layer 2 planet with bitcoin
 - [~pocwet](https://store.pocwet.com/) - Buy a Layer 2 planet with a credit card
 
-In the near future, additional identity options such as Groundwire will be available.
+In the near future, additional identity options will be available, such as comet-attestation on Bitcoin.
 
 
 
