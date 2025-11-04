@@ -1,12 +1,12 @@
 +++
-title = "Get Access Code"
-description = "Placeholder description"
-tags = []
+title = "Get access code"
+description = "A secret code for remote access to your instance of Urbit OS"
+tags = ["dojo"]
 lastest-update = ""
 image = ""
 imageDark = ""
 references = [
-    # { title = "", link = "", description = "" },
+    { title = "Technical Documentation", link = "https://docs.urbit.org/user-manual/os/shell#code", description = "details on using your `+code`" },
 ]
 
 [call-to-action]
@@ -15,7 +15,12 @@ link = ""
 description = ""
 
 [extra]
-wip = true
+wip = false
 +++
 
-this file was created by Claude as a placeholder.
+```
++code
+```
+
+Your `+code` is used for access to your urbit, generally via web interfaces and mobile clients. Some application providers call it a "luscode", while others call it an "access code". It is an eight-syllable phenome, like `~ropnys-batwyd-nossyt-mapwet`. Not to be confused with a master-ticket.
+

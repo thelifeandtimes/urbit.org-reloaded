@@ -15,9 +15,16 @@ export default async function BlogHome() {
 
   const posts = await getPostsTree("blog/");
 
+  // Filter out config files and non-blog-post files
+  const blogPosts = posts.filter(post => {
+    // Exclude config.md and any other config files
+    const fileName = post.relativePath.split('/').pop();
+    return fileName !== 'config.md' && !fileName.startsWith('_');
+  });
+
   const allPostFrontMatter = [];
   await Promise.all(
-    posts.map(async (post) => {
+    blogPosts.map(async (post) => {
       const frontmatter = await getToml(post.relativePath);
       allPostFrontMatter.push({
         data: frontmatter.data,
@@ -27,10 +34,27 @@ export default async function BlogHome() {
     })
   );
 
-  allPostFrontMatter.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+  // Filter out posts with invalid dates and add validation warnings
+  const validPosts = allPostFrontMatter.filter(post => {
+    const date = post.data.date;
+    if (!date) {
+      console.warn(`⚠️  Blog post missing date field: ${post.relativePath}`);
+      return false;
+    }
+
+    const dateObj = new Date(date);
+    if (isNaN(dateObj.getTime())) {
+      console.warn(`⚠️  Blog post has invalid date: ${post.relativePath} (date: ${date})`);
+      return false;
+    }
+
+    return true;
+  });
+
+  validPosts.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
 
   // Group posts by year
-  const yearGroups = allPostFrontMatter.reduce((groups, post) => {
+  const yearGroups = validPosts.reduce((groups, post) => {
     const year = new Date(post.data.date).getFullYear().toString();
     if (!groups[year]) {
       groups[year] = [];
