@@ -121,7 +121,7 @@ export default async function RunningUrbitSection({ params }) {
       <img src="/icons/digi-logo-1.svg" className="hidden md:block pb-4" />
       <section className="mt-[8rem] md:mt-[6rem] mb-32 md:mx-auto">
         <div className="max-w-[1080px]">
-          <h1 className="text-6xl font-serif font-tall leading-[120%] mb-4">
+          <h1 className="text-6xl text-accent-1 font-serif font-tall leading-[120%] mb-4">
             {sectionData.frontMatter.title}
           </h1>
           <h3 className="text-3xl font-sans leading-[120%] mb-12">
