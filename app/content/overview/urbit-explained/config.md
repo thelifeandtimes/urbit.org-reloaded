@@ -6,4 +6,6 @@ sections:
   - urbit-id
   - urbit-os
   - beyond
+next_section: "running-urbit"
+next_section_label: "Running Urbit"
 ---

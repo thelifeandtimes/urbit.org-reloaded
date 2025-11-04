@@ -458,7 +458,7 @@ export function HomepageBlurb({
 
       {/* Title with Info Button */}
       <div className="flex items-center justify-between gap-4 mb-4">
-        <h3 className="text-lg md:text-xl font-mono text-contrast-3 leading-[45px]">
+        <h3 className="text-4xl md:text-5xl text-accent-1 font-[600] leading-10 font-serif md:group-hover:text-gray-87 transition-colors">
           {title}
         </h3>
         {/* Info button - only show if there are details */}

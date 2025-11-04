@@ -3,6 +3,8 @@ import { getMarkdownContent } from "../../lib/queries";
 import { SidebarSlot, SidebarPositionSlot } from "../../lib/layoutSlots";
 import { OverviewNav } from "../../components/OverviewNav";
 import { SidebarElement } from "../../components/SidebarElement";
+import { OverviewNavButtons } from "../../components/OverviewNavButtons";
+import { calculateOverviewNavigation } from "../../lib/overviewNavigation";
 import Markdoc from "@markdoc/markdoc";
 
 export default async function RunningUrbitPage() {
@@ -47,6 +49,14 @@ export default async function RunningUrbitPage() {
   const overviewConfig = await getMarkdownContent("overview/config.md");
   const sidebarPosition = overviewConfig.frontMatter?.sidebar_position || 'right';
 
+  // Calculate navigation
+  const navigation = calculateOverviewNavigation(
+    'running-urbit',
+    null, // intro page
+    urbitExplainedConfig,
+    runningUrbitConfig
+  );
+
   return (
     <div className="mx-4 md:mt-[55px]">
       {/* Set sidebar position */}
@@ -74,6 +84,11 @@ export default async function RunningUrbitPage() {
           <article>
             {Markdoc.renderers.react(introData.content, React)}
           </article>
+
+          <OverviewNavButtons
+            prevPage={navigation.prevPage}
+            nextPage={navigation.nextPage}
+          />
         </div>
       </section>
     </div>

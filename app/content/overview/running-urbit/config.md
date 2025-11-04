@@ -10,4 +10,6 @@ sections:
   - resources
   - support
   - glossary
+prev_section: "urbit-explained"
+prev_section_label: "Urbit Explained"
 ---
