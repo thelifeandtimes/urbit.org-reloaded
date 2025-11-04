@@ -60,13 +60,13 @@ export function HeroSection({ hero }) {
           />
         </div>
         {logo && (
-          <div className="my-12">
+          <div className="my-4">
             <Image
               src={logo}
               alt="Urbit"
               width={197}
               height={86}
-              className="hidden md:block h-16 md:h-20 lg:h-24 w-auto"
+              className="hidden md:block h-16 md:h-16 lg:h-24 w-auto"
               priority
             />
             <Image
@@ -81,7 +81,7 @@ export function HeroSection({ hero }) {
 
         {/* Title */}
         {title && (
-          <h1 className="relative text-6xl md:text-7xl lg:text-8xl font-semibold font-serif italic mb-12 leading-tight text-accent-1 md:text-primary z-20">
+          <h1 className="relative text-6xl md:text-6xl md:max-w-[60vw] lg:text-7xl xl:max-w-[600px] font-semibold font-serif italic mb-12 leading-tight text-accent-1 md:text-primary z-20">
             {title}
           </h1>
         )}
