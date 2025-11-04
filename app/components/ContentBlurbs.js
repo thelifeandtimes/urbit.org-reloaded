@@ -237,16 +237,16 @@ export const ContentBlurb = ({ title, description, content, references, image, i
 
       {/* Expandable Details Section */}
       {hasDetails && isDetailsExpanded && (
-        <div className="mb-6 p-4 bg-gray-87/10 rounded border border-gray-87/30 animate-fadeIn">
+        <div className="mb-6 p-4 bg-contrast-1 rounded border border-contrast-2 animate-fadeIn">
           {description && (
             <div className="mb-4">
-              <h4 className="text-base font-[600] mb-2 text-accent-1">About</h4>
-              <p className="text-base text-gray-87">{description}</p>
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">About</h4>
+              <p className="text-base font-sans text-contrast-3">{description}</p>
             </div>
           )}
           {references && references.some(ref => ref.description) && (
             <div>
-              <h4 className="text-base font-[600] mb-2 text-accent-1">Reference Details</h4>
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">Reference Details</h4>
               <ul className="space-y-2">
                 {references.map((ref, idx) => {
                   if (!ref.description) return null;
@@ -260,7 +260,7 @@ export const ContentBlurb = ({ title, description, content, references, image, i
                       >
                         {ref.title}
                       </a>
-                      <p className="text-xs text-gray-87 mt-1">{ref.description}</p>
+                      <p className="text-xs font-sans text-contrast-3 mt-1">{ref.description}</p>
                     </li>
                   );
                 })}
@@ -349,11 +349,17 @@ export const MicroBlurb = ({
 
       {/* Expandable Details Section */}
       {hasDetails && isDetailsExpanded && (
-        <div className="mb-4 p-3 bg-gray-87/10 rounded border border-gray-87/30 animate-fadeIn">
+        <div className="mb-6 p-4 bg-contrast-1 rounded border border-contrast-2 animate-fadeIn">
+          {description && (
+            <div className="mb-4">
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">About</h4>
+              <p className="text-base font-sans text-contrast-3">{description}</p>
+            </div>
+          )}
           {references && references.some(ref => ref.description) && (
             <div>
-              <h4 className="text-sm font-[600] mb-1 text-accent-1">Reference Details</h4>
-              <ul className="space-y-1">
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">Reference Details</h4>
+              <ul className="space-y-2">
                 {references.map((ref, idx) => {
                   if (!ref.description) return null;
                   return (
@@ -362,11 +368,11 @@ export const MicroBlurb = ({
                         href={ref.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs text-contrast-2 hover:text-primary font-mono font-[600]"
+                        className="text-small text-contrast-2 hover:text-primary font-mono font-[600]"
                       >
                         {ref.title}
                       </a>
-                      <p className="text-xs text-gray-87 mt-0.5">{ref.description}</p>
+                      <p className="text-xs font-sans text-contrast-3 mt-1">{ref.description}</p>
                     </li>
                   );
                 })}
@@ -479,16 +485,16 @@ export function HomepageBlurb({
 
       {/* Expandable Details Section */}
       {hasDetails && isDetailsExpanded && (
-        <div className="mb-6 p-4 bg-[#f5f5f5] dark:bg-gray-87/10 rounded border border-[#3f3f3f]/30 animate-fadeIn">
+        <div className="mb-6 p-4 bg-contrast-1 rounded border border-contrast-2 animate-fadeIn">
           {description && (
             <div className="mb-4">
-              <h4 className="text-base font-[600] mb-2 text-[#44420c]">About</h4>
-              <p className="text-base text-[#3f3f3f]">{description}</p>
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">About</h4>
+              <p className="text-base font-sans text-contrast-3">{description}</p>
             </div>
           )}
           {references && references.some(ref => ref.description) && (
             <div>
-              <h4 className="text-base font-[600] mb-2 text-[#44420c]">Reference Details</h4>
+              <h4 className="text-base font-sans font-[600] mb-2 text-accent-1">Reference Details</h4>
               <ul className="space-y-2">
                 {references.map((ref, idx) => {
                   if (!ref.description) return null;
@@ -498,11 +504,11 @@ export function HomepageBlurb({
                         href={ref.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-[#3f3f3f] hover:text-[#44420c] font-mono font-[600] underline"
+                        className="text-small text-contrast-2 hover:text-primary font-mono font-[600]"
                       >
                         {ref.title}
                       </a>
-                      <p className="text-xs text-[#3f3f3f]/70 mt-1">{ref.description}</p>
+                      <p className="text-xs font-sans text-contrast-3 mt-1">{ref.description}</p>
                     </li>
                   );
                 })}
@@ -511,7 +517,6 @@ export function HomepageBlurb({
           )}
         </div>
       )}
-
       {/* Full content */}
       <article className="prose prose-lg max-w-none mb-8 text-[#3f3f3f]">
         {content}

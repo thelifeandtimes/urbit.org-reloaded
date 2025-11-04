@@ -6,7 +6,7 @@ lastest-update = "<some-arvo-hash>"
 image = ""
 imageDark = ""
 references = [
-    { title = "Quickstart with Tlon", link = "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8", description = "Get started instantly with Tlon hosting" },
+    { title = "Quickstart with Tlon", link = "https://join.tlon.io/0v3.r87kb.fjpft.3k7b5.pbsr5.5em1", description = "Get started instantly with Tlon hosting" },
     { title = "Urbit Explained", link = "/overview", description = "Learn the fundamentals of Urbit" }
 ]
 

@@ -12,4 +12,4 @@ While these are the two key steps, Urbit's nature as a open and permissionless s
 
 The following pages will help walk you through your options, the nature of Urbit as a practice in building a forever computer, and how to get started on your journey of digital self-sovereignty. And it will be a journey on which you learn why you might want a computer that you trust. A computer that is yours. And a network for it all. Welcome, we're glad to have you.
 
-As a note, since you are here, we assume you are interested in reading and not scared of being 'a little into computers'. If it ever becomes too daunting, just know there is always the [Quickstart Option](https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8).
+As a note, since you are here, we assume you are interested in reading and not scared of being 'a little into computers'. If it ever becomes too daunting, just know there is always the [Quickstart Option](https://join.tlon.io/0v3.r87kb.fjpft.3k7b5.pbsr5.5em17).

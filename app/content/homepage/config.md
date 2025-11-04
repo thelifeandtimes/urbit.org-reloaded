@@ -18,13 +18,13 @@ hero:
     link: "https://docs.urbit.org"
   tertiaryLink:
     label: "Quickstart"
-    link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
+    link: "https://join.tlon.io/0v3.r87kb.fjpft.3k7b5.pbsr5.5em17"
   primaryMobileCta:
     label: "Get started"
     link: "/overview/running-urbit"
   secondaryMobileCta:
     label: "Quickstart"
-    link: "https://join.tlon.io/0v7.m3p2b.iraia.rsse5.p36j3.ggbk8"
+    link: "https://join.tlon.io/0v3.r87kb.fjpft.3k7b5.pbsr5.5em17"
   tertiaryMobileLink:
     label: "Technical documentation"
     link: "https://docs.urbit.org"
