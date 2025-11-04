@@ -11,9 +11,9 @@ references = [
 ]
 
 [call-to-action]
-label = "Explore Urbit"
-link = "/overview"
-description = "Dive deeper into how Urbit works"
+label = "Read the docs"
+link = "https://docs.urbit.org"
+description = "Read the documentation to learn more about the technical underpinnings of Urbit"
 
 [extra]
 wip = false

@@ -1,6 +1,6 @@
 +++
 title = "Cloud Server"
-description = "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
+description = "Running in a virtual private server (VPS) affords easy solutions to things like DNS and remote access, at a marginal cost to tangible control of your data"
 tags = ["vps", "cloud", "self-hosting"]
 lastest-update = "<some-arvo-hash>"
 image = "/images/cloud-hosting-sigil-dither.png"
@@ -10,7 +10,7 @@ references = [
 ]
 
 [call-to-action]
-label = "Read Guide"
+label = "Follow the guide"
 link = "https://docs.urbit.org/user-manual/running/cloud-hosting"
 description = "Learn how to host your Urbit on a cloud server"
 
@@ -18,4 +18,6 @@ description = "Learn how to host your Urbit on a cloud server"
 wip = false
 +++
 
-Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like "~sampel-palnet". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one.
+Your urbit is intended to run as a 'personal server': an always-on networked computer. One way to do this is to offload the task of running hardware while you manage the software and retain cryptographic control over your urbit's self-sovereign identity. 
+
+Running urbit in a datacenter offers benefits around remote access, network reliability, and protections against power failures. If you are already familiar with running cloud services, running urbit is easier then just about anything else out there—and wildly more portable.

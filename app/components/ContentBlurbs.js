@@ -80,7 +80,7 @@ export const CollapsibleContentBlurb = ({ title, description, content, reference
   );
 };
 
-export const PreviewContentBlurb = ({ id, title, description, content, references, image, imageDark }) => {
+export const PreviewContentBlurb = ({ id, title, description, content, references, image, imageDark, ctaButton }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -111,7 +111,7 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
           <h3 className="text-3xl md:text-4xl text-accent-1 font-[600] leading-10 font-serif md:group-hover:text-gray-87 transition-colors">
             {title}
           </h3>
-          <ul className="flex flex-wrap items-center gap-x-2 gap-y-1 py-2">
+          <ul className="flex flex-wrap items-center gap-x-8 gap-y-1 py-2">
             {references.map((ref, idx) => (
               <li key={idx}>
                 <a
@@ -125,45 +125,62 @@ export const PreviewContentBlurb = ({ id, title, description, content, reference
               </li>
             ))}
           </ul>
-          <div className={`text-base text-primary transition-transform duration-300 ${isExpanded ? '' : 'line-clamp-5'}`}>{content}</div>
+          <div className={`text-base text-primary transition-transform duration-300 ${isExpanded ? '' : 'line-clamp-3'}`}>{content}</div>
         </div>
       </div>
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full text-left font-mono text-small group py-2 min-h-[44px] flex items-center"
-        aria-expanded={isExpanded}
-      >
-        {isExpanded
-          ?
-          (<div className="flex items-center gap-x-2">
-            <div className="text-primary">
-              Read less
+      <div className="flex justify-between">
+        <div>
+          {/* CTA Button - smaller for narrow layout */}
+          {ctaButton && ctaButton.link && ctaButton.label && (
+            <div className="flex mt-4 justify-start">
+              <a
+                href={ctaButton.link}
+                target={ctaButton.link.startsWith('http') ? '_blank' : undefined}
+                rel={ctaButton.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="whitespace-nowrap items-center px-2 py-1 inline-flex bg-accent-1 md:hover:text-contrast-2 text-secondary font-sans text-base md:text-lg font-[600] rounded-md transition-colors"
+              >
+                {ctaButton.label}
+              </a>
             </div>
-            <img
-              src="/icons/toggle-karat.svg"
-              alt=""
-              className={`
+          )}
+        </div>
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className="w-full justify-end text-right font-mono text-small group py-2 min-h-[44px] flex items-center"
+          aria-expanded={isExpanded}
+        >
+          {isExpanded
+            ?
+            (<div className="flex items-center gap-x-2">
+              <div className="text-primary">
+                Read less
+              </div>
+              <img
+                src="/icons/toggle-karat.svg"
+                alt=""
+                className={`
                 w-[9px] h-[7px] invert transition-transform duration-300
                 ${isExpanded ? 'rotate-180' : 'rotate-0'}
               `}
-            />
-          </div>)
-          :
-          (<div className="flex items-center gap-x-2">
-            <div className="text-contrast-2 md:hover:text-primary">
-              Read more
-            </div>
-            <img
-              src="/icons/toggle-karat.svg"
-              alt=""
-              className={`
+              />
+            </div>)
+            :
+            (<div className="flex items-center gap-x-2">
+              <div className="text-contrast-2 md:hover:text-primary">
+                Read more
+              </div>
+              <img
+                src="/icons/toggle-karat.svg"
+                alt=""
+                className={`
                 w-[9px] h-[7px] invert transition-transform duration-300
                 ${isExpanded ? 'rotate-180' : 'rotate-0'}
               `}
-            />
-          </div>)
-        }
-      </button>
+              />
+            </div>)
+          }
+        </button>
+      </div>
     </div>
   );
 };
@@ -383,7 +400,7 @@ export const MicroBlurb = ({
       )}
 
       {/* Content - either full or line-clamped */}
-      <div className={`text-sm text-primary mt-3 ${showFullContent ? '' : 'line-clamp-4'}`}>
+      <div className={`text-sm text-primary mt-3 ${showFullContent ? '' : 'line-clamp-8'}`}>
         {showFullContent ? (
           <article className="prose prose-sm prose-invert max-w-none">
             {content}

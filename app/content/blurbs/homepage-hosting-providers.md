@@ -18,4 +18,4 @@ wip = false
 
 While Urbit is designed to be run by its users as simply as caring for a cactus, it's not quite there yet. Some users prefer not to take on the technical burden of self-hosting.
 
-Third party hosting providers can run your Urbit on your behalf while still maintaining many of the ownership characteristics that make Urbit yours. This stands in stark contrast to legacy cloud software where you never truly own your data or identity.
+Third-party hosting providers can run your Urbit on your behalf while still maintaining many of the ownership characteristics that make Urbit yours. This stands in stark contrast to legacy cloud software where you never truly own your data or identity.

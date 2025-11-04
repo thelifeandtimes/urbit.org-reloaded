@@ -1,16 +1,17 @@
 +++
 title = "Native Planet"
-description = "Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like \"~sampel-palnet\". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one."
+description = "Native Planet builds hardware and software for simplified home hosting of your Urbit"
 tags = ["native-planet", "self-hosting", "hardware"]
 lastest-update = "<some-arvo-hash>"
 image = "/images/native-planet-callisto-dither.png"
 imageDark = ""
 references = [
-    { title = "Native Planet Website", link = "https://nativeplanet.io", description = "Explore hardware solutions for running Urbit" }
+    { title = "nativeplanet.io", link = "https://nativeplanet.io", description = "Explore hardware solutions for running Urbit in your home or office" },
+    { title = "Groundseg", link = "https://github.com/native-planet/groundseg", description = "Use Groundset to orchestrate locally running urbit nodes" },
 ]
 
 [call-to-action]
-label = "Visit Native Planet"
+label = "Buy urbit hardware"
 link = "https://nativeplanet.io"
 description = "Discover dedicated Urbit hardware devices"
 
@@ -18,4 +19,6 @@ description = "Discover dedicated Urbit hardware devices"
 wip = false
 +++
 
-Every Urbit OS server is made unique by its Urbit ID, which others can use to reach you on the network. There are five ranks of Urbit ID, but the one an ordinary user needs is a planet, which has a four-syllable name like "~sampel-palnet". Unless you know someone who can gift you one, or you want to get one from a cloud hosting provider like Tlon, you'll need to buy one.
+Native Planet hardware devices are our recommended way of running your urbit. Specifically optimized for running Urbit OS, they come preloaded with Groundseg, an open source software program designed for running and managing Urbit nodes. 
+
+Along with their Startram service, running your urbit on a Native Planet device gives you the ideal balance of local control of data, low maintenance operation, and streamlined remote access. You can even get started on the command line today, and then easily import your urbit when your device arrives.

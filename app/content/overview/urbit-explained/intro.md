@@ -12,9 +12,9 @@ Urbit contends it would be the latter, and is thus humanity’s first attempt at
 - Why digital commerce is plagued with warnings to ‘click only once’, man in the middle attacks, and impersonation scams   
 - Why the duct tape and superglue approach to current networking is doomed to endless spam and megacorp centralization 
 
-Naturally, if we are trying to build the perfect software stack, we need to cast out the mistakes of the last 70 odd years, and so describing Urbit in contrast to the present can be educational. But so too is it worth describing Urbit as a positive vision of the future–particularly because building Urbit is an intergenerational endeavor and current development has only scratched the surface of the work to be done. There is a long, hard road ahead of us before we can solve the computing problems of the everyman. 
+Naturally, if we are trying to build the perfect software stack, we need to cast out the mistakes of the last 70 odd years, and so describing Urbit in contrast to the present can be educational. But so too is it worth describing Urbit as a positive vision of the future—particularly because building Urbit is an intergenerational endeavor and current development has only scratched the surface of the work to be done. There is a long, hard road ahead of us before we can solve the computing problems of the everyman. 
 
-So what is Urbit today? Unlike in the original Moron Labs blog post in which Urbit is first proposed, contemporary Urbit is not vaporware. Early adopters and technical developers will find a vast landscape of interesting ideas, novel approaches to computing, and opportunities for increasing their independence from the legacy internet that is crumbling around us.
+So what is Urbit today? Unlike in [the original Moron Labs blog post in which Urbit is first proposed](https://moronlab.blogspot.com/2010/01/urbit-functional-programming-from.html), contemporary Urbit is not vaporware. Early adopters and technical developers will find a vast landscape of interesting ideas, novel approaches to computing, and opportunities for increasing their independence from the legacy internet that is crumbling around us.
 
 In practice, your urbit comes in two parts–identity and operating system–and with it, becoming a node in a networked whole.
 

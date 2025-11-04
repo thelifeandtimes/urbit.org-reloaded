@@ -24,6 +24,6 @@ Azimuth is the segment of urbit address space registered and owned on the Ethere
 
 Acquire an Urbit ID of your chosing by transferring it to a web3 wallet you control. You can then log in to [Bridge](https://bridge.urbit.org) using that wallet and take a variety of ownership and management actions from that interface.
 
-Azimuth also has it's own custom Layer 2 Rollup which can be used if you desire reduced blockchain fees, in exchange for reduced legibility to broader Layer 1 ethereum. It is commonly used by hosting providers, such as Tlon, in order to reduce the cost of initial user onboarding. 
+Azimuth also has it's own custom Layer 2 Rollup which can be used if you desire reduced blockchain fees, in exchange for reduced legibility to broader Layer 1 Ethereum. It is commonly used by hosting providers, such as Tlon, in order to reduce the cost of initial user onboarding. 
 
 If you find that your Urbit ID NFT doesn't appear natively in your web3 wallet, it may be that you have a Layer 2 identity. Connect to Bridge and review your ownership of both Layer 1 and Layer 2 assets. 
