@@ -9,7 +9,7 @@ sections:
   - common-commands
   - resources
   - support
-  - glossary
+  # - glossary
 prev_section: "urbit-explained"
 prev_section_label: "Urbit Explained"
 ---
