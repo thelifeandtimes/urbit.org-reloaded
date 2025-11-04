@@ -1,86 +1,23 @@
 ---
 title: "Beyond"
-description: "The history and future of Urbit"
+description: "Building towards a decentralized future for a distributed network"
 ---
 
-Urbit is an open-source project that anyone can work on. The Urbit Foundation, a non-profit organization, is charged with shepherding the network toward a successful future. [Tlon](https://tlon.io/) was the first private company founded for the purposes of working on Urbit, back in 2013. But now there are several more. These include [Tirrel](https://tirrel.io/), [Native Planet](https://www.nativeplanet.io/), [Red Horizon](https://redhorizon.com/), and others. Beyond that, an ecosystem has sprung up around Urbit that includes [funds](https://assembly.capital/), [DAOs](https://labyrinthdao.io/), and [publications](https://marsreview.org/). And of course there are everyday contributors, many of whom have received [grants](https://urbit.org/grants) from the Urbit Foundation.
+We are building Urbit because we want to take computing beyond what seems like the inevitable mess of humanity’s current computing trajectory: unfixable security vulnerabilities, hopeless bitrot, endless spam, and deeply structural centralization. We want to build a future where we can have computers that we can trust. Computers that can last a lifetime. Computers that we can use free of extractive middlemen who want to hijack our attention, steal our data, and manipulate our behavior to their own ends. 
 
-Let's talk first about these individual groups within the Urbit community, then about the history of the project and how it came to be.
+It’s clear that connected computing is important and that it’s here to stay. We want a better user experience–not just more flashy user interfaces–for humanity’s networked computing. We just want it to be as calm, simple and reliable as possible, and we believe that in order to get that, we need computers that are truly *ours*. 
 
-### Organizations
+To that end, Urbit is an open-source project that anyone can work on. The Urbit Foundation, a non-profit organization, is charged with shepherding the network toward a successful future. [Tlon](https://tlon.io) was the first private company founded for the purposes of working on Urbit, back in 2013\. But now there are several more. These include [Native Planet](https://nativeplanet.io), [Zorp](https://zorp.io), and others. Beyond that, an ecosystem has sprung up around Urbit that includes funds, DAOs, and even [Layer 1 zero-knowledge blockchain](https://nockchain.org) built on the Nock instruction set. And of course there are everyday contributors, many of whom have received grants from the Urbit Foundation.
 
-The [Urbit Foundation](https://urbit.org/) was formally established in 2021 when it split off from Tlon. The Foundation leads core development, education, communications, runs the Urbit grants program, maintains [urbit.org](https://urbit.org/) and Urbit-related media, and organizes events like [Assembly](https://assembly.urbit.org/).
+Throughout our endeavors building Urbit, we have encountered and tackled novel computer science problems:
 
-[Tlon Corporation](https://tlon.io/) was founded in 2013 to bootstrap Urbit. Tlon provides a mobile app "Tlon" which serves as the communication suite for Urbit, and, as of 2024, offers free hosting and Urbit planets for anyone who wants to get on the network.
+- Development of a “Solid State Interpreter”; an interpreter that is also an ACID database   
+- The first production implementation of Named Data Networking (NDN)   
+- Novel performance optimization of compact instruction sets through Subject Knowledge Analysis (SKA)  
+- And more…
 
-[Tirrel Corporation](https://tirrel.io/) was founded in 2021 and is currently building a Lightning wallet for using Bitcoin on Urbit.
+Technical contributors regularly publish articles in the [Urbit Systems Technical Journal](https://urbitsystems.tech/) discussing the discoveries, challenges and implementation details of these problems, cataloging the knowledge for future generations. 
 
-Founded in 2022, [Native Planet](https://www.nativeplanet.io/) has begun the immensely ambitious task of building hardware for Urbit.
+All of Urbit is built to function as a single stack, and we think that building useful products is the best way to mature the system as a whole. That said, each component of this system can be used on its own. Don’t like our client? That’s okay, you can build your own. Don’t want to use Urbit OS? No problem — you can use Urbit ID as an authentication system for some other OS, or for anything, really. The possibilities abound, and we hope you help take it beyond our wildest dreams.
 
-[Zorp](http://zorp.io/), founded in 2022, builds Nockchain, a Layer 1 proof of work blockchain built using zero-knowledge proofs.
-
-Spun out of the redoubtable crypto company Chorus One, in 2023 [Red Horizon](https://redhorizon.com/) began providing hosting services and developer tools for Urbit.
-
-Founded in 2023, [Alphabet](https://tlon.network/lure/~sarmyn-samnym/alphabet) is building a peer-to-peer prediction market on Urbit leveraging the network's decentralized structure and built-in reputation system.
-
-Urbit's community of contributors and core developers has been steadily contributing to the code base since before the Urbit Foundation existed, and they're still going strong. They can primarily be found on Urbit itself, in the Urbit Community ([~bitbet-bolbel/urbit-community](https://urbit.org/groups/~bitbet-bolbel/urbit-community)), the [urbit-dev](https://groups.google.com/a/urbit.org/g/dev?pli=1) mailing list and on [GitHub](https://github.com/urbit). See also The Urbit Foundation's public group at [~halbex-palheb/uf-public](https://urbit.org/groups/~halbex-palheb/uf-public).
-
-### Timeline
-
-In the beginning, Urbit was just a few people with the right combination of imagination and discipline to try to rebuild computing.
-
-**2002**
-
-Urbit starts as an open-ended personal project. An "independent study PhD" to reinvent computing for a network-centric world.
-
-**2008**
-
-Nock, the foundation of Urbit, works. Coming in at 32 lines of code, that's 1 line of code every two months.
-
-**2012**
-
-Hoon, Urbit's programming language, compiles itself to Nock. Writing Hoon is much easier than writing Nock.
-
-**2013**
-
-Arvo, Urbit's OS kernel, boots and the first live Urbit network is started with a command-line chat.
-
-**2014**
-
-Tlon is founded to help support Urbit development (and is < 8 people for the next four years).
-
-**2015**
-
-Urbit has its first web interface and serves its own website.
-
-**2016**
-
-The first sale of Urbit address space sells out in four hours.
-
-**2017**
-
-Urbit's test network runs for ten months without a reboot. Urbit's first private sale of address, shared only with its mailing list, sells out in six hours — limit two per person.
-
-**2018**
-
-Tlon sells about 8% of its stake in the network to accelerate Urbit development.
-
-**2019**
-
-Tlon spends the year stabilizing Arvo and building Landscape.
-
-**2021**
-
-Tlon hosts the first Urbit Assembly and the Urbit Foundation is formally organized.
-
-**2022**
-
-The Urbit Foundation's split from Tlon becomes complete, and UF organizes [Urbit NYC](https://urbit.org/groups/~ladtem-filmyr/urbit-ny-week) and [Assembly 2022](https://www.youtube.com/playlist?list=PLYGEMSwLguIGfxboRkv38sDeXH71koyET) in Miami while launching the Hoon School Live educational program, and updating [the documentation](https://docs.urbit.org).
-
-**2023**
-
-The Urbit Foundation takes over core development of Urbit and organizes the Volcano Summit, a conference for Urbit developers in El Salvador. Later in the year, [Assembly Lisboa](https://www.youtube.com/playlist?list=PLYGEMSwLguIF9wPzEoBr_MV3qR_mFSfXy) is our biggest event yet, drawing developers, projects, writers, artists, and Urbit enthusiasts from all over the world.
-
-**The Future**
-
-There's a lot to be excited about. Ares, the new Urbit runtime, will make Urbit far faster and greatly increase its storage capacity. A full-stack rewrite of Urbit's networking aims to increase throughput 100–1000x. Free hosting at a larger scale will allow larger quantities of users to join the network. A slew of new Urbit companies are working on everything from Lightning wallets on Urbit to Minecraft-like peer-to-peer games to full-fledged Urbit social networks. Several teams are vying to build the first Urbit blockchain. And all the while, enthusiasm among the community remains high, and Urbit companies are as dedicated and focused as ever.
+If any of this caught your interest, we encourage you to take the next step and start running urbit. And if you are so inclined, [read the docs](http://docs.urbit.org) and [learn to build on Urbit yourself](https://docs.urbit.org/build-on-urbit/contents).

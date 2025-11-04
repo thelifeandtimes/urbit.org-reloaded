@@ -1,6 +1,6 @@
 ---
 title: "Urbit Explained"
-description: "We think the internet can't be saved."
+description: "Urbit is a practice in building a forever computer"
 sections:
   - intro
   - urbit-id

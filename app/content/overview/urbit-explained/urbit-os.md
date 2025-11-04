@@ -3,41 +3,22 @@ title: "Urbit OS"
 description: "A new operating system designed to give individuals control of their digital lives"
 ---
 
-For the most part, we use our laptops simply as access points to MEGACORP services. Our phones are the same. These services are amazing and convenient. But for that convenience we've traded away control, ownership and privacy. The way we live our digital lives is completely out of our hands.
+While some interpretations of the question *“What is Urbit?”* take the stance that “Urbit is anywhere you use your `@p`”, the canonical usage of Urbit ID is to run Urbit OS. Every node, or ‘ship’, on the Urbit network must first start with an identity. A knowledge of ‘self’ which is embedded in every action that it takes on the network. 
 
-Today's MEGACORP monopolies retain their control because of one central technical advantage: they make the server side usable.
+The main thing to understand about Urbit OS is that it takes everything we’ve learned from humanity’s first decades of networked computing and rewrites the entire technical stack from a clean slate. It throws out effectively everything but UDP and ASCII, in order to get rid of the layers of duct tape and super glue built up over the years as humanity discovered what it wanted to do with computers (e.g. have them talk to each other). 
 
-Urbit OS is built to break these monopolies at this central point of control. Urbit OS makes the server side usable for individuals without the need for MEGACORP to run their software.
+Naturally, rewriting the entire stack is a huge undertaking, so to bootstrap the system without also having to rebuild hardware manufacturing and supply chains, Urbit OS is constructed as an ‘overlay OS’. This means it can run on any computing substrate (present runtimes are focused on Unix-based systems), and its networking protocol is transport layer agnostic. While today it generally uses the legacy internet infrastructure, network packets could in fact be delivered between nodes via a sneakernet or by carrier pigeon.
 
-We've already been through this before. In 1974 a computer was a mainframe the size of a room and was shared by hundreds of people. By 1984 a computer was the size of a desk and everyone had their own PC. The PC was more flexible and more fun, so it won by a wide margin. Then, with the rise of the internet, the PC's flexibility slowly became irrelevant.
+The foundation of the entire technical stack is a single, simple function. This function is the Urbit OS virtual machine. We call it ‘Nock’. The entire Urbit OS system compiles down to Nock, and Nock is just 33 lines of code–the whole specification fits on a t-shirt.
 
-Today, we're more or less back to the timesharing model of the 1970s. Urbit OS is the PC to MEGACORP's mainframe. It's more flexible, more fun, and most of all, poised to capture the everyday creativity of the individual.
+Nock is similar in spirit to WASM or the JVM: it’s a uniform machine code for every Urbit ship. Its small size and principled approach mean that it can exist as a solid and unchanging layer upon which to build a networked operating system. And since Nock is a protocol for computing itself, any two nodes on the Urbit network can easily share data, communicate and connect their software. The fact that 20th century systems could never do this is why we are perpetually led towards a MEGACORP acting as the intermediary for our networked computing experiences.
 
-Let's talk about how we think we're going to pull this off from a technical standpoint, and our vision for using Urbit.
+On top of the tiny Nock VM we built a self-hosting, purely functional programming language, a kernel written in that language and a set of kernel modules that serve all the needs of personal computing. Specifically: a filesystem, build system, application sandbox, secret storage, web server, terminal driver and a networking protocol.
 
-### Architecture
+The result of this design is that the state of your Urbit OS is a pure function of its event history. It’s auditable, inspectable, repeatable. The entire Urbit OS stack, from programming language to applications, is upgradeable over the network.
 
-Urbit OS is a completely new, carefully architected software stack: a VM, programming language, and kernel designed to run software for an individual. Urbit OS is a program that runs on almost any cloud server, most laptops and many phones: anything with Unix and an internet connection.
+Since every node computes exactly the same way, writing decentralized apps becomes vastly simpler than in the old world and resisting the draw of centralization into MEGACORP walled gardens becomes easier.  For ordinary users, the idea is that running your urbit forever should be easy as caring for a cactus and you can actually trust it to be working for you.
 
-{% image src="https://media.urbit.org/site/overview/overview-os.png" / %}
+This sounds like a lot — but the whole stack is incredibly compact. The whole system clocks in at around 50K lines of code. We’ve seen individual developers understand the entire thing.   
 
-
-The main thing to understand about our 'overlay OS', as we call it, is that the foundation is a single, simple function. This function is the Urbit OS virtual machine. We call it 'Nock'. The entire Urbit OS system compiles down to Nock, and Nock is just 33 lines of code.
-
-Nock is similar in spirit to WASM or the JVM: it's a uniform machine code for every Urbit ship. A frozen foundation makes for some nice features:
-
-The state of your Urbit OS is a pure function of its event history. It's auditable, inspectable, repeatable. You can actually trust it. Writing decentralized apps becomes vastly simpler than in the old world, since every node computes exactly the same way. The entire Urbit OS stack, from programming language to applications, is upgradeable over the network. For ordinary users, this makes for almost no system administration.
-
-Since Nock is a protocol for computing itself, any two nodes on the Urbit network can easily share data, communicate and connect their software. 20th century systems could never do this without a MEGACORP acting as the intermediary.
-
-On top of this tiny VM we built a self-hosting, purely functional programming language, a kernel written in that language and a set of kernel modules that serve all the needs of personal computing. Specifically: a filesystem, build system, application sandbox, secret storage, web server, terminal driver and a networking protocol.
-
-This sounds like a lot — but the whole stack is incredibly compact. The whole system clocks in at around 50K lines of code. We've seen individual developers understand the entire thing. Who is the last person you met that actually understands their entire computer? Urbit OS is like the 1968 Porsche 911 of operating systems: extremely simple, elegant, and built for the individual.
-
-But why did we build all this technology?
-
-First and foremost, to deliver a better user experience. Urbit OS alone is just a new layer for personal computing in the cloud. But with this new layer we open up the possibility of building a completely unified interface for people to compute in the cloud.
-
-From a broader perspective, it's clear that connected computing is important and that it's here to stay. We just want it to be as calm, simple and reliable as possible, and we don't think that can happen using existing technology.
-
-All of Urbit is built to function as a single stack, and we think that building a useful product is the best way to mature the system as a whole. That said, each component of this system can be used on its own. Don't like our client? That's okay, you can build your own. Don't want to use Urbit OS? No problem — you can use Urbit ID as an authentication system for some other OS, or for anything, really.
+But why did we build all this technology? It goes well beyond just liking functional programming or technical computer science problems. We wanted to solve the problems with our computers that mean they keep getting more, rather than less, complex. Who is the last person you met that actually understands their entire computer? Urbit OS is like the 1968 Porsche 911 of operating systems: extremely simple, elegant, and built for the individual.
